@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tomes | Sabastiaz</title>
+    <!-- SEO & Search -->
+  <meta name="description" content="Sabastiaz (Ratthapong Sommanus) — Red Team Sorcerer, Penetration Tester, Offensive Security Specialist, Founder of Wowza Group. OSEP, OSCP, CRTO, CPTS, CEH certified. Tenable Guardian of Thailand. CVE-2025-48878 discoverer." />
+  <meta name="keywords" content="Sabastiaz, Ratthapong Sommanus, Red Team, Penetration Testing, OSEP, OSCP, CRTO, CPTS, CEH, Offensive Security, Wowza Group, Cybersecurity, CVE, Tenable Guardian, Active Directory, Bigfish Enterprise, Bug Bounty, Thailand" />
+  <meta name="author" content="Ratthapong Sommanus (Sabastiaz)" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1a1008" />
+  <meta name="color-scheme" content="dark" />
+  <!-- Open Graph / Facebook / LINE -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Sabastiaz — Red Team Sorcerer" />
+  <meta property="og:url" content="https://sabastiaz.netlify.app/writings.html" />
+  <meta property="og:title" content="Sabastiaz | Red Team Sorcerer" />
+  <meta property="og:description" content="Penetration Tester, Offensive Security Specialist &amp; Founder of Wowza Group. Tenable Guardian of Thailand." />
+  <meta property="og:image" content="https://sabastiaz.netlify.app/pic/Untitled design.png" />
+  <meta property="og:locale" content="th_TH" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sabastiaz | Red Team Sorcerer" />
+  <meta name="twitter:description" content="Red Team Specialist, OSEP/OSCP/CRTO/CPTS certified. Founder of Wowza Group. Tenable Guardian of Thailand." />
+  <meta name="twitter:image" content="https://sabastiaz.netlify.app/pic/Untitled design.png" />
+  <!-- Apple -->
+  <link rel="apple-touch-icon" href="pic/Untitled design.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    /* ── Filter tabs ── */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 3px;
+      border: 1px solid rgba(201,168,76,0.2);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: rgba(201,168,76,0.1);
+      border-color: rgba(201,168,76,0.45);
+      color: var(--gold);
+    }
+
+    /* ── Tomes grid ── */
+    .tomes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .tome-card {
+      background: var(--surface);
+      border: 1px solid rgba(201,168,76,0.13);
+      border-radius: 4px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .tome-card::before,
+    .tome-card::after {
+      content: '✦';
+      position: absolute;
+      font-size: 0.5rem;
+      color: var(--gold);
+      opacity: 0.2;
+    }
+    .tome-card::before { top: 7px;  left:  9px; }
+    .tome-card::after  { bottom: 7px; right: 9px; }
+
+    .tome-card:hover {
+      border-color: rgba(201,168,76,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(0,0,0,0.5), 0 0 18px rgba(201,168,76,0.07);
+    }
+
+    /* Hidden state for filter */
+    .tome-card.hidden { display: none; }
+
+    /* ── Card top row ── */
+    .tome-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tome-platform {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .tome-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+    }
+
+    .tag-en {
+      color: #6bc5d2;
+      background: rgba(107,197,210,0.1);
+      border: 1px solid rgba(107,197,210,0.22);
+    }
+
+    .tag-th {
+      color: #c39bd3;
+      background: rgba(195,155,211,0.1);
+      border: 1px solid rgba(195,155,211,0.22);
+    }
+
+    .tag-cert {
+      color: var(--gold2);
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.22);
+    }
+
+    .tag-lab {
+      color: #5dba6a;
+      background: rgba(93,186,106,0.1);
+      border: 1px solid rgba(93,186,106,0.22);
+    }
+
+    .tag-pentest {
+      color: #e07b5a;
+      background: rgba(224,123,90,0.1);
+      border: 1px solid rgba(224,123,90,0.22);
+    }
+
+    .tag-life {
+      color: #a89bc2;
+      background: rgba(168,155,194,0.1);
+      border: 1px solid rgba(168,155,194,0.22);
+    }
+
+    /* ── Title & desc ── */
+    .tome-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .tome-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      flex: 1;
+    }
+
+    .tome-arrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      align-self: flex-end;
+      transition: letter-spacing 0.2s;
+    }
+
+    .tome-card:hover .tome-arrow { letter-spacing: 0.2em; }
+
+    /* ── Stats summary ── */
+    .tomes-stats {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .tomes-stat {
+      background: var(--surface2);
+      border: 1px solid rgba(201,168,76,0.12);
+      border-radius: 4px;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .tomes-stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .tomes-stat-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .tomes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<canvas id="stars-canvas"></canvas>
+
+<nav>
+  <a href="index.html" class="nav-logo">Sabastiaz 🪄</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Spells</a></li>
+    <li><a href="tools.html">Arsenal</a></li>
+    <li><a href="writings.html" class="active">Tomes</a></li>
+    <li><a href="honor.html">Honours</a></li>
+    <li><a href="wowza.html">Wowza</a></li>
+    <li><a href="event.html">Events</a></li>
+    <li><a href="contact.html">Owl Post</a></li>
+    <li><a href="cocacola.html">🥤</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page">
+  <div class="page-hero">
+    <div class="page-rune">✦ The Restricted Section ✦</div>
+    <h1 class="page-title">Published Tomes</h1>
+    <p class="page-subtitle">Forbidden scrolls shared with the wizarding world — via Medium</p>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-rune">📚</div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Stats -->
+    <div class="tomes-stats fade-up">
+      <div class="tomes-stat">
+        <span class="tomes-stat-num">14</span>
+        <div class="tomes-stat-label">Total Scrolls</div>
+      </div>
+      <div class="tomes-stat">
+        <span class="tomes-stat-num">9</span>
+        <div class="tomes-stat-label">English</div>
+      </div>
+      <div class="tomes-stat">
+        <span class="tomes-stat-num">5</span>
+        <div class="tomes-stat-label">Thai</div>
+      </div>
+      <div class="tomes-stat">
+        <span class="tomes-stat-num">📖</span>
+        <div class="tomes-stat-label">Medium Platform</div>
+      </div>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="filter-bar fade-up">
+      <button class="filter-btn active" data-filter="all">All Scrolls</button>
+      <button class="filter-btn" data-filter="cert">Certification</button>
+      <button class="filter-btn" data-filter="lab">Lab &amp; Pentest</button>
+      <button class="filter-btn" data-filter="life">Life &amp; Journey</button>
+      <button class="filter-btn" data-filter="en">English</button>
+      <button class="filter-btn" data-filter="th">Thai</button>
+    </div>
+
+    <!-- Tomes grid -->
+    <div class="tomes-grid fade-up">
+
+      <!-- 1 -->
+      <a href="https://medium.com/@sabastiaz/passed-offsec-experienced-penetration-tester-osep-with-secret-txt-299d56291411"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="cert en">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-en">EN</span>
+          <span class="tome-tag tag-cert">Certification</span>
+        </div>
+        <div class="tome-title">Passed OffSec Experienced Penetration Tester (OSEP) with secret.txt</div>
+        <div class="tome-desc">The journey, struggles, and victory of passing one of OffSec's most demanding exams — OSEP.</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 2 -->
+      <a href="https://medium.com/@sabastiaz/my-journey-through-certified-penetration-testing-specialist-cpts-100-5ec4b0d2a628"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="cert en">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-en">EN</span>
+          <span class="tome-tag tag-cert">Certification</span>
+        </div>
+        <div class="tome-title">My Journey Through CPTS 100%</div>
+        <div class="tome-desc">A full account of completing the Hack The Box Certified Penetration Testing Specialist path with 100% completion.</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 3 -->
+      <a href="https://medium.com/@sabastiaz/my-oscp-journey-triple-attempts-63ba203df052"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="cert en">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-en">EN</span>
+          <span class="tome-tag tag-cert">Certification</span>
+        </div>
+        <div class="tome-title">My OSCP Journey — Triple Attempts</div>
+        <div class="tome-desc">An honest chronicle of three OSCP attempts — what went wrong, what was learned, and how victory was finally achieved.</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 4 -->
+      <a href="https://medium.com/@sabastiaz/crta-exam-one-night-miracle-18ce91bc0c65"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="cert en">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-en">EN</span>
+          <span class="tome-tag tag-cert">Certification</span>
+        </div>
+        <div class="tome-title">CRTA Exam: One Night Miracle</div>
+        <div class="tome-desc">How a single relentless night led to passing the Certified Red Team Analyst examination — a tale of grit and focus.</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 5 -->
+      <a href="https://medium.com/@sabastiaz/i-passed-the-tenable-vulnerability-management-specialist-exam-on-my-first-attempt-fff53a0dcd79"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="cert en">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-en">EN</span>
+          <span class="tome-tag tag-cert">Certification</span>
+        </div>
+        <div class="tome-title">I Passed the Tenable Vulnerability Management Specialist Exam on My First Attempt!</div>
+        <div class="tome-desc">First-attempt success on the Tenable.VM Specialist exam — strategy, preparation, and key takeaways.</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 6 -->
+      <a href="https://medium.com/@sabastiaz/from-mssql-to-domain-compromise-a-practical-attack-path-in-active-directory-htb-signed-a53ef5da6ab1"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="lab pentest en">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-en">EN</span>
+          <span class="tome-tag tag-pentest">Pentest</span>
+        </div>
+        <div class="tome-title">From MSSQL to Domain Compromise: A Practical Attack Path in Active Directory (HTB Signed)</div>
+        <div class="tome-desc">A practical walkthrough of chaining MSSQL vulnerabilities into full Active Directory domain compromise on Hack The Box.</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 7 -->
+      <a href="https://medium.com/@sabastiaz/mail-service-lab-extreme-red-team-lab-review-b5eed3dfea40"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="lab en">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-en">EN</span>
+          <span class="tome-tag tag-lab">Lab Review</span>
+        </div>
+        <div class="tome-title">Mail Service Lab: Extreme Red Team LAB Review</div>
+        <div class="tome-desc">A detailed expedition log through the Mailservice dungeon within the Extreme Red Team Laboratories — mapping attack paths and cataloguing key learnings.</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 8 -->
+      <a href="https://medium.com/@sabastiaz/tenable-guardian-summit-2025-272114a2e251"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="life en">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-en">EN</span>
+          <span class="tome-tag tag-life">Experience</span>
+        </div>
+        <div class="tome-title">First Time at the Tenable Guardian Summit 2025</div>
+        <div class="tome-desc">Reflections from attending the Tenable Guardian Summit 2025 — insights, networking, and the experience of the industry gathering.</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 9 -->
+      <a href="https://medium.com/@sabastiaz/achievement-2025-ff09636c990d"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="life en">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-en">EN</span>
+          <span class="tome-tag tag-life">Journey</span>
+        </div>
+        <div class="tome-title">Achievement 2025</div>
+        <div class="tome-desc">A year-in-review scroll chronicling the certifications earned, labs conquered, and milestones reached throughout 2025.</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 10 (TH) -->
+      <a href="https://sabastiaz.medium.com/รีวิว-mailservice-lab-ของ-extreme-red-team-laboratories-bb60493e9b62"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="lab th">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-th">TH</span>
+          <span class="tome-tag tag-lab">Lab Review</span>
+        </div>
+        <div class="tome-title">รีวิว Mailservice Lab ของ Extreme Red Team Laboratories</div>
+        <div class="tome-desc">รีวิว Mailservice Lab จาก Extreme Red Team Laboratories พร้อม attack path และบทเรียนที่ได้รับ</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 11 (TH) -->
+      <a href="https://sabastiaz.medium.com/เตรียมตัวสอบ-oscp-ยังให้ให้ผ่านแบบไร้ข้อกังวล-f3f8de615f9c"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="cert th">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-th">TH</span>
+          <span class="tome-tag tag-cert">Certification</span>
+        </div>
+        <div class="tome-title">เตรียมตัวสอบ OSCP ยังไงให้ผ่านแบบไร้ข้อกังวล</div>
+        <div class="tome-desc">คู่มือเตรียมสอบ OSCP ฉบับครบถ้วน — แนวทางการเรียน, การลงแล็บ, และเทคนิคในห้องสอบ</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 12 (TH) -->
+      <a href="https://sabastiaz.medium.com/ความยากที่พอดี-คือความสนุกของ-ctf-c2d8ecad5356"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="life th">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-th">TH</span>
+          <span class="tome-tag tag-life">Philosophy</span>
+        </div>
+        <div class="tome-title">ความยากที่พอดี คือความสนุกของ CTF</div>
+        <div class="tome-desc">ว่าด้วยความสนุกของการแก้โจทย์ CTF และมุมมองต่อความท้าทายในโลกของ Offensive Security</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+
+      <!-- 13 (TH) -->
+      <a href="https://sabastiaz.medium.com/เมื่อคำว่า-เก่ง-ไม่ได้หมายถึงคนที่ไม่เคยพลาด-แต่คือคนที่ลุกขึ้นมาได้เสมอ-aacd43f2720a"
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="life th">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-th">TH</span>
+          <span class="tome-tag tag-life">Philosophy</span>
+        </div>
+        <div class="tome-title">เมื่อคำว่า "เก่ง" ไม่ได้หมายถึงคนที่ไม่เคยพลาด แต่คือคนที่ลุกขึ้นมาได้เสมอ</div>
+        <div class="tome-desc">บทความเชิงปรัชญาว่าด้วยความหมายที่แท้จริงของความสามารถ และพลังของการลุกขึ้นหลังล้มเหลว</div>
+        <div class="tome-arrow">Read Scroll →</div>
+      </a>
+      <!-- 14 (TH) -->
+      <a href=""
+         class="tome-card" target="_blank" rel="noopener"
+         data-tags="life th">
+        <div class="tome-meta">
+          <span class="tome-platform">Medium</span>
+          <span class="tome-tag tag-th">TH</span>
+          <span class="tome-tag tag-life">Travel</span>
+        </div>
+        <div class="tome-title">Singapore Seven Day (ฉบับโม้ไปเรื่อย)</div>
+        <div class="tome-desc">ผมอยากมาเล่า (มาโม้) ประสบการณ์ไป Singapore เป็นเวลา 7 วัน ว่าไปทำอะไรมาบ้าง แอบสปอยมีไปงาน Black Hat Asia and DefCon SG1 ด้วยนะ</div>
+        <div class="tome-arrow">Coming Soon</div>
+      </a>
+    </div>
+
+    <div style="text-align:center; margin-top: 3rem;" class="fade-up">
+      <a href="contact.html" class="btn-magic">Send Owl Post →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <span class="footer-wand">🪄</span>
+  ✦ &nbsp; SABASTIAZ &nbsp; · &nbsp; Ratthapong Sommanus &nbsp; · &nbsp; Red Team Sorcerer &nbsp; ✦
+  <br/><span style="display:block;margin-top:0.3rem;opacity:0.4"></span>
+</footer>
+
+<script src="stars.js"></script>
+<script>
+  /* ── Filter logic ── */
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.tome-card').forEach(card => {
+        if (filter === 'all') {
+          card.classList.remove('hidden');
+        } else {
+          const tags = card.dataset.tags || '';
+          card.classList.toggle('hidden', !tags.includes(filter));
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
