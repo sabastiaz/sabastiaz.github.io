@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ความยากที่พอดี คือความสนุกของ CTF | Sabastiaz</title>
+  <meta name="description" content="ความยากที่พอดี คือความสนุกของ CTF — Sabastiaz Red Team Sorcerer" />
+  <meta name="author" content="Ratthapong Sommanus (Sabastiaz)" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1a1008" />
+  <meta property="og:title" content="ความยากที่พอดี คือความสนุกของ CTF | Sabastiaz" />
+  <meta property="og:description" content="ความยากที่พอดี คือความสนุกของ CTF — Sabastiaz Red Team Sorcerer" />
+  <meta property="og:image" content="https://sabastiaz.github.io/pic/Untitled design.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png?v=3">
+  <style>
+  .post-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;color:var(--text-muted);text-decoration:none;margin-bottom:2rem;transition:color .2s}
+  .post-back:hover{color:var(--gold)}
+  .post-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,.15)}
+  .post-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+  .post-tag{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;padding:.15rem .5rem;border-radius:2px}
+  .tag-en    {color:#6bc5d2;background:rgba(107,197,210,.1);border:1px solid rgba(107,197,210,.22)}
+  .tag-th    {color:#c39bd3;background:rgba(195,155,211,.1);border:1px solid rgba(195,155,211,.22)}
+  .tag-cert  {color:var(--gold2);background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.22)}
+  .tag-lab   {color:#5dba6a;background:rgba(93,186,106,.1);border:1px solid rgba(93,186,106,.22)}
+  .tag-pentest{color:#e07b5a;background:rgba(224,123,90,.1);border:1px solid rgba(224,123,90,.22)}
+  .tag-life  {color:#a89bc2;background:rgba(168,155,194,.1);border:1px solid rgba(168,155,194,.22)}
+  .tag-ctf   {color:#63d4af;background:rgba(99,212,175,.1);border:1px solid rgba(99,212,175,.22)}
+  .post-meta-row{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem;font-size:.78rem;color:var(--text-muted)}
+  .post-meta-row .dot{opacity:.3}
+  .post-title{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:700;color:var(--text);line-height:1.35;margin:0}
+  .post-body{max-width:740px;line-height:1.9;color:var(--text-muted);font-size:.97rem}
+  .post-body h2{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:600;color:var(--gold);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:1px solid rgba(201,168,76,.15)}
+  .post-body h3{font-family:'Cinzel',serif;font-size:.88rem;font-weight:600;color:var(--text);margin:1.8rem 0 .8rem}
+  .post-body h4{font-family:'Cinzel',serif;font-size:.8rem;font-weight:600;color:var(--text-muted);margin:1.4rem 0 .6rem}
+  .post-body p{margin:0 0 1.2rem}
+  .post-body ul,.post-body ol{padding-left:1.5rem;margin:0 0 1.2rem}
+  .post-body li{margin-bottom:.4rem}
+  .post-body strong{color:var(--text)}
+  .post-body em{font-style:italic;color:var(--text-muted)}
+  .post-body code{font-family:'Courier New',monospace;font-size:.84rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.15);padding:.1rem .35rem;border-radius:3px;color:var(--gold2)}
+  .post-body pre{background:rgba(0,0,0,.45);border:1px solid rgba(201,168,76,.15);border-radius:4px;padding:1.2rem 1.4rem;overflow-x:auto;margin:0 0 1.5rem}
+  .post-body pre code{background:none;border:none;padding:0;font-size:.82rem;color:#c9c9c9}
+  .post-body table{width:100%;border-collapse:collapse;margin:0 0 1.5rem;font-size:.88rem}
+  .post-body th{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.08em;color:var(--gold);text-align:left;padding:.6rem 1rem;border-bottom:1px solid rgba(201,168,76,.25)}
+  .post-body td{padding:.5rem 1rem;border-bottom:1px solid rgba(201,168,76,.08)}
+  .post-body blockquote{border-left:3px solid var(--gold);padding:.8rem 1.4rem;margin:0 0 1.5rem;background:rgba(201,168,76,.04);border-radius:0 4px 4px 0;font-style:italic}
+  .post-body a{color:var(--gold);text-decoration:none}
+  .post-body a:hover{text-decoration:underline}
+  .post-body figure{margin:1.5rem 0 2rem;text-align:center}
+  .post-body figure img{max-width:100%;border-radius:6px;border:1px solid rgba(201,168,76,.12)}
+  .post-body figcaption{font-size:.75rem;color:var(--text-muted);margin-top:.5rem;font-style:italic}
+  .post-body hr{border:none;border-top:1px solid rgba(201,168,76,.15);margin:2rem 0}
+  .post-footer{margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+  .author-card{display:flex;align-items:center;gap:1rem}
+  .author-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,.3)}
+  .author-name{font-family:'Cinzel',serif;font-size:.85rem;font-weight:600;color:var(--text)}
+  .author-creds{font-size:.7rem;color:var(--text-muted);margin-top:.2rem}
+</style>
+</head>
+<body>
+<canvas id="stars-canvas"></canvas>
+<nav>
+  <a href="../index.html" class="nav-logo">Sabastiaz 🪄</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../skills.html">Spells</a></li>
+    <li><a href="../tools.html">Arsenal</a></li>
+    <li><a href="../writings.html" class="active">Tomes</a></li>
+    <li><a href="../honor.html">Honours</a></li>
+    <li><a href="../wowza.html">Wowza</a></li>
+    <li><a href="../event.html">Events</a></li>
+    <li><a href="../contact.html">Owl Post</a></li>
+    <li><a href="../cocacola.html">🥤</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="page">
+  <div class="content">
+    <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    <div class="post-header">
+      <div class="post-tags"><span class="post-tag tag-th">TH</span><span class="post-tag tag-ctf">CTF</span><span class="post-tag tag-life">Life</span></div>
+      <div class="post-meta-row">
+        <span>February 3, 2026</span><span class="dot">✦</span><span>3 min read</span>
+      </div>
+      <h1 class="post-title">ความยากที่พอดี คือความสนุกของ CTF</h1>
+    </div>
+    <div class="post-body">
+<p>หลังจากผ่านเดือนแรกกันมาไม่รู้จะเริ่มปียังไงขอจัดสัก 1 บทความพูดถึง “<strong>ความสนุกของ CTF</strong>” เนื่องจากปีที่ผ่านมาได้มีการไปเล่น CTF ต่างๆ ทั้งในและต่างประเทศ เลยอยากจะเขียนเชิงมุมมองในมุมของตัวเองว่า CTF ที่เราว่าสนุกและยาก เนี่ยมันให้อะไรเรากลับมา</p>
+<blockquote>หลายคนอาจคิดว่า<br> <strong>CTF ยิ่งยาก = ยิ่งสนุก</strong></blockquote>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*B5c-EpY9gD72_dQS.jpg" alt="" loading="lazy">
+</figure>
+<p>แต่ความจริงแล้ว<br>ความสนุกของ CTF ไม่ได้แปรผันตรงกับความยากของโจทย์แบบเส้นตรง</p>
+<h2>Piece of cake CTF</h2>
+<p>โจทย์ที่ง่ายเกินไป ทำให้เราไม่ต้องคิดแค่ทำตามแพตเทิร์นเดิม แล้วก็ผ่านไป สำหรับบางคนโจทย์แบบนี้อาจจะดูน่าเบื่อ แต่อย่างที่ได้บอกไปใน <a href="https://medium.com/@sabastiaz/เมื่อคำว่า-เก่ง-ไม่ได้หมายถึงคนที่ไม่เคยพลาด-แต่คือคนที่ลุกขึ้นมาได้เสมอ-aacd43f2720a" target="_blank" rel="noopener">Blog</a> ที่แล้วคนเราไม่ได้เก่งตั้งแต่เกิด แต่ผมเปิดตั้งแต่เด็ก บางทีโจทย์ง่ายสำหรับเราอาจจะยากสำหรับคนอื่น ง่ายเราไม่เท่ากัน แต่ถึงมันจะน่าเบื่อมันก็ควรมีไว้ในการแข่งขันนะ อย่างน้อยก็ช่วยเพิ่มแต้มให้เราในการแข่งขัน และ recheck ความรู้ไปในตัว</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*NEDC-BG79vaYnARj.gif" alt="" loading="lazy">
+</figure>
+<h2>Insane CTF</h2>
+<p>โจทย์ที่ยากเกินไปจนมองไม่เห็นทาง(ใครปิดตา) เลยก็ไม่ได้สนุกมันกลายเป็นความท้อ และค่อย ๆ ดูดพลังออกไปโดยไม่รู้ตัว เคยไหมเปิดโจทย์ขึ้นมาแล้วไม่รู้จะไปยังไงลองหมดทุกทางทุกความรู้ที่มี คิดจนหัวแทบระเบิด แต่ก็แก้ปัญหาไม่ได้ จนหมดเวลาก็ยังทำไม่ได้ เพราะมันยากหรอ….ถึงทำไม่ได้ ป่าวครับผมหลับ หยอกกก ถ้ามันเป็นแค่ 1-2 รายการไม่เป็นไร แต่ถ้ามากกว่านั้นบางทีเราอาจจะรู้สึกท้อและเลิกไปเลย</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*a9KKBVOCMIpr3zxd" alt="" loading="lazy">
+</figure>
+<h2>CTF with AI</h2>
+<p>ไม่พูดถึงไม่ได้นั่นคือ AI ในยุคนี้มันโคตรแสนจะฉลาดอย่างกับมีพระเจ้าที่รู้ทุกอย่างอยู่ข้างกาย แต่ AI ที่ใช้ก็มีแบ่งตาม level อีก ไม่ว่าจะเป็น</p>
+<ul>
+<li>AI ตัวฟรี</li>
+<li>AI เสียตัง<br>- แบบ Plus <br>- แบบ Pro<br>- แบบ Pro Max <br>- แบบ Ultra<br>- แบบ Ultra Instinct</li>
+</ul>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*0K0B24XKk5yA5N8Y.gif" alt="" loading="lazy">
+  <figcaption>ผมที่หลบความยากของ CTF ได้หมด</figcaption>
+</figure>
+<p>ซึ่งจุดนี้แสดงให้เห็นอะไร ซื้อ AI เถอะครับเพื่อช่วยโลกใบนี้ไว้ และช่วยทีมของคุณ แต่นั่นจะสนุกอะไรหากนำ AI มาใช้แล้ว Solve โจทย์ได้โดยที่คุณไม่รู้อะไรเลย ไม่รู้ว่าความยากของโจทย์ หรือสิ่งที่เจ้าของโจทย์อยากให้เราได้พบ อาจจะเป็นคำพูดปลอบใจหรือสมน้ำหน้าหากเราไปผิดทาง</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*tqbhondz0rZuYSXN.gif" alt="" loading="lazy">
+</figure>
+<p>อารมณ์เหมือนคุณเล่นเกม Mario คุณจะพบว่าในด่านที่ 2 หากกระโดดดีๆ จะสามารถไปเจอท่อเพื่อข้ามไปยังด่านอื่นๆ ได้โดยที่ไม่ต้องเล่นจบด่าน 2</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*GFsVV3l_bGwdzjb9.jpg" alt="" loading="lazy">
+</figure>
+<p>แต่การนำ AI มาใช้ใน CTF ก็ช่วยลดทอนเราและย่นเวลาได้ในระดับนึงเลย และมันจะดีมากถ้าคุณมีการกลับมา Learn เพิ่มเติมจากการที่ AI ได้ปล่อยวิธีการทำโจทย์ และคำตอบออกมาให้คุณเพื่อที่คุณจะได้มีความรู้เพิ่มมากขึ้นกว่าเมื่อวาน</p>
+<h2>CTF ที่สนุก</h2>
+<p>จุดที่ CTF สนุกจริง ๆ คือ</p>
+<blockquote>โจทย์ที่ <strong>ยากพอให้เราต้องพยายาม</strong><br>แต่ <strong>ไม่ยากจนหมดหวัง</strong></blockquote>
+<p>เคยไหมที่นั่งทำโจทย์นึงแล้วมันรู้สึกสนุกแบบบอกไม่ถูก นั่งทำโจทย์ไปหัวเราะ สนุกกับโจทย์กับวิธีการที่เราศึกษาหรือหา document ต่างมาใช้ประกอบการแก้โจทย์นั้นและคุณได้เรียนรู้เพิ่มไปในตัวจากโจทย์ที่คุณได้ทำและมันไม่ได้ง่ายจนมันทำให้คุณเบื่อ หรือไม่ได้ยากจนทำให้คุณท้อ เพราะท้อเอาไว้ให้ลิงถือ</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*Vmc9WZDpSjsQpm9v" alt="" loading="lazy">
+</figure>
+<p>เป็นความยากที่บังคับให้เรา</p>
+<ul>
+<li>ตั้งคำถาม</li>
+<li>ลองผิด</li>
+<li>ลองถูก</li>
+</ul>
+<p>และค่อย ๆ ต่อจิ๊กซอว์จากสิ่งที่เรามีอยู่</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*ijSA3KEXF8AejDAL.gif" alt="" loading="lazy">
+</figure>
+<p>ความยากแบบนี้. ทำให้เราเริ่มรู้สึกว่า <br>“<strong>อีกนิดเดียว น่าจะได้แล้ว</strong>”<br>และทันทีที่เราแก้ผ่าน…เครื่องดับ ไม่ใช่ๆ ความสนุกไม่ได้มาจากคะแนน แต่มาจากความรู้สึกว่า</p>
+<blockquote><strong>เราเพิ่งข้ามขีดจำกัดของตัวเองไปอีกขั้น (เดินขึ้นบันได้จากชั้น 1 ไป ชั้น 2 )</strong></blockquote>
+<p>ที่นี้มาดูความเห็นจากเพื่อนร่วมในทีม Wowza กันว่ามีความเห็นกันอย่างไร</p>
+<h2>ความเห็นจากเพื่อนร่วมทีม Wowza</h2>
+<h2>strings “Buaboon (<a href="https://medium.com/@chaoskist" target="_blank" rel="noopener">Chicken0248</a>)”</h2>
+<p>ให้มุมมองที่น่าสนใจมากว่า</p>
+<blockquote><em>CTF ที่ง่ายและยากอย่างพอดีคือ CTF ที่ AI ไม่สามารถ solve ได้<br> แค่ส่งไฟล์ไปแล้วจบแต่ต้องการ human interaction ให้คนรู้สึกว่า <br>“เราทำข้อนี้ได้จริง”</em></blockquote>
+<p>เขายังบอกอีกว่า<br>ความพอดีของ CTF เป็นเรื่อง subjective เพราะพื้นฐานของแต่ละคนไม่เหมือนกัน</p>
+<p>บางคนชอบ CTF เบา ๆใคร ๆ ก็เล่นผ่านได้</p>
+<p>บางคนชอบแกะของยากต้องอ่าน documentation หรือ use case แปลก ๆ เพื่อหาช่องโหว่ (<strong>มีแค่มันแหละที่ชอบแกะ use case</strong>)</p>
+<p>ดังนั้น CTF ที่ดี<br>ควร balance ระหว่างคนสองกลุ่มนี้ให้ได้<br>มีโจทย์ที่ทุกคนทำได้<br>และในขณะเดียวกันก็มีโจทย์ที่ทำให้คนชอบความท้าทายได้ enjoy จริง ๆ</p>
+<h2><strong><script> alert(‘Kim (</strong><a href="https://medium.com/@chairat_toraya" target="_blank" rel="noopener"><strong>Kyokito</strong></a><strong>)’)</strong></<strong>script></strong></h2>
+<p><strong>อธิบายมุมมองเรื่องความง่าย–ยากของ CTF ไว้ค่อนข้างชัดเจนว่า</strong></p>
+<p>ความง่ายหรือยากของ CTF<br> จริง ๆ แล้วแตกต่างกันไปตามความถนัดของแต่ละคนอยู่แล้ว</p>
+<p>แต่ถ้ามองในมุมของ “การออก CTF”<br>ความยากไม่ได้อยู่ที่จำนวนขั้นตอน<br>แต่อยู่ที่ <strong>ระดับของช่องโหว่ที่ถูกเลือกมาใช้</strong><br>และที่สำคัญที่สุดคือ ช่องโหว่นั้น <strong>เข้าใจง่ายในการเรียนรู้แค่ไหน</strong></p>
+<p>ถ้าเป็นช่องโหว่ที่เราอ่านแล้วเข้าใจได้ภายในไม่กี่นาที<br>เช่น <strong>IDOR </strong>อ่านแล้วรู้ทันทีว่า<br>“<strong>อ๋อ…มันโจมตีแบบนี้” (มันเข้าใจของมันคนเดียว)</strong></p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*rs4Y_lTyyHReb3HU.gif" alt="" loading="lazy">
+</figure>
+<p>CTF ก็มักจะเอาระดับพื้นฐานของช่องโหว่นั้นมาออก<br>เช่น การหา ID การเดาค่าตัวระบุตัวตน หรืออาจจะเป็นเลขธรรมดา หรือ Base64 นิดหน่อย</p>
+<p>โจทย์แบบนี้ยังอยู่ในขอบเขตพื้นฐานและจะ “<strong>ง่ายทันที</strong>”สำหรับคนที่มีพื้นฐานอยู่แล้ว</p>
+<p>แต่ถ้าเป็น CTF ที่ยากขึ้น<br>มักจะเลือกช่องโหว่ที่ซับซ้อนกว่า<br>ต้องอาศัยการอ่านโค้ด<br>หรือการ <strong>chain ช่องโหว่หลายจุดเข้าด้วยกัน<br></strong>เช่น</p>
+<blockquote><strong><em>XSS → Self-CSRF → Double File Extension → Command Injection (ผ่าน XSS)</em></strong></blockquote>
+<p>โจทย์ลักษณะนี้<br>ไม่ได้ยากเพราะชื่อช่องโหว่ (<strong>ให้พูดใหม่อีกที</strong>)<br>แต่ยากเพราะผู้เล่นต้องเข้าใจหลายส่วนพร้อมกัน<br>ทั้ง flow ของระบบ<br>พฤติกรรมของช่องโหว่<br>และความสัมพันธ์ระหว่างแต่ละขั้น</p>
+<blockquote>และนี่คือจุดที่<br>CTF เปลี่ยนจาก “<strong>โจทย์พื้นฐาน</strong>” ไปเป็น “โจทย์ที่ทดสอบความเข้าใจจริง ๆ”</blockquote>
+<h2><strong>XCN Nate (</strong><a href="https://medium.com/@netorika" target="_blank" rel="noopener"><strong>Natsuiro</strong></a><strong>)</strong></h2>
+<p><strong>มองเรื่องความยากของ CTF ไว้ตรงไปตรงมาว่า</strong></p>
+<blockquote><em>“</em><strong><em>ยากของแต่ละคนไม่เท่ากัน</em></strong><em>” (คำนี้คุ้นๆนะ)</em></blockquote>
+<p>สำหรับเขาLab ที่ “<strong>ง่าย</strong>” <br>คือ Lab ที่ไม่ต้องพลิกแพลงอะไรเลยมองแล้วตอบได้ทันที</p>
+<blockquote>เช่น<br> <strong>Vulnerable service version → ได้ CVE → ยิง metasploit</strong></blockquote>
+<p>โจทย์แบบนี้<br>ถ้ามีพื้นฐานก็แทบจะเป็นงานตามขั้นตอน</p>
+<p>แต่ Lab ที่ “<strong>ยาก</strong>”<br>ไม่ใช่ Lab ที่ทำไม่ได้แต่เป็น Lab ที่ถ้าใช้แค่พื้นฐานจะต้องใช้เวลามากเกินสมควร</p>
+<blockquote>จำนวนขั้นตอนเยอะขนาดระบบใหญ่ต้องเรียนรู้ technique เพิ่ม<br>อาศัยประสบการณ์หรือบางครั้งก็ต้องสู้กับสิ่งที่ไม่เคยเห็นมาก่อนแบบถึก ๆ เลย</blockquote>
+<p><strong>Nate</strong> มองว่า<br><strong>Lab ที่ดี</strong><br>ควรสร้างการเรียนรู้ใหม่ให้ผู้เล่นเสมอไม่ว่าจะเป็น</p>
+<ul>
+<li>การ refine สิ่งที่รู้อยู่แล้ว</li>
+<li>introduce concept / technique ใหม่เข้ามา</li>
+</ul>
+<blockquote>และที่สำคัญควรมี <br><strong>Reward เล็ก ๆ จากความสำเร็จ</strong></blockquote>
+<p>เพื่อรักษา momentum และทำให้ผู้เล่นอยากเรียนรู้ต่อไป</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*icVa3gGFrrnpPTmz.gif" alt="" loading="lazy">
+</figure>
+<h2>สุดท้ายนี้ขอทิ้งคำคมไว้ปิดท้ายเหมือนเดิม</h2>
+<p>cat /etc/คำคม</p>
+<pre><code>root:x:0:0:root:/root:/bin/ashbin:x:1:1:bin:/bin:/sbin/nologindaemon:x:2:2:daemon:/sbin:/sbin/nologinadm:x:3:4:adm:/var/adm:/sbin/nologinCTF:ที่สนุกคือ:CTF:ที่ทำให้เราเก่งขึ้นกว่าตัวเองเมื่อไม่กี่ชั่วโมงก่อน:/sabastiaz:/bin/zshshutdown:x:6:0:shutdown:/sbin:/sbin/shutdownhalt:x:7:0:halt:/sbin:/sbin/haltmail:x:8:12:mail:/var/mail:/sbin/nologin</code></pre>
+<p>เกือบลืม Blog นี้เกิดจากความขี้เกียจของ system(“cat%20<a href="https://medium.com/@chaoskist" target="_blank" rel="noopener"><strong>Chicken0248</strong></a><strong>”</strong>)</p>
+    </div>
+    <div class="post-footer">
+      <div class="author-card">
+        <img src="../pic/Untitled design.png" alt="Sabastiaz" class="author-avatar">
+        <div>
+          <div class="author-name">Sabastiaz</div>
+          <div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
+        </div>
+      </div>
+      <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    </div>
+  </div>
+</div>
+<script src="../stars.js"></script>
+<script>
+  const ham=document.getElementById('nav-hamburger');
+  const ul=document.querySelector('.nav-links');
+  if(ham)ham.addEventListener('click',()=>{
+    const open=ham.getAttribute('aria-expanded')==='true';
+    ham.setAttribute('aria-expanded',String(!open));
+    ul.classList.toggle('open',!open);
+  });
+</script>
+</body>
+</html>

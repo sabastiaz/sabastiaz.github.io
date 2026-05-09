@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From MSSQL to Domain Compromise: A Practical Attack Path in Active Directory (HTB Signed) | Sabastiaz</title>
+  <meta name="description" content="From MSSQL to Domain Compromise: A Practical Attack Path in Active Directory (HTB Signed) — Sabastiaz Red Team Sorcerer" />
+  <meta name="author" content="Ratthapong Sommanus (Sabastiaz)" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1a1008" />
+  <meta property="og:title" content="From MSSQL to Domain Compromise: A Practical Attack Path in Active Directory (HTB Signed) | Sabastiaz" />
+  <meta property="og:description" content="From MSSQL to Domain Compromise: A Practical Attack Path in Active Directory (HTB Signed) — Sabastiaz Red Team Sorcerer" />
+  <meta property="og:image" content="https://sabastiaz.github.io/pic/Untitled design.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png?v=3">
+  <style>
+  .post-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;color:var(--text-muted);text-decoration:none;margin-bottom:2rem;transition:color .2s}
+  .post-back:hover{color:var(--gold)}
+  .post-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,.15)}
+  .post-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+  .post-tag{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;padding:.15rem .5rem;border-radius:2px}
+  .tag-en    {color:#6bc5d2;background:rgba(107,197,210,.1);border:1px solid rgba(107,197,210,.22)}
+  .tag-th    {color:#c39bd3;background:rgba(195,155,211,.1);border:1px solid rgba(195,155,211,.22)}
+  .tag-cert  {color:var(--gold2);background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.22)}
+  .tag-lab   {color:#5dba6a;background:rgba(93,186,106,.1);border:1px solid rgba(93,186,106,.22)}
+  .tag-pentest{color:#e07b5a;background:rgba(224,123,90,.1);border:1px solid rgba(224,123,90,.22)}
+  .tag-life  {color:#a89bc2;background:rgba(168,155,194,.1);border:1px solid rgba(168,155,194,.22)}
+  .tag-ctf   {color:#63d4af;background:rgba(99,212,175,.1);border:1px solid rgba(99,212,175,.22)}
+  .post-meta-row{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem;font-size:.78rem;color:var(--text-muted)}
+  .post-meta-row .dot{opacity:.3}
+  .post-title{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:700;color:var(--text);line-height:1.35;margin:0}
+  .post-body{max-width:740px;line-height:1.9;color:var(--text-muted);font-size:.97rem}
+  .post-body h2{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:600;color:var(--gold);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:1px solid rgba(201,168,76,.15)}
+  .post-body h3{font-family:'Cinzel',serif;font-size:.88rem;font-weight:600;color:var(--text);margin:1.8rem 0 .8rem}
+  .post-body h4{font-family:'Cinzel',serif;font-size:.8rem;font-weight:600;color:var(--text-muted);margin:1.4rem 0 .6rem}
+  .post-body p{margin:0 0 1.2rem}
+  .post-body ul,.post-body ol{padding-left:1.5rem;margin:0 0 1.2rem}
+  .post-body li{margin-bottom:.4rem}
+  .post-body strong{color:var(--text)}
+  .post-body em{font-style:italic;color:var(--text-muted)}
+  .post-body code{font-family:'Courier New',monospace;font-size:.84rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.15);padding:.1rem .35rem;border-radius:3px;color:var(--gold2)}
+  .post-body pre{background:rgba(0,0,0,.45);border:1px solid rgba(201,168,76,.15);border-radius:4px;padding:1.2rem 1.4rem;overflow-x:auto;margin:0 0 1.5rem}
+  .post-body pre code{background:none;border:none;padding:0;font-size:.82rem;color:#c9c9c9}
+  .post-body table{width:100%;border-collapse:collapse;margin:0 0 1.5rem;font-size:.88rem}
+  .post-body th{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.08em;color:var(--gold);text-align:left;padding:.6rem 1rem;border-bottom:1px solid rgba(201,168,76,.25)}
+  .post-body td{padding:.5rem 1rem;border-bottom:1px solid rgba(201,168,76,.08)}
+  .post-body blockquote{border-left:3px solid var(--gold);padding:.8rem 1.4rem;margin:0 0 1.5rem;background:rgba(201,168,76,.04);border-radius:0 4px 4px 0;font-style:italic}
+  .post-body a{color:var(--gold);text-decoration:none}
+  .post-body a:hover{text-decoration:underline}
+  .post-body figure{margin:1.5rem 0 2rem;text-align:center}
+  .post-body figure img{max-width:100%;border-radius:6px;border:1px solid rgba(201,168,76,.12)}
+  .post-body figcaption{font-size:.75rem;color:var(--text-muted);margin-top:.5rem;font-style:italic}
+  .post-body hr{border:none;border-top:1px solid rgba(201,168,76,.15);margin:2rem 0}
+  .post-footer{margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+  .author-card{display:flex;align-items:center;gap:1rem}
+  .author-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,.3)}
+  .author-name{font-family:'Cinzel',serif;font-size:.85rem;font-weight:600;color:var(--text)}
+  .author-creds{font-size:.7rem;color:var(--text-muted);margin-top:.2rem}
+</style>
+</head>
+<body>
+<canvas id="stars-canvas"></canvas>
+<nav>
+  <a href="../index.html" class="nav-logo">Sabastiaz 🪄</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../skills.html">Spells</a></li>
+    <li><a href="../tools.html">Arsenal</a></li>
+    <li><a href="../writings.html" class="active">Tomes</a></li>
+    <li><a href="../honor.html">Honours</a></li>
+    <li><a href="../wowza.html">Wowza</a></li>
+    <li><a href="../event.html">Events</a></li>
+    <li><a href="../contact.html">Owl Post</a></li>
+    <li><a href="../cocacola.html">🥤</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="page">
+  <div class="content">
+    <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    <div class="post-header">
+      <div class="post-tags"><span class="post-tag tag-en">EN</span><span class="post-tag tag-lab">Lab</span><span class="post-tag tag-pentest">Red Team</span></div>
+      <div class="post-meta-row">
+        <span>February 7, 2026</span><span class="dot">✦</span><span>8 min read</span>
+      </div>
+      <h1 class="post-title">From MSSQL to Domain Compromise: A Practical Attack Path in Active Directory (HTB Signed)</h1>
+    </div>
+    <div class="post-body">
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*uvKfuYAvTqRdECaQ.png" alt="" loading="lazy">
+</figure>
+<p>ในหลายองค์กร MSSQL Server มักถูกมองว่าเป็นเพียง database service แต่ในความเป็นจริง หากมีการตั้งค่าที่ไม่เหมาะสม MSSQL สามารถกลายเป็นจุดเริ่มต้นของ <strong>Domain Compromise</strong> ได้อย่างรวดเร็ว</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*Ms2AZR_JkCDjchjE.gif" alt="" loading="lazy">
+</figure>
+<p>เครื่อง <strong>Signed</strong> เป็นตัวอย่างที่ดีของ attack chain ตั้งแต่ <br><strong>initial foothold → credential access → Kerberos abuse → SYSTEM</strong></p>
+<p>บทความนี้สรุป attack path แบบกระชับในมุมมองของ penetration tester</p>
+<h2>Initial Foothold — MSSQL Only (เรื่องจริงเป็น 10)</h2>
+<p>การสแกนพบเพียงพอร์ตเดียวที่เปิดคือ</p>
+<pre><code>1433 MSSQL</code></pre>
+<p>ซึ่งเป็นสถานการณ์ที่พบได้จริงในองค์กรที่เปิด database ให้ application ใช้งานแต่ปิด service อื่นทั้งหมด</p>
+<p>หลังจาก login ด้วย credential ที่ได้มา พบว่า user มีสิทธิ์ต่ำ (guest) และไม่สามารถใช้ <code>xp_cmdshell</code> ได้</p>
+<blockquote>แต่มีสิ่งหนึ่งที่สำคัญมาก: <strong>xp_dirtree</strong> ใช้งานได้</blockquote>
+<p>นี่คือจุด pivot แรก</p>
+<h2>Credential Access — NTLM Capture (อันนี้สุดมากเปิดรอตึง ๆ )</h2>
+<p><strong>xp_dirtree </strong>สามารถบังคับให้ SQL Server เชื่อมต่อ SMB ไปยัง attacker ได้ ซึ่งทำให้ service account authentication ถูกส่งออกมา</p>
+<p>เมื่อใช้ Responder จึงสามารถ capture hash ของ:</p>
+<pre><code>SIGNED\mssqlsvc</code></pre>
+<p>และ crack ได้ password (ของจริงแอบยากถ้าไม่ได้ใช้ password ตาม dictionary ไม่งั้นต้อง phishing เพื่อเก็บ password ทำ wordlist)</p>
+<pre><code>purPLE9795!@</code></pre>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*2SZj1ZDb2wMMRA7X.gif" alt="" loading="lazy">
+</figure>
+<p>ขั้นตอนนี้แสดงให้เห็นว่า:</p>
+<blockquote><em>Service account password ที่อ่อนแอ สามารถทำให้ environment ทั้ง domain เสี่ยงได้ทันที</em></blockquote>
+<h2>Privilege Escalation — Silver Ticket (ตั๋วโรงหนัง)</h2>
+<p>หลังจาก login เป็น <code>mssqlsvc</code> พบว่า</p>
+<pre><code>SIGNED\IT = sysadmin ใน SQL Server</code></pre>
+<p>แทนที่จะพยายาม brute force privilege escalation ใน SQL วิธีที่เร็วกว่า คือใช้ <strong>Kerberos Silver Ticket</strong></p>
+<p>แนวคิดคือ:</p>
+<ul>
+<li>ใช้ NTLM hash ของ service account</li>
+<li>Forge Kerberos ticket</li>
+<li>ปลอม group membership</li>
+</ul>
+<p>เมื่อ login ใหม่ด้วย forged ticket</p>
+<pre><code>IS_SRVROLEMEMBER('sysadmin') = 1</code></pre>
+<p>ตอนนี้สามารถใช้ <code>xp_cmdshell</code> ได้แล้ว</p>
+<h2>Code Execution — Getting a Shell</h2>
+<p>เมื่อได้ sysadmin การ execute command เป็นเรื่องง่าย</p>
+<p>ขั้นตอนทั่วไป:</p>
+<ol>
+<li>เปิด xp_cmdshell</li>
+<li>ดาวน์โหลด netcat</li>
+<li>Reverse shell</li>
+</ol>
+<p>จากนั้นได้ shell เป็น:</p>
+<pre><code>signed\mssqlsvc</code></pre>
+<p>และสามารถอ่าน user flag ได้</p>
+<h2>Root — Multiple Attack Paths</h2>
+<p>จุดที่น่าสนใจของเครื่องนี้คือมีหลายวิธีในการขึ้น root ซึ่งสะท้อนโลกจริงได้ดี เพราะ environment จริงมักมีหลายช่องทางเสมอ เหมือนประตูที่มีหลายบาน (ไม่เกี่ยวเลย)</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*JQu6sQ_9V4P0YT_p.png" alt="" loading="lazy">
+  <figcaption>ชีวิตมีทางเลือกให้เราเสมอ</figcaption>
+</figure>
+<h2>Method 1 — Direct File Read (เคยเจอในชีวิตจริง)</h2>
+<p>ถ้ามี Domain Admin privilege ใน ticket สามารถใช้</p>
+<pre><code>OPENROWSET(BULK)</code></pre>
+<p>อ่านไฟล์จาก filesystem ได้โดยตรง</p>
+<p>เป็นวิธีที่:</p>
+<ul>
+<li>เร็ว</li>
+<li>เงียบ</li>
+<li>ไม่ต้อง shell</li>
+</ul>
+<h2>Method 2 — PowerShell History</h2>
+<p>ไฟล์ที่มักถูกมองข้าม:</p>
+<pre><code>ConsoleHost_history.txt</code></pre>
+<p>พบว่า Administrator เคยรันคำสั่งที่มี password แบบ plaintext</p>
+<p>นี่เป็นตัวอย่าง classic ของ:</p>
+<blockquote><em>Operational Security Failure</em></blockquote>
+<p>จากนั้นใช้ RunasCs เพื่อ spawn shell เป็น Administrator ได้ทันที</p>
+<h2>Method 3 — Token Impersonation (ท่ายอดฮิตที่คนมักลืมปิด)</h2>
+<p>service account มี:</p>
+<pre><code>SeImpersonatePrivilege</code></pre>
+<p>ซึ่งเปิดทางไปสู่เทคนิคประเภท Potato exploit</p>
+<p>Flow:</p>
+<ol>
+<li>Steal token</li>
+<li>Spawn process</li>
+<li>Escalate to SYSTEM</li>
+</ol>
+<p>นี่เป็นเทคนิคที่ penetration tester และ red team ใช้บ่อยมากใน Windows environment (บ่อยมาก ๆ)</p>
+<h2>Method 4 — Intended Solution (NTLM Reflection)</h2>
+<p>วิธี intended ใช้ vulnerability:</p>
+<pre><code>CVE-2025-33073</code></pre>
+<p>แนวคิด:</p>
+<ol>
+<li>DNS spoof</li>
+<li>Coerce authentication</li>
+<li>Relay NTLM → WinRM</li>
+<li>ได้ SYSTEM</li>
+</ol>
+<p>เทคนิคนี้สะท้อน trend ใหม่ของ attack:</p>
+<blockquote><em>Cross-protocol relay และ identity abuse มากกว่าการ exploit memory corruption แบบเดิม</em></blockquote>
+<h3>Key Takeaways</h3>
+<h3>เครื่องนี้สอนบทเรียนสำคัญหลายข้อ:</h3>
+<p>1. Service Accounts คือเป้าหมายสำคัญ password ที่อ่อนแอสามารถทำให้ domain ล่มได้</p>
+<p>2. MSSQL ไม่ใช่แค่ Database แต่เป็น entry point ที่ทรงพลัง</p>
+<p>3. Kerberos Abuse ยังใช้ได้จริง Silver Ticket ยังเป็นเทคนิคที่ effective มาก</p>
+<p>4. PowerShell History คือ Data Leak หลายองค์กรไม่ monitor จุดนี้เลย</p>
+<p>5. SeImpersonatePrivilege = Dangerous สิทธิ์นี้แทบเท่ากับ local privilege escalation guarantee</p>
+<p>6. DNS และ NTLM ยังเป็น Attack Surface ใหญ่หลายองค์กรยังไม่ได้ harden จริงจัง</p>
+<h2>Final Thoughts</h2>
+<p>Signed เป็นตัวอย่างที่ดีของ <strong>realistic enterprise attack chain<br></strong>ไม่ใช่การ exploit ช่องโหว่เดียว แต่เป็นการ:</p>
+<pre><code>Misconfiguration + Weak Password + Privilege Abuse + Identity Attacks = Domain Compromise</code></pre>
+<p>และนี่คือสิ่งที่เกิดขึ้นจริงใน penetration test และ incident response อยู่เสมอ</p>
+<blockquote>หากอยากดูแบบละเอียดและจัดเต็มสามารถไปดูพร้อมกันได้ที่งาน<br><strong>Not The Hidden Wiki x HackTheBox Meetup</strong> (<strong>Not The Hidden Skillz</strong>) งานที่คุณจะได้ชมการ <strong>Walkthrough</strong> ทั้ง <strong>Machine</strong> และ <strong>Sherlock </strong>จากผม (<a href="https://sabastiaz.medium.com/" target="_blank" rel="noopener"><strong>Sabastiaz</strong></a>), <a href="https://medium.com/@chaoskist" target="_blank" rel="noopener"><strong>Chicken</strong></a> และคนดังจากต่างประเทศมากมาย งาน 21 กุมภาพันธ์ 2026</blockquote>
+<p><strong>Link Register</strong>: <a href="https://www.meetup.com/hack-the-box-meetup-warsaw-pl/events/313264719/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExcldhdVhJVmhLWEVrMHdBQXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4mfygz93fpDgp-CIBiTpq1rTvoJ5l1sJbtgGg9_g9fLJItYHImcCcD5COUcw_aem_tmryTCS55zkFL4fc3L2Acw" target="_blank" rel="noopener">https://www.meetup.com/hack-the-box.../events/313264719/</a></p>
+<p>ปล. speaker ทุกคนจะต้องพูดภาษาอังกฤษ รวมถึงพวกผมด้วย เพราะงั้นฝากตัวด้วยครับ (Snake Fish Fish Yes No ok Thank you)</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*fekrY1qSA2Hw3hx6" alt="" loading="lazy">
+</figure>
+<p>อ่านเพิ่มเติมได้ที่ <a href="https://www.facebook.com/photo?fbid=25740275018998429&set=a.129311213854828" target="_blank" rel="noopener">Facebook</a> หรือ <a href="https://www.linkedin.com/feed/update/urn:li:activity:7425104662535626752/" target="_blank" rel="noopener">Linkedin</a></p>
+<blockquote>— — — — แล้วพบกันนะครับ — — — —</blockquote>
+    </div>
+    <div class="post-footer">
+      <div class="author-card">
+        <img src="../pic/Untitled design.png" alt="Sabastiaz" class="author-avatar">
+        <div>
+          <div class="author-name">Sabastiaz</div>
+          <div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
+        </div>
+      </div>
+      <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    </div>
+  </div>
+</div>
+<script src="../stars.js"></script>
+<script>
+  const ham=document.getElementById('nav-hamburger');
+  const ul=document.querySelector('.nav-links');
+  if(ham)ham.addEventListener('click',()=>{
+    const open=ham.getAttribute('aria-expanded')==='true';
+    ham.setAttribute('aria-expanded',String(!open));
+    ul.classList.toggle('open',!open);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Journey Through HTB Certified Active Directory Pentesting Expert (CAPE) | Sabastiaz</title>
+  <meta name="description" content="My Journey Through HTB Certified Active Directory Pentesting Expert (CAPE) — Sabastiaz Red Team Sorcerer" />
+  <meta name="author" content="Ratthapong Sommanus (Sabastiaz)" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1a1008" />
+  <meta property="og:title" content="My Journey Through HTB Certified Active Directory Pentesting Expert (CAPE) | Sabastiaz" />
+  <meta property="og:description" content="My Journey Through HTB Certified Active Directory Pentesting Expert (CAPE) — Sabastiaz Red Team Sorcerer" />
+  <meta property="og:image" content="https://sabastiaz.github.io/pic/Untitled design.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png?v=3">
+  <style>
+  .post-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;color:var(--text-muted);text-decoration:none;margin-bottom:2rem;transition:color .2s}
+  .post-back:hover{color:var(--gold)}
+  .post-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,.15)}
+  .post-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+  .post-tag{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;padding:.15rem .5rem;border-radius:2px}
+  .tag-en    {color:#6bc5d2;background:rgba(107,197,210,.1);border:1px solid rgba(107,197,210,.22)}
+  .tag-th    {color:#c39bd3;background:rgba(195,155,211,.1);border:1px solid rgba(195,155,211,.22)}
+  .tag-cert  {color:var(--gold2);background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.22)}
+  .tag-lab   {color:#5dba6a;background:rgba(93,186,106,.1);border:1px solid rgba(93,186,106,.22)}
+  .tag-pentest{color:#e07b5a;background:rgba(224,123,90,.1);border:1px solid rgba(224,123,90,.22)}
+  .tag-life  {color:#a89bc2;background:rgba(168,155,194,.1);border:1px solid rgba(168,155,194,.22)}
+  .tag-ctf   {color:#63d4af;background:rgba(99,212,175,.1);border:1px solid rgba(99,212,175,.22)}
+  .post-meta-row{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem;font-size:.78rem;color:var(--text-muted)}
+  .post-meta-row .dot{opacity:.3}
+  .post-title{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:700;color:var(--text);line-height:1.35;margin:0}
+  .post-body{max-width:740px;line-height:1.9;color:var(--text-muted);font-size:.97rem}
+  .post-body h2{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:600;color:var(--gold);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:1px solid rgba(201,168,76,.15)}
+  .post-body h3{font-family:'Cinzel',serif;font-size:.88rem;font-weight:600;color:var(--text);margin:1.8rem 0 .8rem}
+  .post-body h4{font-family:'Cinzel',serif;font-size:.8rem;font-weight:600;color:var(--text-muted);margin:1.4rem 0 .6rem}
+  .post-body p{margin:0 0 1.2rem}
+  .post-body ul,.post-body ol{padding-left:1.5rem;margin:0 0 1.2rem}
+  .post-body li{margin-bottom:.4rem}
+  .post-body strong{color:var(--text)}
+  .post-body em{font-style:italic;color:var(--text-muted)}
+  .post-body code{font-family:'Courier New',monospace;font-size:.84rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.15);padding:.1rem .35rem;border-radius:3px;color:var(--gold2)}
+  .post-body pre{background:rgba(0,0,0,.45);border:1px solid rgba(201,168,76,.15);border-radius:4px;padding:1.2rem 1.4rem;overflow-x:auto;margin:0 0 1.5rem}
+  .post-body pre code{background:none;border:none;padding:0;font-size:.82rem;color:#c9c9c9}
+  .post-body table{width:100%;border-collapse:collapse;margin:0 0 1.5rem;font-size:.88rem}
+  .post-body th{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.08em;color:var(--gold);text-align:left;padding:.6rem 1rem;border-bottom:1px solid rgba(201,168,76,.25)}
+  .post-body td{padding:.5rem 1rem;border-bottom:1px solid rgba(201,168,76,.08)}
+  .post-body blockquote{border-left:3px solid var(--gold);padding:.8rem 1.4rem;margin:0 0 1.5rem;background:rgba(201,168,76,.04);border-radius:0 4px 4px 0;font-style:italic}
+  .post-body a{color:var(--gold);text-decoration:none}
+  .post-body a:hover{text-decoration:underline}
+  .post-body figure{margin:1.5rem 0 2rem;text-align:center}
+  .post-body figure img{max-width:100%;border-radius:6px;border:1px solid rgba(201,168,76,.12)}
+  .post-body figcaption{font-size:.75rem;color:var(--text-muted);margin-top:.5rem;font-style:italic}
+  .post-body hr{border:none;border-top:1px solid rgba(201,168,76,.15);margin:2rem 0}
+  .post-footer{margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+  .author-card{display:flex;align-items:center;gap:1rem}
+  .author-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,.3)}
+  .author-name{font-family:'Cinzel',serif;font-size:.85rem;font-weight:600;color:var(--text)}
+  .author-creds{font-size:.7rem;color:var(--text-muted);margin-top:.2rem}
+</style>
+</head>
+<body>
+<canvas id="stars-canvas"></canvas>
+<nav>
+  <a href="../index.html" class="nav-logo">Sabastiaz 🪄</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../skills.html">Spells</a></li>
+    <li><a href="../tools.html">Arsenal</a></li>
+    <li><a href="../writings.html" class="active">Tomes</a></li>
+    <li><a href="../honor.html">Honours</a></li>
+    <li><a href="../wowza.html">Wowza</a></li>
+    <li><a href="../event.html">Events</a></li>
+    <li><a href="../contact.html">Owl Post</a></li>
+    <li><a href="../cocacola.html">🥤</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="page">
+  <div class="content">
+    <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    <div class="post-header">
+      <div class="post-tags"><span class="post-tag tag-en">EN</span><span class="post-tag tag-cert">Certification</span><span class="post-tag tag-pentest">Red Team</span></div>
+      <div class="post-meta-row">
+        <span>May 9, 2026</span><span class="dot">✦</span><span>12 min read</span>
+      </div>
+      <h1 class="post-title">My Journey Through HTB Certified Active Directory Pentesting Expert (CAPE)</h1>
+    </div>
+    <div class="post-body">
+<p>After days of waiting, refreshing my inbox, and checking the result again and again, it finally happened.</p>
+<p>I’m proud to share that I successfully passed the <strong>HTB Certified Active Directory Pentesting Expert (CAPE)</strong> certification by <strong>Hack The Box</strong> with a <strong>perfect score: 10 out of 10 flags</strong>.</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*RHMnmtHppZ5rN8wbc9xjpA.png" alt="" loading="lazy">
+</figure>
+<p>For me, CAPE was not just another certification. It was a serious test of my Active Directory penetration testing skills, my methodology, my patience, and my ability to explain technical attack paths in a professional report.</p>
+<p>This blog is my personal review of the exam, including how I prepared, how I planned my budget, what skills I focused on, and what I learned from the experience.</p>
+<h2>What is CAPE?</h2>
+<p><strong>HTB Certified Active Directory Pentesting Expert (CAPE)</strong> is an advanced certification from Hack The Box that focuses on real-world Active Directory penetration testing.</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*armjyQqnVvXUnmPON_yVmQ.png" alt="" loading="lazy">
+</figure>
+<p>The exam is designed to test whether a candidate can compromise complex Active Directory environments by identifying misconfigurations, chaining attack paths, escalating privileges, moving laterally, and documenting the full compromise process clearly.</p>
+<p>In my opinion, CAPE is not only about knowing tools. It is about understanding how Active Directory works, how different weaknesses connect together, and how to turn small pieces of information into a complete attack path.</p>
+<h2>Why I Took CAPE</h2>
+<p>I decided to take CAPE because I have always been looking for deeper Active Directory challenges across different certifications and training paths.</p>
+<p>Throughout my offensive security journey, I have explored and challenged myself with several certifications and courses related to penetration testing, red teaming, and Active Directory security, including <strong>OSCP, OSEP, CRTO, C-ADPenX</strong>, and other certifications in my portfolio. Each of them helped me grow in different areas, but I wanted to continue pushing myself further in the Active Directory space.</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*yJ2QoZkage_GgAiY.jpg" alt="" loading="lazy">
+</figure>
+<p>Active Directory has always been one of the most important areas in internal penetration testing and red team operations. In many real-world environments, AD is the core of identity, access control, authentication, and business operations. If an attacker compromises Active Directory, the impact can be severe and may lead to full domain compromise.</p>
+<p>For me, CAPE was not just another certification to add to my profile. It was a challenge I had already set for myself. I made a clear commitment that I would take it, push through the preparation, and pass it.</p>
+<p>I wanted to test my ability in AD exploitation, post-exploitation, lateral movement, attack path analysis, and professional reporting under exam conditions.</p>
+<p>CAPE represents another important milestone in my offensive security journey, and passing it proved to me that persistence, preparation, and discipline can turn a difficult goal into an achievement.</p>
+<p><strong>How CAPE Compares to Other Certifications</strong></p>
+<p>One question I often get is how CAPE stacks up against other certs I’ve taken. Here’s a brief comparison:</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*_QwQCrLTVXZT47CyDhxGYg.png" alt="" loading="lazy">
+  <figcaption>Comparison</figcaption>
+</figure>
+<p>CAPE is the deepest pure-AD exam I’ve taken. Unlike OSEP or CRTO, there’s no evasion component the focus is entirely on understanding and exploiting AD relationships, permissions, and trust configurations.</p>
+<p>You can also read my previous certification journeys:</p>
+<h2>How I Prepared</h2>
+<p>To be eligible for the CAPE exam, candidates must first complete the [CAPE Certification Path](https://academy.hackthebox.com/app/paths/417) on HTB Academy, which falls under the (<a href="https://academy.hackthebox.com/app/paths/417" target="_blank" rel="noopener">https://academy.hackthebox.com/app/paths/417</a>) Job Role Path. <br>This path consists of 15 modules that cover the core skills required for the exam. You cannot attempt the exam without completing this path first.</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*fkxj6Gy5deGjOKx-XoeHtw.png" alt="" loading="lazy">
+</figure>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*AEEAz8XMz39FT0-_gsiKKA.png" alt="" loading="lazy">
+</figure>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*qXbKgs4CM9767-WS074qCA.png" alt="" loading="lazy">
+</figure>
+<h2>The Knowledge</h2>
+<h2>1. AD Fundamentals</h2>
+<p>No shortcuts here. I reviewed domain structure, Kerberos and NTLM authentication, Group Policy, trusts, delegation, Certificate Services, and access control. Without a solid foundation, everything else falls apart.</p>
+<h2>2. Enumeration Methodology</h2>
+<p>Enumeration isn’t just the first step; it’s the step you keep coming back to. I practiced collecting domain users, groups, local admins, SMB shares, LDAP data, ACLs, SPNs, delegation settings, trust relationships, certificate templates, and network routes.</p>
+<p>The real skill isn’t running the tools it’s reading the output, filtering noise, and deciding what to investigate next.</p>
+<p>During preparing for CAPE, I also created my own helper tool called <a href="https://github.com/sabastiaz/BigBlack-NXC" target="_blank" rel="noopener"><strong>BigBlack-NXC</strong></a>, built around <a href="https://www.netexec.wiki/" target="_blank" rel="noopener"><strong>NetExec (NXC)</strong></a>, to support my enumeration workflow. It covers SMB/LDAP enumeration, user and group discovery, share discovery, credential validation, and basic attack surface mapping. But the most important lesson from building it was this:</p>
+<blockquote><em>Tools can help you enumerate faster.<br>But methodology helps you understand what matters.</em></blockquote>
+<h2>3. Attack Path Analysis</h2>
+<p>In AD, one credential rarely gives you the domain controller directly. Instead, that credential leads to a host, which exposes another credential, which has access to another system — until the full path emerges.</p>
+<p><a href="https://bloodhound.specterops.io/get-started/quickstart/community-edition-quickstart" target="_blank" rel="noopener"><strong>BloodHound</strong></a> was essential for visualizing relationships (users, groups, sessions, ACLs, local admin rights, delegation paths). But I never used it as an answer machine. I used it as an analysis tool and always validated findings manually. Questions I kept asking myself:</p>
+<ul>
+<li>What can I access with this account?</li>
+<li>Can this permission actually be abused in this environment?</li>
+<li>Can this host lead me to another segment?</li>
+<li>Is this BloodHound path exploitable, or is it theoretical?</li>
+</ul>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*PoYBaQRcNI_laFaS.jpg" alt="" loading="lazy">
+</figure>
+<p>BloodHound can show you the graph, but you still need to understand the story behind the graph.</p>
+<h2>4. Kerberos and Delegation Abuse</h2>
+<p>Kerberoasting, AS-REP Roasting, S4U2Self/S4U2Proxy, Constrained and Resource-Based Constrained Delegation, cross-trust scenarios — I reviewed all of them. The key wasn’t memorizing command syntax; it was understanding the <strong>ticket flow logic</strong>. If you understand the concept, troubleshooting becomes straightforward.</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*IxmfjxKQPXBDIPSdBHxf6g.png" alt="" loading="lazy">
+  <figcaption>Module in CAPE Path</figcaption>
+</figure>
+<h2>5. ACL and Permission Abuse</h2>
+<p>GenericAll, GenericWrite, WriteDACL, WriteOwner, ForceChangePassword, AddMember, AllowedToDelegate, WriteSPN — these permissions look small in isolation but become extremely powerful in the right context. I practiced ACL abuse until it felt natural. This is one of the most practical skills for both CAPE and real-world internal pentesting.</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*3bJkwYYHdUbmdcRmqBetmw.png" alt="" loading="lazy">
+  <figcaption>knowledge</figcaption>
+</figure>
+<h2>6. Reporting Practice</h2>
+<p>CAPE scores your report. I prepared a template covering Executive Summary, Scope, Attack Path Summary, Technical Findings with Evidence, Business Impact, Remediation Advice, and Conclusion. A good report doesn’t just prove compromise — it explains <em>how</em> it happened, <em>why</em> it matters, and <em>how</em> to fix it.</p>
+<h2>Budget Summary</h2>
+<p>Preparing for the <strong>HTB Certified Active Directory Pentesting Expert (CAPE)</strong> required both time and financial planning. Since CAPE is connected to HTB Academy modules, the total cost was not only the exam voucher itself, but also the cubes and subscription used to complete the required modules.</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*QMmhWu6avXa2Od516jIEGw.png" alt="" loading="lazy">
+</figure>
+<p><strong>Note:</strong> After completing the 15 modules, I received <strong>1,420 cubes back</strong>, which helped offset future HTB Academy content.</p>
+<p>Some parts of this journey were supported by my family, and I’m grateful for that. Certifications require not only effort and discipline but also resources to access the right materials.</p>
+<p>For me, this was a meaningful investment not just for the certificate, but for the structured methodology, sharpened enumeration mindset, and reporting discipline I gained.</p>
+<h2>My Exam Experience</h2>
+<p>The exam was challenging and required a lot of focus.</p>
+<p>For me, CAPE was genuinely difficult. It was not the kind of exam where I could simply follow a checklist and expect everything to work smoothly. The environment felt realistic because the attack path was not always obvious. Some information looked useful at first but turned out to be noise, while some small details that looked minor later became important.</p>
+<p>The hardest part was not only exploiting vulnerabilities.</p>
+<p>The hardest part was deciding where to go next.</p>
+<p>During the exam, I had to constantly review my notes, re-check enumeration results, validate assumptions, and connect different pieces of information together. There were many moments where I felt stuck, stepped back, and asked myself what I had missed.</p>
+<p>Honestly, during the exam, I lost count of how many times I said:</p>
+<blockquote><em>“This is hard.”</em></blockquote>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*q1v6ZqeGZRw-B1eV.jpg" alt="" loading="lazy">
+</figure>
+<p>But that’s exactly what made it meaningful. CAPE forced me to stay calm, slow down, and trust my methodology instead of throwing random attempts at the wall. The cycle was always the same:</p>
+<blockquote><strong><em>Enumerate → Validate → Exploit → Document → Repeat.</em></strong></blockquote>
+<p>One specific lesson: when I got stuck at a pivotal point midway through the exam, I almost went down a rabbit hole chasing a complex attack that <em>looked</em> right. Instead, I forced myself to go back to enumeration basics, and within an hour I found a small detail I’d overlooked — a permission that opened up the next segment entirely. That moment reinforced something I already believed but now <em>felt</em>: thoroughness beats cleverness.</p>
+<p>When I finally completed the attack path and submitted the report, I knew this exam had truly tested my patience, discipline, and AD methodology.</p>
+<p>Then came the wait. Almost <strong>20 days</strong> </p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*9ojvJ-q_Mv-IMdviarAuMg.png" alt="" loading="lazy">
+  <figcaption>Exam in Review</figcaption>
+</figure>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/0*yjEIwB9gbfLiOFUn.jpg" alt="" loading="lazy">
+  <figcaption>waiting for my result</figcaption>
+</figure>
+<p>of checking my email, refreshing my inbox, hoping every notification was the result. When the message finally arrived <strong>passed</strong> that moment made every difficult hour worth it.</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*DDHUrGwZFjOkhDvuTINPiw.png" alt="" loading="lazy">
+</figure>
+<p>Next I Claimed My Certificate</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*5nicLLxduKmTZq0A_8FBZA.png" alt="" loading="lazy">
+  <figcaption>CAPE Certificate</figcaption>
+</figure>
+<p>That moment made all the effort worth it.</p>
+<p>CAPE was not only a certification exam for me. It was a challenge that tested my Active Directory methodology, my discipline, my patience, and my ability to keep going even when things were difficult.</p>
+<p>Thank you to <strong>Hack The Box</strong> for creating a challenging and realistic certification experience.</p>
+<h2>Pro Tips for Future CAPE Candidates</h2>
+<p>If you are planning to take CAPE, here is my advice:</p>
+<ul>
+<li><strong>Complete the CAPE path properly.</strong> Don’t rush the modules just to unlock the exam — the knowledge compounds.</li>
+<li><strong>Build your own AD enumeration checklist.</strong> Generic checklists won’t cover everything; tailor one to your workflow.</li>
+<li><strong>Validate BloodHound findings manually.</strong> Not every path on the graph is exploitable.</li>
+<li><strong>Understand Kerberos and delegation deeply.</strong> Know the <em>why</em>, not just the <em>how</em>.</li>
+<li><strong>Practice ACL abuse until it’s muscle memory.</strong></li>
+<li><strong>Take screenshots and notes from the very first minute.</strong> Your report depends on it.</li>
+<li><strong>Prepare your report template before the exam.</strong> You don’t want to be formatting headers under time pressure.</li>
+<li><strong>When you’re stuck, go back to enumeration.</strong> The answer is almost always something you haven’t enumerated yet.</li>
+<li><strong>Stay calm and trust your methodology.</strong> Panic leads to rabbit holes.</li>
+</ul>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*_e1_80ZGwVhCe8CqEGNXvA.png" alt="" loading="lazy">
+</figure>
+<h2>What’s Next</h2>
+<p>After passing CAPE, the first thing I should do is rest.</p>
+<p>The preparation and exam demanded intense focus over a long period late nights, constant practice, and mental pressure that doesn’t stop even after you submit the report. I’ve learned that pushing hard is important, but so is knowing when to step back and recharge. Burnout doesn’t help anyone grow.</p>
+<p>Once I’ve recharged, the plan is clear. I want to take the skills I sharpened through CAPE structured enumeration, attack path analysis, permission abuse, and professional reporting and apply them more deeply in real-world red team engagements and AD security assessments. CAPE validated my methodology, but it also showed me areas where I want to go even further.</p>
+<blockquote>The goal hasn’t changed: keep learning, keep improving, keep pushing forward.</blockquote>
+<h2>— — — — — — —Thank you for reading— — — — — — — </h2>
+<blockquote><strong>Good luck, and feel free to reach out if you need tips on specific sections!</strong></blockquote>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*W4SJiuFilR9RTTKsg0_ZXQ.png" alt="" loading="lazy">
+</figure>
+<blockquote>My Contact: <a href="https://sabastiaz.github.io/contact.html" target="_blank" rel="noopener">https://sabastiaz.github.io/contact.html</a><br>My Tools: <a href="https://github.com/sabastiaz/BigBlack-NXC" target="_blank" rel="noopener">https://github.com/sabastiaz/BigBlack-NXC</a></blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+    </div>
+    <div class="post-footer">
+      <div class="author-card">
+        <img src="../pic/Untitled design.png" alt="Sabastiaz" class="author-avatar">
+        <div>
+          <div class="author-name">Sabastiaz</div>
+          <div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
+        </div>
+      </div>
+      <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    </div>
+  </div>
+</div>
+<script src="../stars.js"></script>
+<script>
+  const ham=document.getElementById('nav-hamburger');
+  const ul=document.querySelector('.nav-links');
+  if(ham)ham.addEventListener('click',()=>{
+    const open=ham.getAttribute('aria-expanded')==='true';
+    ham.setAttribute('aria-expanded',String(!open));
+    ul.classList.toggle('open',!open);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secplayground Half Year CTF Event 2024 — Forensic File Hunt (Medium) | Sabastiaz</title>
+  <meta name="description" content="Secplayground Half Year CTF Event 2024 — Forensic File Hunt (Medium) — Sabastiaz Red Team Sorcerer" />
+  <meta name="author" content="Ratthapong Sommanus (Sabastiaz)" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1a1008" />
+  <meta property="og:title" content="Secplayground Half Year CTF Event 2024 — Forensic File Hunt (Medium) | Sabastiaz" />
+  <meta property="og:description" content="Secplayground Half Year CTF Event 2024 — Forensic File Hunt (Medium) — Sabastiaz Red Team Sorcerer" />
+  <meta property="og:image" content="https://sabastiaz.github.io/pic/Untitled design.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png?v=3">
+  <style>
+  .post-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;color:var(--text-muted);text-decoration:none;margin-bottom:2rem;transition:color .2s}
+  .post-back:hover{color:var(--gold)}
+  .post-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,.15)}
+  .post-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+  .post-tag{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;padding:.15rem .5rem;border-radius:2px}
+  .tag-en    {color:#6bc5d2;background:rgba(107,197,210,.1);border:1px solid rgba(107,197,210,.22)}
+  .tag-th    {color:#c39bd3;background:rgba(195,155,211,.1);border:1px solid rgba(195,155,211,.22)}
+  .tag-cert  {color:var(--gold2);background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.22)}
+  .tag-lab   {color:#5dba6a;background:rgba(93,186,106,.1);border:1px solid rgba(93,186,106,.22)}
+  .tag-pentest{color:#e07b5a;background:rgba(224,123,90,.1);border:1px solid rgba(224,123,90,.22)}
+  .tag-life  {color:#a89bc2;background:rgba(168,155,194,.1);border:1px solid rgba(168,155,194,.22)}
+  .tag-ctf   {color:#63d4af;background:rgba(99,212,175,.1);border:1px solid rgba(99,212,175,.22)}
+  .post-meta-row{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem;font-size:.78rem;color:var(--text-muted)}
+  .post-meta-row .dot{opacity:.3}
+  .post-title{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:700;color:var(--text);line-height:1.35;margin:0}
+  .post-body{max-width:740px;line-height:1.9;color:var(--text-muted);font-size:.97rem}
+  .post-body h2{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:600;color:var(--gold);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:1px solid rgba(201,168,76,.15)}
+  .post-body h3{font-family:'Cinzel',serif;font-size:.88rem;font-weight:600;color:var(--text);margin:1.8rem 0 .8rem}
+  .post-body h4{font-family:'Cinzel',serif;font-size:.8rem;font-weight:600;color:var(--text-muted);margin:1.4rem 0 .6rem}
+  .post-body p{margin:0 0 1.2rem}
+  .post-body ul,.post-body ol{padding-left:1.5rem;margin:0 0 1.2rem}
+  .post-body li{margin-bottom:.4rem}
+  .post-body strong{color:var(--text)}
+  .post-body em{font-style:italic;color:var(--text-muted)}
+  .post-body code{font-family:'Courier New',monospace;font-size:.84rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.15);padding:.1rem .35rem;border-radius:3px;color:var(--gold2)}
+  .post-body pre{background:rgba(0,0,0,.45);border:1px solid rgba(201,168,76,.15);border-radius:4px;padding:1.2rem 1.4rem;overflow-x:auto;margin:0 0 1.5rem}
+  .post-body pre code{background:none;border:none;padding:0;font-size:.82rem;color:#c9c9c9}
+  .post-body table{width:100%;border-collapse:collapse;margin:0 0 1.5rem;font-size:.88rem}
+  .post-body th{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.08em;color:var(--gold);text-align:left;padding:.6rem 1rem;border-bottom:1px solid rgba(201,168,76,.25)}
+  .post-body td{padding:.5rem 1rem;border-bottom:1px solid rgba(201,168,76,.08)}
+  .post-body blockquote{border-left:3px solid var(--gold);padding:.8rem 1.4rem;margin:0 0 1.5rem;background:rgba(201,168,76,.04);border-radius:0 4px 4px 0;font-style:italic}
+  .post-body a{color:var(--gold);text-decoration:none}
+  .post-body a:hover{text-decoration:underline}
+  .post-body figure{margin:1.5rem 0 2rem;text-align:center}
+  .post-body figure img{max-width:100%;border-radius:6px;border:1px solid rgba(201,168,76,.12)}
+  .post-body figcaption{font-size:.75rem;color:var(--text-muted);margin-top:.5rem;font-style:italic}
+  .post-body hr{border:none;border-top:1px solid rgba(201,168,76,.15);margin:2rem 0}
+  .post-footer{margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+  .author-card{display:flex;align-items:center;gap:1rem}
+  .author-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,.3)}
+  .author-name{font-family:'Cinzel',serif;font-size:.85rem;font-weight:600;color:var(--text)}
+  .author-creds{font-size:.7rem;color:var(--text-muted);margin-top:.2rem}
+</style>
+</head>
+<body>
+<canvas id="stars-canvas"></canvas>
+<nav>
+  <a href="../index.html" class="nav-logo">Sabastiaz 🪄</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../skills.html">Spells</a></li>
+    <li><a href="../tools.html">Arsenal</a></li>
+    <li><a href="../writings.html" class="active">Tomes</a></li>
+    <li><a href="../honor.html">Honours</a></li>
+    <li><a href="../wowza.html">Wowza</a></li>
+    <li><a href="../event.html">Events</a></li>
+    <li><a href="../contact.html">Owl Post</a></li>
+    <li><a href="../cocacola.html">🥤</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="page">
+  <div class="content">
+    <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    <div class="post-header">
+      <div class="post-tags"><span class="post-tag tag-en">EN</span><span class="post-tag tag-ctf">CTF</span><span class="post-tag tag-pentest">Red Team</span></div>
+      <div class="post-meta-row">
+        <span>July 29, 2024</span><span class="dot">✦</span><span>5 min read</span>
+      </div>
+      <h1 class="post-title">Secplayground Half Year CTF Event 2024 — Forensic File Hunt (Medium)</h1>
+    </div>
+    <div class="post-body">
+<p>สวัสดีทุกคนที่อาจจะเข้ามาอ่าน นี่เป็นการเขียนครั้งแรกของผม หากผิดพลาดประการใดก็ขออภัยล่วงหน้าเลยนะครับ</p>
+<p>เข้าเรื่องกันครับ สวัสดีครับเมื่อวันที่ 26 กรกฎาคม 2567 ผมได้เข้าร่วมแข่งขัน CTF รายการหนึ่งชื่อว่า SEC PLAYGROUND Haft Year CTF Event 2024</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*GyjrD5zsCIZIWM34jQ97bQ.jpeg" alt="" loading="lazy">
+</figure>
+<p>ซึ่งเป็นรายการแข่งขัน CTF บน platform Secplayground ซึ่งเปิดให้ผู้ที่สนใจในด้าน Cyber Security สามารถลงแข่งขันได้ ทีมละ 4 คน</p>
+<p>โจทย์สำหรับการแข่งขันปีนี้จะมีทั้งฝั่งของ Offensive และ Defensive ในหมวดหมู่ต่างๆ อาทิเช่น Web Application, Digital Forensic, Reverse Engineering, Cryptography, Network Analysis, Incident และสุดท้าย Hor D’oeuvres (อาหารเรียกน้ำย่อย) ตามซ้ายมือของรูปเลย</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*rcG9limvD-TeSpGojuAqYw.png" alt="" loading="lazy">
+</figure>
+<p>ใน Write Up นี้ผมจะมาในหัวข้อของ Digital Forensic: Forensic File Hunt (Medium)</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*kQL2tHBGFiv8jfwBvB6hdg.png" alt="" loading="lazy">
+</figure>
+<p>เริ่มแรกโจทย์จะมีการอธิบายถึงช่องทางของการที่เราจะหา Flag ได้ โดยสรุปง่ายคือให้เราหาไฟล์ excel แล้วในนั้นจะมี Flag อารมณ์เหมือนหนังเรื่อง <strong>Ready Player One (</strong><a href="https://www.imdb.com/title/tt1677720/" target="_blank" rel="noopener">https://www.imdb.com/title/tt1677720/</a><strong>)</strong>วลีเด็ดตอนแข่งรถ “<strong>ใครเจอกุญแจคนนั้นเจอไข่</strong>” ส่วนของข้อนี้ “<strong>ใครเจอ Excel คนนั้นเจอ Flag</strong> “</p>
+<p>ว่าแล้วก็ทำการ Download ไฟล์มาดูว่าเป็นไฟล์เกี่ยวกับอะไรซึ่งบอกเลยว่าไฟล์ใหญ่มากประมาณ 7.0 GB ตามภาพเลย</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*aIh88EfnUrTMMKrlaY_ncQ.png" alt="" loading="lazy">
+</figure>
+<p>เมื่อเรา Download ไฟล์มาแล้วก็พบกับไฟล์ที่ชื่อว่า SPGCTF.E01 ไฟล์ Type เป็น E01 เราก็ทำการหาดูว่า E01 คืออะไรก็พบว่า มันคือ (ไฟล์สำหรับจัดเก็บข้อมูลที่สำคัญสำหรับนิติวิทยาศาสตร์ดิจิทัลความปลอดภัยในโลกไซเบอร์ สามารถใช้ในการพิจารณาคดีเพื่อรักษาและนำเสนอหลักฐานดิจิทัล) อ้างอิง:<a href="https://files101.com/extension/e01" target="_blank" rel="noopener">https://files101.com/extension/e01</a></p>
+<p>เรารู้แล้วว่ามันคือไฟล์ Image แต่เราจะใช้อะไรสำหรับการเปิดมันกันละก็ Research ต่อพบกับว่าเราสามารถใช้ Tools ที่มีชื่อว่า AutoSpy <a href="https://www.autopsy.com/" target="_blank" rel="noopener">https://www.autopsy.com/</a><br>ซึ่งเอาไว้ทำการ Investigate ไฟล์ต่างได้ๆ ว่าแล้วก็ไปกันเลย <br>เมื่อเราได้ไฟล์สำหรับการ Investigate ได้เครื่องมือพร้อมก็ทำการนำไฟล์ Import เข้า AutoPsy ได้เลย</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*BfxbitevkTcSTThjmW6eqA.png" alt="" loading="lazy">
+</figure>
+<p>เมื่อเข้ามาแล้วก็จะเจอกับหน้าตาของ AutoPsy จะสังเกตว่ามีเมนูให้เราทำการใช้งานได้มากมาย แต่เนื่องจากเราไม่มีเวลามากจึงทำการกลับไที่โจทย์เพื่อดูว่าโจทย์ต้องการอะไร โจทย์คือให้เราหาไฟล์ excel แล้วในนั้นจะมี Flag โอเคเราก็เลือกเมนูที่เป็น Document เลยไปแบบไวๆ</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*USw5-laXkT4FRbyS6WpxZw.png" alt="" loading="lazy">
+</figure>
+<p>นั่นไงเราเจอไฟล์ flag.xlsx แล้วแต่เดี๋ยวก่อนถ้าหาเจอง่ายขนาดนี้จะเป็นข้อ Medium ได้ไง ลอง Export ไฟล์ออกมา</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*Utcf8dUly2j6ZGX4nI6OWA.png" alt="" loading="lazy">
+</figure>
+<p>Flag จริงๆ มาเป็นธงชาติเลยก็จรองของเขานะ Flag แปลว่า ธง เอาละเมื่อเป็นแบบนี้ก็ต้องใช้ตัวช่วยละกด “Hint” ละกัน เงื่อนไขการกด Hint หาเป็นแบบง่ายจะถูกตัด 1 คะแนน Medium 2 คะแนน และ Hard น่าจะ 3 คะแนน</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*kQL2tHBGFiv8jfwBvB6hdg.png" alt="" loading="lazy">
+</figure>
+<p>Password is in John เอิ่ม!!! พูดถึง John ก็น่าจะหมายถึง John Ripper หรือป่าวน้า</p>
+<p>เบาะแสก็คือหาไฟล์ที่ทำการเข้ารหัสไว้ใน AutoPsy จะมีเมนูนึงที่เป็นเกี่ยวกับตรวจสอบไฟล์ที่เข้ารหัสไว้นั่นคือ “Encryption Detected” และเราก็พบไฟล์เหล่านั้น</p>
+<p>นั่นคือไฟล์ที่ชื่อ speedbird.zip กับ catdata.zip</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*HK5Xy1T74hiB6OVT1gtRyQ.png" alt="" loading="lazy">
+</figure>
+<p>เมื่อเราเจอไฟล์เหล่านี้ก็ทำการ Export ออกมาเพื่อทำการ Crack Password โดยใช้ John The Ripper</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*42F3jEcsseCs-4ehefuofA.png" alt="" loading="lazy">
+</figure>
+<p>วิธีการคือในการที่จะ crack password วิธีที่ใช้คือ “zip2john” อ้างอิงจาก <a href="https://medium.com/@ujjawal.soni2002/cracking-a-password-protected-zip-file-using-john-the-ripper-f39e657cbfa8" target="_blank" rel="noopener">https://medium.com/@ujjawal.soni2002/cracking-a-password-protected-zip-file-using-john-the-ripper-f39e657cbfa8</a></p>
+<pre><code>zip2john "ตามด้วยชื่อไฟล์ที่ต้องการ crack password" &gt;&gt; hashfile</code></pre>
+<pre><code>zip2john speedbird.zip &gt;&gt; hashspeed</code></pre>
+<p>เมื่อทำการ zip2john เราจะได้ค่า hash มาซึ่งเราจะนำค่า Hash นี้ไปทำการ Crack Password โดยใช้ command ตามนี้ได้เลย</p>
+<p>wordlist ที่ใช้จะใช้ rockyou.txt ซึ่งเป็น wordlist ยอดนิยม</p>
+<pre><code>john ไฟล์ hash ที่ได้จาก command ด้านบน --wordlist=rockyou.txt</code></pre>
+<pre><code>john hashspeed --wordlist=rockyou.txt </code></pre>
+<p>เมื่อเสร็จแล้วจะได้ค่า Password ของไฟล์ zip ออกมา (firebird)</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*OAnhKMomOisWYEzvVNXCIg.png" alt="" loading="lazy">
+</figure>
+<p>ได้ Password แล้วก็จัดการตรวจสอบไฟล์ด้านในต่อได้เลย</p>
+<p>เปิดมาต้องตกใจไปอีกเนื่องจากมีไฟล์รูปมากมายเต็มไปหมดมีแต่รูปแมวเต็มไปหมดเลยย</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*bsNkyRhJ0186qGnD1A1MLA.png" alt="" loading="lazy">
+</figure>
+<p>เมื่อเจอรูปภาพแบบนี้สิ่งที่ทำไดคือตรวจสอบไฟล์ว่ามีการซ่อนอะไรไว้ในไฟล์ไหมด้วยการใช้ Tools ที่ชื่อ binwalk <a href="https://www.kali.org/tools/binwalk/" target="_blank" rel="noopener">https://www.kali.org/tools/binwalk/</a></p>
+<pre><code>binwalk * </code></pre>
+<p>ที่ใช้ <strong>“*”</strong> เนื่องจากขี้เกียจหาทีละไฟล์ก็หามันทีเดียวไปเลยย</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*X4NDhRglCLCFl8Z8UTcmCA.png" alt="" loading="lazy">
+</figure>
+<p>เนื่องจากไฟล์ค่อนข้างเยอะก็จะไล่แบบไวๆ ไปเจอกับบางอย่างเข้า</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*UwhU5MK0hYnH8lePSycy1Q.png" alt="" loading="lazy">
+</figure>
+<p>และแล้วก็เจอสิ่งไม่คาดฝันนั้นคือไฟล์ที่มีชื่อว่า “cat8.png” มีการซ่อนไฟล์ zip บางอย่างไว้ในนั้น</p>
+<pre><code>binwalk -e -c cat8.png</code></pre>
+<p>เมื่อทำการ binwalk ออกมาจะพบกับไฟล์ที่น่าสง 1 ไฟล์นั่นคือ “1B103.zip”</p>
+<p>และทำการเช็คไฟล์โยใช้ค่ำสั่ง</p>
+<pre><code>file ตามด้วยชื่อไฟล์</code></pre>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*2Sk7ltJeRmWitlkB4dS55w.png" alt="" loading="lazy">
+</figure>
+<p>เมื่อตรวจสอบพบว่าไฟล์เป็น Microsoft Excel 2007+ อ้าวแบบนี้ก็เท่ากับ “เจอ excel เท่ากับเจอ Flag” ทำการเปลี่ยนนามสกุลไฟล์ให้เป็น .xls</p>
+<p>เปลี่ยนไฟล์เสร็จเรียบร้อยก็ทำการเปิดไฟล์ดูผ่านไม่น่าจะมีอะไรสำคัญแต่เอะใจเจอข้อความแปลกนี่มันค่า Hex นิจัดการเอาเข้า cyberchef</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*9KvYsDwycL07ii5Gc87crA.png" alt="" loading="lazy">
+</figure>
+<p>นำค่า Hex ไปเข้า Cyberchef (<a href="https://cyberchef.org/" target="_blank" rel="noopener">https://cyberchef.org/</a>) อ่าวยังมีซ้อนด้วย base64 อีก</p>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*HNo_igjVsnhw03YYNG75FQ.png" alt="" loading="lazy">
+</figure>
+<figure>
+  <img src="https://cdn-images-1.medium.com/max/800/1*Wwze9i_Bi7FK4P2hYsu47w.png" alt="" loading="lazy">
+</figure>
+<p>ใครเจอ Excel คนนั้นเจอ Flag “<strong>forensic{Kuch1ng}”</strong></p>
+<p>สุดท้ายนี้ขอบคุณกิจกรรมดีจากทาง SECPLAYGROUND :)</p>
+    </div>
+    <div class="post-footer">
+      <div class="author-card">
+        <img src="../pic/Untitled design.png" alt="Sabastiaz" class="author-avatar">
+        <div>
+          <div class="author-name">Sabastiaz</div>
+          <div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
+        </div>
+      </div>
+      <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    </div>
+  </div>
+</div>
+<script src="../stars.js"></script>
+<script>
+  const ham=document.getElementById('nav-hamburger');
+  const ul=document.querySelector('.nav-links');
+  if(ham)ham.addEventListener('click',()=>{
+    const open=ham.getAttribute('aria-expanded')==='true';
+    ham.setAttribute('aria-expanded',String(!open));
+    ul.classList.toggle('open',!open);
+  });
+</script>
+</body>
+</html>
