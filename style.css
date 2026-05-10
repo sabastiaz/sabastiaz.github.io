@@ -102,6 +102,41 @@ nav {
   background: rgba(201,168,76,0.08);
 }
 
+/* ── Notification dot on Updates nav link ── */
+.nav-links a.has-notif {
+  position: relative;
+}
+.nav-links a.has-notif::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e05555;
+  border: 1.5px solid var(--bg);
+  animation: notif-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes notif-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(224,85,85,0.55); }
+  50%       { box-shadow: 0 0 0 5px rgba(224,85,85,0); }
+}
+
+/* ── "NEW" badge inside changelog entries ── */
+.cl-new-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  padding: 0.08rem 0.38rem;
+  border-radius: 2px;
+  color: #e05555;
+  background: rgba(224,85,85,0.1);
+  border: 1px solid rgba(224,85,85,0.35);
+  animation: notif-pulse 2s ease-in-out infinite;
+}
+
 /* ─── PAGE WRAPPER ─── */
 .page {
   flex: 1;
