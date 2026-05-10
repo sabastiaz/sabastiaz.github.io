@@ -123,7 +123,7 @@
 <p>CAPE is the deepest pure-AD exam I’ve taken. Unlike OSEP or CRTO, there’s no evasion component the focus is entirely on understanding and exploiting AD relationships, permissions, and trust configurations.</p>
 <p>You can also read my previous certification journeys:</p>
 <h2>How I Prepared</h2>
-<p>To be eligible for the CAPE exam, candidates must first complete the [CAPE Certification Path](https://academy.hackthebox.com/app/paths/417) on HTB Academy, which falls under the (<a href="https://academy.hackthebox.com/app/paths/417" target="_blank" rel="noopener">https://academy.hackthebox.com/app/paths/417</a>) Job Role Path. <br>This path consists of 15 modules that cover the core skills required for the exam. You cannot attempt the exam without completing this path first.</p>
+<p>To be eligible for the CAPE exam, candidates must first complete the CAPE Certification Path(https://academy.hackthebox.com/app/paths/417) on HTB Academy, which falls under the (<a href="https://academy.hackthebox.com/app/paths/417" target="_blank" rel="noopener">https://academy.hackthebox.com/app/paths/417</a>) Job Role Path. <br>This path consists of 15 modules that cover the core skills required for the exam. You cannot attempt the exam without completing this path first.</p>
 <figure>
   <img src="https://cdn-images-1.medium.com/max/800/1*fkxj6Gy5deGjOKx-XoeHtw.png" alt="" loading="lazy">
 </figure>
@@ -142,7 +142,7 @@
 <p>During preparing for CAPE, I also created my own helper tool called <a href="https://github.com/sabastiaz/BigBlack-NXC" target="_blank" rel="noopener"><strong>BigBlack-NXC</strong></a>, built around <a href="https://www.netexec.wiki/" target="_blank" rel="noopener"><strong>NetExec (NXC)</strong></a>, to support my enumeration workflow. It covers SMB/LDAP enumeration, user and group discovery, share discovery, credential validation, and basic attack surface mapping. But the most important lesson from building it was this:</p>
 <blockquote><em>Tools can help you enumerate faster.<br>But methodology helps you understand what matters.</em></blockquote>
 <h2>3. Attack Path Analysis</h2>
-<p>In AD, one credential rarely gives you the domain controller directly. Instead, that credential leads to a host, which exposes another credential, which has access to another system — until the full path emerges.</p>
+<p>In AD, one credential rarely gives you the domain controller directly. Instead, that credential leads to a host, which exposes another credential, which has access to another system until the full path emerges.</p>
 <p><a href="https://bloodhound.specterops.io/get-started/quickstart/community-edition-quickstart" target="_blank" rel="noopener"><strong>BloodHound</strong></a> was essential for visualizing relationships (users, groups, sessions, ACLs, local admin rights, delegation paths). But I never used it as an answer machine. I used it as an analysis tool and always validated findings manually. Questions I kept asking myself:</p>
 <ul>
 <li>What can I access with this account?</li>
@@ -155,19 +155,19 @@
 </figure>
 <p>BloodHound can show you the graph, but you still need to understand the story behind the graph.</p>
 <h2>4. Kerberos and Delegation Abuse</h2>
-<p>Kerberoasting, AS-REP Roasting, S4U2Self/S4U2Proxy, Constrained and Resource-Based Constrained Delegation, cross-trust scenarios — I reviewed all of them. The key wasn’t memorizing command syntax; it was understanding the <strong>ticket flow logic</strong>. If you understand the concept, troubleshooting becomes straightforward.</p>
+<p>Kerberoasting, AS-REP Roasting, S4U2Self/S4U2Proxy, Constrained and Resource-Based Constrained Delegation, cross-trust scenarios I reviewed all of them. The key wasn’t memorizing command syntax; it was understanding the <strong>ticket flow logic</strong>. If you understand the concept, troubleshooting becomes straightforward.</p>
 <figure>
   <img src="https://cdn-images-1.medium.com/max/800/1*IxmfjxKQPXBDIPSdBHxf6g.png" alt="" loading="lazy">
   <figcaption>Module in CAPE Path</figcaption>
 </figure>
 <h2>5. ACL and Permission Abuse</h2>
-<p>GenericAll, GenericWrite, WriteDACL, WriteOwner, ForceChangePassword, AddMember, AllowedToDelegate, WriteSPN — these permissions look small in isolation but become extremely powerful in the right context. I practiced ACL abuse until it felt natural. This is one of the most practical skills for both CAPE and real-world internal pentesting.</p>
+<p>GenericAll, GenericWrite, WriteDACL, WriteOwner, ForceChangePassword, AddMember, AllowedToDelegate, WriteSPN these permissions look small in isolation but become extremely powerful in the right context. I practiced ACL abuse until it felt natural. This is one of the most practical skills for both CAPE and real-world internal pentesting.</p>
 <figure>
   <img src="https://cdn-images-1.medium.com/max/800/1*3bJkwYYHdUbmdcRmqBetmw.png" alt="" loading="lazy">
   <figcaption>knowledge</figcaption>
 </figure>
 <h2>6. Reporting Practice</h2>
-<p>CAPE scores your report. I prepared a template covering Executive Summary, Scope, Attack Path Summary, Technical Findings with Evidence, Business Impact, Remediation Advice, and Conclusion. A good report doesn’t just prove compromise — it explains <em>how</em> it happened, <em>why</em> it matters, and <em>how</em> to fix it.</p>
+<p>CAPE scores your report. I prepared a template covering Executive Summary, Scope, Attack Path Summary, Technical Findings with Evidence, Business Impact, Remediation Advice, and Conclusion. A good report doesn’t just prove compromise it explains <em>how</em> it happened, <em>why</em> it matters, and <em>how</em> to fix it.</p>
 <h2>Budget Summary</h2>
 <p>Preparing for the <strong>HTB Certified Active Directory Pentesting Expert (CAPE)</strong> required both time and financial planning. Since CAPE is connected to HTB Academy modules, the total cost was not only the exam voucher itself, but also the cubes and subscription used to complete the required modules.</p>
 <figure>
@@ -190,6 +190,11 @@
 <p>But that’s exactly what made it meaningful. CAPE forced me to stay calm, slow down, and trust my methodology instead of throwing random attempts at the wall. The cycle was always the same:</p>
 <blockquote><strong><em>Enumerate → Validate → Exploit → Document → Repeat.</em></strong></blockquote>
 <p>One specific lesson: when I got stuck at a pivotal point midway through the exam, I almost went down a rabbit hole chasing a complex attack that <em>looked</em> right. Instead, I forced myself to go back to enumeration basics, and within an hour I found a small detail I’d overlooked — a permission that opened up the next segment entirely. That moment reinforced something I already believed but now <em>felt</em>: thoroughness beats cleverness.</p>
+<p>One thing I want to highlight: <strong>Flag 1</strong> is the turning point.</p> 
+<p>It's the moment that tells you whether you'll push forward or stop here. If you struggle too long on Flag 1, it can drain your time and confidence for everything that comes after. But if you approach it with solid enumeration and a clear methodology, it becomes the foundation that carries you through the rest of the exam.
+For me, Flag 1 was where I proved to myself that my preparation was enough and that the rest was about staying disciplined, not panicking, and trusting the process.</p>
+  
+
 <p>When I finally completed the attack path and submitted the report, I knew this exam had truly tested my patience, discipline, and AD methodology.</p>
 <p>Then came the wait. Almost <strong>20 days</strong> </p>
 <figure>
