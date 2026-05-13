@@ -3,7 +3,7 @@
    Format: 'YYYY-MM-DD'
    ─────────────────────────────────────────────────────────────────────────── */
 (function () {
-  var LATEST = '2026-05-09';   // ← update this when adding a new entry
+  var LATEST = '2026-05-13';   // ← update this when adding a new entry
   var KEY    = 'clSeen';
   var onCL   = window.location.pathname.indexOf('changelog.html') !== -1;
 
