@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เมื่อสมองยังไหว แต่ร่างกายเริ่มทวงคืน | Sabastiaz</title>
+  <meta name="description" content="เมื่อสมองยังไหว แต่ร่างกายเริ่มทวงคืน — Sabastiaz Red Team Sorcerer" />
+  <meta name="author" content="Ratthapong Sommanus (Sabastiaz)" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1a1008" />
+  <meta property="og:title" content="เมื่อสมองยังไหว แต่ร่างกายเริ่มทวงคืน | Sabastiaz" />
+  <meta property="og:description" content="ความจริงที่ผมมองข้ามมาหลายปี — ว่าด้วยการฟื้นตัว ความสมดุล และการหยุดพักจริงๆ สักครั้ง" />
+  <meta property="og:image" content="https://sabastiaz.github.io/pic/Untitled design.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png?v=3">
+  <style>
+    .post-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;color:var(--text-muted);text-decoration:none;margin-bottom:2rem;transition:color .2s}
+    .post-back:hover{color:var(--gold)}
+    .post-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,.15)}
+    .post-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+    .post-tag{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;padding:.15rem .5rem;border-radius:2px}
+    .tag-en    {color:#6bc5d2;background:rgba(107,197,210,.1);border:1px solid rgba(107,197,210,.22)}
+    .tag-th    {color:#c39bd3;background:rgba(195,155,211,.1);border:1px solid rgba(195,155,211,.22)}
+    .tag-cert  {color:var(--gold2);background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.22)}
+    .tag-lab   {color:#5dba6a;background:rgba(93,186,106,.1);border:1px solid rgba(93,186,106,.22)}
+    .tag-pentest{color:#e07b5a;background:rgba(224,123,90,.1);border:1px solid rgba(224,123,90,.22)}
+    .tag-life  {color:#a89bc2;background:rgba(168,155,194,.1);border:1px solid rgba(168,155,194,.22)}
+    .tag-ctf   {color:#63d4af;background:rgba(99,212,175,.1);border:1px solid rgba(99,212,175,.22)}
+    .post-meta-row{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem;font-size:.78rem;color:var(--text-muted)}
+    .post-meta-row .dot{opacity:.3}
+    .post-title{font-family:'Cinzel',serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:700;color:var(--text);line-height:1.35;margin:0}
+    .post-body{max-width:740px;line-height:1.9;color:var(--text-muted);font-size:.97rem}
+    .post-body h2{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:600;color:var(--gold);margin:2.5rem 0 1rem;padding-bottom:.4rem;border-bottom:1px solid rgba(201,168,76,.15)}
+    .post-body h3{font-family:'Cinzel',serif;font-size:.88rem;font-weight:600;color:var(--text);margin:1.8rem 0 .8rem}
+    .post-body p{margin:0 0 1.2rem}
+    .post-body ul,.post-body ol{padding-left:1.5rem;margin:0 0 1.2rem}
+    .post-body li{margin-bottom:.4rem}
+    .post-body strong{color:var(--text)}
+    .post-body em{font-style:italic}
+    .post-body code{font-family:'Courier New',monospace;font-size:.84rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.15);padding:.1rem .35rem;border-radius:3px;color:var(--gold2)}
+    .post-body blockquote{border-left:3px solid var(--gold);padding:.8rem 1.4rem;margin:0 0 1.5rem;background:rgba(201,168,76,.04);border-radius:0 4px 4px 0;font-style:italic;color:var(--text)}
+    .post-body a{color:var(--gold);text-decoration:none}
+    .post-body a:hover{text-decoration:underline}
+    .post-body figure{margin:1.5rem 0 2rem;text-align:center}
+    .post-body figure img{max-width:100%;border-radius:6px;border:1px solid rgba(201,168,76,.12)}
+    .post-body figcaption{font-size:.75rem;color:var(--text-muted);margin-top:.5rem;font-style:italic}
+    .post-body hr{border:none;border-top:1px solid rgba(201,168,76,.15);margin:2rem 0}
+    .post-footer{margin-top:4rem;padding-top:2.5rem;border-top:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+    .author-card{display:flex;align-items:center;gap:1rem}
+    .author-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,.3)}
+    .author-name{font-family:'Cinzel',serif;font-size:.85rem;font-weight:600;color:var(--text)}
+    .author-creds{font-size:.7rem;color:var(--text-muted);margin-top:.2rem}
+  </style>
+</head>
+<body>
+<canvas id="stars-canvas"></canvas>
+<nav>
+  <a href="../index.html" class="nav-logo">Sabastiaz 🪄</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../skills.html">Spells</a></li>
+    <li><a href="../tools.html">Arsenal</a></li>
+    <li><a href="../writings.html" class="active">Tomes</a></li>
+    <li><a href="../honor.html">Honours</a></li>
+    <li><a href="../wowza.html">Wowza</a></li>
+    <li><a href="../event.html">Events</a></li>
+    <li><a href="../changelog.html">Updates</a></li>
+    <li><a href="../contact.html">Owl Post</a></li>
+    <li><a href="../cocacola.html">🥤</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page">
+  <div class="content">
+    <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    <div class="post-header">
+      <div class="post-tags">
+        <span class="post-tag tag-th">TH</span>
+        <span class="post-tag tag-life">Life</span>
+        <span class="post-tag tag-life">Reflection</span>
+      </div>
+      <div class="post-meta-row">
+        <span>June 18, 2026</span><span class="dot">✦</span><span>5 min read</span>
+      </div>
+      <h1 class="post-title">เมื่อสมองยังไหว แต่ร่างกายเริ่มทวงคืน</h1>
+    </div>
+
+    <div class="post-body">
+
+      <p>ช่วง 2-3 ปีที่ผ่านมา ผมใช้ชีวิตอยู่กับการเรียนรู้และพัฒนาตัวเองแทบตลอดเวลา</p>
+      <p>ผมสอบ Certifications หลายตัว ทั้ง OSEP, CAPE, CPTS และอีกหลายใบ รวมถึงใช้เวลาจำนวนมากกับ HTB, CTF, การทำงานด้าน Pentest, Consulting, Presales, Training และการเป็น Speaker</p>
+      <p>ในมุมหนึ่ง ผมรู้สึกว่าตัวเองยังทำได้ดี<br>
+      ผมยังสอบผ่าน<br>
+      ยังเรียนรู้เรื่องใหม่ได้<br>
+      ยังวิเคราะห์ปัญหาซับซ้อนได้<br>
+      ยังทำงานกับลูกค้าองค์กรขนาดใหญ่ได้</p>
+      <p>แต่มีบางอย่างเปลี่ยนไป</p>
+
+      <h2>สัญญาณเล็กๆ ที่เริ่มชัดขึ้น</h2>
+
+      <figure>
+        <img src="../pic/brain-body-1.png" alt="สัญญาณเล็กๆ ที่เริ่มชัดขึ้น" loading="lazy" />
+      </figure>
+
+      <p>ผมเริ่มรู้สึกว่า</p>
+      <ul>
+        <li>จำชื่อคนได้ไม่ดีเหมือนเดิม</li>
+        <li>นึกคำง่ายๆ ไม่ออก</li>
+        <li>พิมพ์ผิดบ่อยขึ้น</li>
+        <li>อ่านเอกสารแล้วต้องย้อนกลับไปอ่านซ้ำ</li>
+        <li>ตื่นเช้ามาแล้วไม่ค่อยสดชื่น</li>
+        <li>รู้สึกว่าการพูดคุยเรื่องทั่วไปยากขึ้น</li>
+      </ul>
+
+      <p>สิ่งที่แปลกคือ<br>
+      ถ้าเป็นเรื่องเทคนิค ผมยังตอบได้ทันที</p>
+      <p>ถามเรื่อง Active Directory<br>
+      ถามเรื่อง Attack Path<br>
+      ถามเรื่อง Vulnerability Assessment<br>
+      ถามเรื่อง Architecture<br>
+      ผมยังสามารถอธิบายได้ต่อเนื่องเป็นชั่วโมง</p>
+
+      <figure>
+        <img src="../pic/brain-body-2.png" alt="" loading="lazy" />
+      </figure>
+
+      <p>บางทีเรื่องที่คุ้นเคยจนกลายเป็นความเคยชิน สมองอาจไม่ต้องใช้พลังงานในการดึงข้อมูลมากเท่าเรื่องใหม่ๆ หรือบทสนทนาทั่วไปที่ต้องใช้ความจำระยะสั้นสดๆ ตลอดเวลา</p>
+      <p>แต่พอเป็นบทสนทนาทั่วไป กลับต้องใช้เวลาคิดมากขึ้นกว่าที่เคย</p>
+
+      <h2>ผมเริ่มตั้งคำถามกับตัวเอง</h2>
+
+      <p>นี่คืออายุที่เพิ่มขึ้น?<br>
+      ร่างกายเริ่มถอย?<br>
+      หรือสมองเริ่มไม่เหมือนเดิม?</p>
+      <p>หลังจากพิจารณาหลายอย่าง ผมพบว่าปัญหาอาจไม่ได้อยู่ที่ความสามารถ<br>
+      แต่อยู่ที่ "การฟื้นตัว"</p>
+
+      <h2>ความจริงที่ผมมองข้ามมาหลายปี</h2>
+
+      <figure>
+        <img src="../pic/brain-body-3.png" alt="ความจริงที่ผมมองข้ามมาหลายปี" loading="lazy" />
+      </figure>
+
+      <p>ในช่วงหลายปีที่ผ่านมา ผมแทบไม่ได้หยุดจริงๆ</p>
+      <ul>
+        <li>วันธรรมดา ทำงาน</li>
+        <li>กลางคืน อ่านหนังสือ</li>
+        <li>วันหยุด ทำ Lab</li>
+        <li>สอบ Cert</li>
+        <li>เล่น CTF</li>
+        <li>ศึกษาเทคโนโลยีใหม่</li>
+      </ul>
+      <p>เมื่อมองย้อนกลับไป ผมพบว่าในช่วง 6 เดือนที่ผ่านมา ผมมีวันหยุดจริงๆ เพียง 1-2 วันเท่านั้น</p>
+      <p>คำว่าหยุดจริง คือ</p>
+      <ul>
+        <li>ไม่เปิด Laptop</li>
+        <li>ไม่ตอบลูกค้า</li>
+        <li>ไม่อ่านหนังสือสอบ</li>
+        <li>ไม่ทำ Lab</li>
+        <li>แค่พัก</li>
+      </ul>
+
+      <blockquote>ซึ่งผมแทบไม่ได้ทำ</blockquote>
+
+      <h2><u>เมื่อก่อนกับตอนนี้</u></h2>
+
+      <p>เมื่อก่อนผมนอนน้อยแล้วยังไหว ทำงานหนักหลายวันติดก็ยังไหว สอบติดกันหลายตัวก็ยังไหว</p>
+      <p>แต่เมื่ออายุเพิ่มขึ้น สิ่งที่เปลี่ยนไปไม่ใช่ความสามารถ แต่เป็นความสามารถในการฟื้นตัว</p>
+      <p>ผมยังขับรถได้เร็วเหมือนเดิม แต่เครื่องยนต์เริ่มร้อนง่ายกว่าเดิม</p>
+
+      <h2>บางครั้งปัญหาไม่ได้อยู่ที่การทำงานหนัก</h2>
+
+      <p>แต่อยู่ที่การไม่ยอมพัก</p>
+      <p>หลายคนในสาย <u>Cybersecurity</u> มีแรงขับสูง<br>
+      เราคุ้นเคยกับการแก้ปัญหา คุ้นเคยกับการเรียนรู้ คุ้นเคยกับการพัฒนาตัวเอง</p>
+      <p>จนบางครั้งเราลืมไปว่าการพักก็เป็นส่วนหนึ่งของการพัฒนาเช่นกัน</p>
+
+      <h2>สิ่งที่ผมเรียนรู้</h2>
+
+      <figure>
+        <img src="../pic/brain-body-4.png" alt="สิ่งที่ผมเรียนรู้" loading="lazy" />
+      </figure>
+
+      <p>วันนี้ผมไม่ได้กังวลว่าตัวเองเก่งน้อยลง<br>
+      แต่ผมเริ่มถามตัวเองว่า</p>
+
+      <blockquote>ผมยังฟื้นตัวได้ดีเหมือนเดิมหรือไม่</blockquote>
+
+      <p>เพราะสุดท้ายแล้ว<br>
+      ความสำเร็จไม่ได้มาจากการเร่งเครื่องตลอดเวลา แต่มาจากการรู้ว่าเมื่อไรควรเร่ง และเมื่อไรควรเข้าศูนย์</p>
+      <p>บางทีสิ่งที่เราต้องการอาจไม่ใช่ <u>Certification</u> ใบถัดไป</p>
+      <ul>
+        <li>ไม่ใช่ CTF ครั้งถัดไป</li>
+        <li>ไม่ใช่ Project ใหม่</li>
+        <li>ไม่ใช่การเรียนรู้อะไรใหม่</li>
+      </ul>
+      <p>แต่อาจเป็นการ <strong>นอนให้ครบ 8 ชั่วโมง</strong> และให้เวลากับตัวเองได้พักจริงๆ สักครั้ง</p>
+      <p>ก่อนที่ร่างกายจะเป็นคนเลือกพักให้เราเอง</p>
+
+      <blockquote>สุดท้ายไม่ว่าจะเกิดไรขึ้น ผมก็ผ่านมาได้เพราะว่า "ผมมันคนเก่งฟ้าประทาน" ขอบคุณครับ</blockquote>
+
+      <figure>
+        <img src="../pic/brain-body-5.png" alt="" loading="lazy" />
+      </figure>
+
+    </div>
+
+    <div class="post-footer">
+      <div class="author-card">
+        <img src="../pic/Untitled design.png" alt="Sabastiaz" class="author-avatar">
+        <div>
+          <div class="author-name">Sabastiaz</div>
+          <div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
+        </div>
+      </div>
+      <a href="../writings.html" class="post-back">← Back to Tomes</a>
+    </div>
+  </div>
+</div>
+
+<script src="../stars.js"></script>
+<script src="../notif.js"></script>
+<script>
+  const ham = document.getElementById('nav-hamburger');
+  const ul  = document.querySelector('.nav-links');
+  if (ham) ham.addEventListener('click', () => {
+    const open = ham.getAttribute('aria-expanded') === 'true';
+    ham.setAttribute('aria-expanded', String(!open));
+    ul.classList.toggle('open', !open);
+  });
+</script>
+</body>
+</html>
