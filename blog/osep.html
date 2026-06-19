@@ -1,21 +1,25 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Passed OffSec Experienced Penetration Tester (OSEP) with secret.txt | Sabastiaz</title>
-  <meta name="description" content="Passed OffSec Experienced Penetration Tester (OSEP) with secret.txt — Sabastiaz Red Team Sorcerer" />
-  <meta name="author" content="Ratthapong Sommanus (Sabastiaz)" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#1a1008" />
-  <meta property="og:title" content="Passed OffSec Experienced Penetration Tester (OSEP) with secret.txt | Sabastiaz" />
-  <meta property="og:description" content="Passed OffSec Experienced Penetration Tester (OSEP) with secret.txt — Sabastiaz Red Team Sorcerer" />
-  <meta property="og:image" content="https://sabastiaz.github.io/pic/Untitled design.png" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=3">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png?v=3">
-  <style>
+<script>
+(function(){var s=localStorage.getItem('siteLang');var a=(navigator.language||'').toLowerCase().startsWith('th')?'th':'en';document.documentElement.classList.add('lang-'+(s||a));})();
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Passed OffSec Experienced Penetration Tester (OSEP) with secret.txt | Sabastiaz</title>
+<meta content="Passed OffSec Experienced Penetration Tester (OSEP) with secret.txt — Sabastiaz Red Team Sorcerer" name="description"/>
+<meta content="Ratthapong Sommanus (Sabastiaz)" name="author"/>
+<meta content="index, follow" name="robots"/>
+<meta content="#1a1008" name="theme-color"/>
+<meta content="Passed OffSec Experienced Penetration Tester (OSEP) with secret.txt | Sabastiaz" property="og:title"/>
+<meta content="Passed OffSec Experienced Penetration Tester (OSEP) with secret.txt — Sabastiaz Red Team Sorcerer" property="og:description"/>
+<meta content="https://sabastiaz.github.io/pic/Untitled design.png" property="og:image"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="../favicon.ico?v=3" rel="icon" type="image/x-icon"/>
+<link href="../favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/>
+<style>
   .post-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;color:var(--text-muted);text-decoration:none;margin-bottom:2rem;transition:color .2s}
   .post-back:hover{color:var(--gold)}
   .post-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,.15)}
@@ -64,58 +68,69 @@
 .share-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.45rem .9rem;border-radius:4px;font-size:.75rem;font-family:'Cinzel',serif;text-decoration:none;cursor:pointer;border:1px solid rgba(201,168,76,.25);background:rgba(201,168,76,.04);color:var(--text-muted);transition:border-color .2s,color .2s,background .2s}
 .share-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.08)}
 .share-btn svg{flex-shrink:0}
+.lb[lang="en"]{display:none}
+html.lang-en .lb[lang="th"]{display:none}
+html.lang-en .lb[lang="en"]{display:block}
+.lang-pill{display:inline-flex;border:1px solid rgba(201,168,76,.3);border-radius:20px;overflow:hidden;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.08em}
+.lang-pill a{padding:.28rem .6rem;text-decoration:none;color:var(--text-muted);transition:color .15s,background .15s;line-height:1}
+.lang-pill a.active{background:rgba(201,168,76,.18);color:var(--gold);pointer-events:none}
+.lang-pill a:not(.active):hover{background:rgba(201,168,76,.08);color:var(--text)}
 </style>
 </head>
 <body>
 <canvas id="stars-canvas"></canvas>
 <nav>
-  <a href="../index.html" class="nav-logo">Sabastiaz 🪄</a>
-  <ul class="nav-links">
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../about.html">About</a></li>
-    <li><a href="../skills.html">Spells</a></li>
-    <li><a href="../tools.html">Arsenal</a></li>
-    <li><a href="../writings.html" class="active">Tomes</a></li>
-    <li><a href="../honor.html">Honours</a></li>
-    <li><a href="../wowza.html">Wowza</a></li>
-    <li><a href="../event.html">Events</a></li>
-    <li><a href="../changelog.html">Updates</a></li>
-    <li><a href="../contact.html">Owl Post</a></li>
-    <li><a href="../cocacola.html">🥤</a></li>
-  </ul>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<a class="nav-logo" href="../index.html">Sabastiaz 🪄</a>
+<ul class="nav-links">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../skills.html">Spells</a></li>
+<li><a href="../tools.html">Arsenal</a></li>
+<li><a class="active" href="../writings.html">Tomes</a></li>
+<li><a href="../honor.html">Honours</a></li>
+<li><a href="../wowza.html">Wowza</a></li>
+<li><a href="../event.html">Events</a></li>
+<li><a href="../changelog.html">Updates</a></li>
+<li><a href="../contact.html">Owl Post</a></li>
+<li><a href="../cocacola.html">🥤</a></li>
+</ul>
+<div class="lang-pill" id="lang-pill">
+<a class="lang-th" href="#">TH</a>
+<a class="lang-en" href="#">EN</a>
+</div>
+<button aria-expanded="false" aria-label="Menu" class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
 </nav>
 <div class="page">
-  <div class="content">
-    <a href="../writings.html" class="post-back">← Back to Tomes</a>
-    <div class="post-header">
-      <div class="post-tags"><span class="post-tag tag-en">EN</span><span class="post-tag tag-cert">Certification</span><span class="post-tag tag-pentest">Red Team</span></div>
-      <div class="post-meta-row">
-        <span>August 21, 2025</span><span class="dot">✦</span><span>10 min read</span>
-      </div>
-      <h1 class="post-title">Passed OffSec Experienced Penetration Tester (OSEP) with secret.txt</h1>
-    </div>
-    <div class="post-body">
-<p>Hi Everyone, welcome back to my blog!<br>Today, I’m going to walk you through <strong>How I passed the Offsec Experienced Penetration Tester (OSEP) with secret.txt </strong>exam on my very first attempt.</p>
+<div class="content">
+<a class="post-back" href="../writings.html">← Back to Tomes</a>
+<div class="post-header">
+<div class="post-tags"><span class="post-tag tag-en">EN</span><span class="post-tag tag-cert">Certification</span><span class="post-tag tag-pentest">Red Team</span></div>
+<div class="post-meta-row">
+<span>August 21, 2025</span><span class="dot">✦</span><span>10 min read</span>
+</div>
+<h1 class="post-title"><span class="lb" lang="en">Passed OffSec Experienced Penetration Tester (OSEP) with secret.txt</span><span class="lb" lang="th">ผ่านการสอบ OffSec Experienced Penetration Tester (OSEP) พร้อม secret.txt</span></h1>
+</div>
+<div class="post-body lb" lang="en">
+<p>Hi Everyone, welcome back to my blog!<br/>Today, I’m going to walk you through <strong>How I passed the Offsec Experienced Penetration Tester (OSEP) with secret.txt </strong>exam on my very first attempt.</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*jGwCHoHbtc2yQss-.jpg" alt="" loading="lazy">
-  <figcaption>meme of the exam</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*jGwCHoHbtc2yQss-.jpg"/>
+<figcaption>meme of the exam</figcaption>
 </figure>
 <h2>Before OSEP My Motivation</h2>
 <p>Before I decided to take on the OSEP, I had already passed the <strong>OSCP</strong> the previous year. While OSCP was a big milestone, I felt it wasn’t enough for me I wanted to push myself further and face a bigger challenge.</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*f1LN-whUVhYcFf_t.jpg" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*f1LN-whUVhYcFf_t.jpg"/>
 </figure>
 <p>That’s when I started looking into the next step. I saw certifications like <strong>CAPE</strong> and <strong>OSEP</strong>, and I realized OSEP was the perfect fit for my goals. The timing couldn’t have been better, because my company supported my growth and provided the budget for me to pursue OSEP.</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*eEVtdyKj5eeCx-T1.jpg" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*eEVtdyKj5eeCx-T1.jpg"/>
 </figure>
 <p>This combination of personal motivation and professional support gave me the drive to commit fully to the 3 months of preparation ahead.</p>
 <h2>What is OSEP?</h2>
 <p>OSEP is one of the advanced certifications from Offensive Security. Unlike OSCP, which focuses on getting an initial foothold</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*9grF0D1S-9cox0bbzV4_iQ.png" alt="" loading="lazy">
-  <figcaption>New OSEP Mascot</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*9grF0D1S-9cox0bbzV4_iQ.png"/>
+<figcaption>New OSEP Mascot</figcaption>
 </figure>
 <p><strong>PEN-300 includes a wide array of current techniques and skills, including:</strong></p>
 <ul>
@@ -126,15 +141,15 @@
 <li>Adding advanced techniques for maintaining access and escalating privileges on compromised Windows systems, including navigating file systems, manipulating user accounts, extracting sensitive information, and establishing persistent backdoors</li>
 </ul>
 <p><strong>OSEP exam allotted time of 47 hours and 45 minutes</strong></p>
-<h2><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#section-2-exam-information" target="_blank" rel="noopener">EXAM INFORMATION</a></h2>
-<p>According to the <strong>OffSec website </strong><a href="https://help.offsec.com/hc/en-us/articles/360049781352-OSEP-Exam-FAQ#h_01FSRPPQMECEQTW1M4TGTQQAB2" target="_blank" rel="noopener"><strong>FAQs</strong></a>, there are <strong>two ways to pass the OSEP exam</strong>:</p>
+<h2><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#section-2-exam-information" rel="noopener" target="_blank">EXAM INFORMATION</a></h2>
+<p>According to the <strong>OffSec website </strong><a href="https://help.offsec.com/hc/en-us/articles/360049781352-OSEP-Exam-FAQ#h_01FSRPPQMECEQTW1M4TGTQQAB2" rel="noopener" target="_blank"><strong>FAQs</strong></a>, there are <strong>two ways to pass the OSEP exam</strong>:</p>
 <ol>
 <li><strong>Achieve the objective provided on the control panel</strong> which is usually capturing the <strong>secret.txt</strong> file.</li>
 <li><strong>Obtain at least 100 points</strong> across the exam tasks, which can include footholds, privilege escalations, lateral movements, and other key milestones.</li>
 </ol>
 <p>For me, the first method was the goal — capturing the final <strong>secret.txt</strong> at <strong>5:00 AM on 10 August 2025</strong>. This confirmed that I had successfully completed all the critical steps and achieved the exam objectives.</p>
 <p>Knowing these options helped me <strong>plan my approach</strong> strategically, balancing risk, time, and effort throughout the 48-hour exam.</p>
-<h3><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#exam-proof-filenames" target="_blank" rel="noopener">Exam Proof Filenames</a></h3>
+<h3><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#exam-proof-filenames" rel="noopener" target="_blank">Exam Proof Filenames</a></h3>
 <ul>
 <li><strong>local.txt</strong> — This file is accessible to an unprivileged user account and can only be found on certain machines. The targets containing these files will allow a foothold as an unprivileged user.</li>
 <li><strong>proof.txt </strong>— This file is only accessible to an administrative or root user and can be found under the /root/ directory or the Administrator Desktop. This file is present on most machines.</li>
@@ -145,7 +160,7 @@
 </ul>
 <h2>My Journey to OSEP</h2>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*iJIZJCT_sXsZo_fkWMcFpw.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*iJIZJCT_sXsZo_fkWMcFpw.png"/>
 </figure>
 <p>My company purchased the <strong>PEN-300 course</strong> for me to prepare for OSEP. This course included:</p>
 <ul>
@@ -155,25 +170,25 @@
 </ul>
 <p>Having this structured course and lab environment was crucial. It allowed me to practice <strong>realistic attack paths</strong>, focus on advanced evasion techniques, and simulate the exam conditions multiple times before the actual OSEP attempt.</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*t874vvBMzowQYxiDbfF_1Q.png" alt="" loading="lazy">
-  <figcaption>Course progress</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*t874vvBMzowQYxiDbfF_1Q.png"/>
+<figcaption>Course progress</figcaption>
 </figure>
 <p>I gave myself <strong>3 months</strong> to prepare for the OSEP exam. Instead of spending time on every single exercise, I focused only on the <strong>Challenge Labs</strong> provided by OffSec. These labs are designed to simulate the real exam environment — difficult, realistic, and requiring creative thinking.</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*HMaPv7U1IE4EIlbtKMBTsQ.png" alt="" loading="lazy">
-  <figcaption>Challenges Lab</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*HMaPv7U1IE4EIlbtKMBTsQ.png"/>
+<figcaption>Challenges Lab</figcaption>
 </figure>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*fp3iuCuW86FdEEtA.gif" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*fp3iuCuW86FdEEtA.gif"/>
 </figure>
-<p><strong>Month 1 Foundation & First Labs</strong></p>
+<p><strong>Month 1 Foundation &amp; First Labs</strong></p>
 <ul>
 <li>I started by familiarizing myself with the lab environment and reviewing the course material just enough to understand the techniques.</li>
 <li>My priority was <strong>getting hands-on quickly</strong>, so I jumped straight into the first Challenge Labs.</li>
 <li>The early challenges helped me practice <strong>initial access techniques</strong> and <strong>basic evasion methods</strong>. I spent a lot of time failing, re-trying, and taking notes.</li>
 </ul>
-<p><strong>Key focus</strong>: <strong><em>Windows privilege escalation</em></strong><em> & </em><strong><em>simple bypass techniques</em></strong><em>.</em></p>
-<p><strong>Month 2 Advanced Evasion & Lateral Movement</strong></p>
+<p><strong>Key focus</strong>: <strong><em>Windows privilege escalation</em></strong><em> &amp; </em><strong><em>simple bypass techniques</em></strong><em>.</em></p>
+<p><strong>Month 2 Advanced Evasion &amp; Lateral Movement</strong></p>
 <ul>
 <li>By the second month, I was spending most of my evenings working on the tougher Challenge Labs.</li>
 <li>This is where I started building confidence in <strong>AV/EDR bypasses</strong>, writing <strong>custom payloads</strong>, and chaining attacks for <strong>lateral movement</strong> inside Active Directory.</li>
@@ -190,13 +205,13 @@
 <p>By the end of these 3 months, I felt confident because the Challenge Labs had already prepared me for the exact type of thinking and problem-solving needed in the exam.</p>
 <p><strong>My advice</strong></p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*TuRmpPrKYaAsmQKW.jpg" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*TuRmpPrKYaAsmQKW.jpg"/>
 </figure>
 <h2>Schedule</h2>
 <p>I officially scheduled my <strong>OSEP exam for 9 August 2025</strong> at <strong>9:00 AM GMT+7</strong>.</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*qMiERGbVCesKHoQiQiRlRg.png" alt="" loading="lazy">
-  <figcaption>Schedule</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*qMiERGbVCesKHoQiQiRlRg.png"/>
+<figcaption>Schedule</figcaption>
 </figure>
 <p>Here’s how I prepared for the timing:</p>
 <ul>
@@ -208,61 +223,61 @@
 <p>Scheduling the exam early in the morning helped me <strong>maximize my focus and energy</strong> for the first crucial hours of the exam.</p>
 <h2>Exam Date</h2>
 <h3><strong>9 August 2025</strong></h3>
-<p>I woke up at <strong>6:00 AM GMT+7</strong>. My heart was already racing the excitement and nerves felt like a <em>big bang</em> inside my head. To calm myself down, I go to 7/11 and grabbed a <strong>big cup of coffee</strong>. Back home, I took some time to relax, sip my coffee, and mentally prepare for the 48-hour challenge ahead. Before the exam started, I focused on controlling my emotions. I closed my eyes, took a few deep breaths, and reminded myself of all the preparation I had done in the last three months. At <strong>9:00 AM sharp</strong>, I logged into the <strong>Proctor Portal</strong>, verified my ID, and ran the required commands on <a href="https://help.offsec.com/hc/en-us/articles/15295546432148-Proctored-Exam-Requirements-FAQ" target="_blank" rel="noopener"><strong>this</strong></a> to connect to the exam environment. That was the moment it all became real the OSEP exam had officially begun.<br>The first few hours were spent on <strong>enumeration and initial foothold</strong>. It wasn’t easy defenses were tough, and progress was slow. But after persistence, trial-and-error, and applying my lab experience, I finally managed to establish a solid first access.</p>
+<p>I woke up at <strong>6:00 AM GMT+7</strong>. My heart was already racing the excitement and nerves felt like a <em>big bang</em> inside my head. To calm myself down, I go to 7/11 and grabbed a <strong>big cup of coffee</strong>. Back home, I took some time to relax, sip my coffee, and mentally prepare for the 48-hour challenge ahead. Before the exam started, I focused on controlling my emotions. I closed my eyes, took a few deep breaths, and reminded myself of all the preparation I had done in the last three months. At <strong>9:00 AM sharp</strong>, I logged into the <strong>Proctor Portal</strong>, verified my ID, and ran the required commands on <a href="https://help.offsec.com/hc/en-us/articles/15295546432148-Proctored-Exam-Requirements-FAQ" rel="noopener" target="_blank"><strong>this</strong></a> to connect to the exam environment. That was the moment it all became real the OSEP exam had officially begun.<br/>The first few hours were spent on <strong>enumeration and initial foothold</strong>. It wasn’t easy defenses were tough, and progress was slow. But after persistence, trial-and-error, and applying my lab experience, I finally managed to establish a solid first access.</p>
 <p>From there, I began exploring deeper into the environment. By late evening, I had already gained access to additional systems and was planning my next pivot.</p>
 <p><strong>Focus of Day :</strong> Reconnaissance, foothold.</p>
 <h3><strong>10 August 2025</strong></h3>
-<p>I continued working hard on the exam. This day was much more challenging than the previous one. I used every bit of experience I had to push through obstacles and break the walls that kept blocking me.<br>Each failed approach was a lesson, and I kept grinding through them.<br>Finally after a long night of persistence at <strong>5:00 AM</strong>, I captured the final proof file: <strong>secret.txt</strong> That was the ultimate “<strong>Gotcha!</strong>” moment that made all the struggles worth it.</p>
+<p>I continued working hard on the exam. This day was much more challenging than the previous one. I used every bit of experience I had to push through obstacles and break the walls that kept blocking me.<br/>Each failed approach was a lesson, and I kept grinding through them.<br/>Finally after a long night of persistence at <strong>5:00 AM</strong>, I captured the final proof file: <strong>secret.txt</strong> That was the ultimate “<strong>Gotcha!</strong>” moment that made all the struggles worth it.</p>
 <p><strong>Focus of Day :</strong> secret.txt</p>
 <h2><strong>11 August 2025 (</strong>Report Writing)</h2>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*VqM_SOZZCDnpV02w.gif" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*VqM_SOZZCDnpV02w.gif"/>
 </figure>
 <p>With the exploitation phase complete, was dedicated entirely to reporting. Thanks to disciplined note-taking and screenshots during the exam, writing the report flowed smoothly. I structured it clearly with:</p>
 <ul>
 <li>Step-by-step attack path</li>
 <li>Screenshots for every major milestone</li>
 <li>Technical details for replication</li>
-<li>Screenshot local.txt / proof.txt / secret.txt (<a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#screenshot-requirements" target="_blank" rel="noopener">Screenshot Requirements</a>)</li>
-<li><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#section-3-submission-instructions" target="_blank" rel="noopener">Submission File</a></li>
+<li>Screenshot local.txt / proof.txt / secret.txt (<a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#screenshot-requirements" rel="noopener" target="_blank">Screenshot Requirements</a>)</li>
+<li><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#section-3-submission-instructions" rel="noopener" target="_blank">Submission File</a></li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*mr6f5y8x5TxolnfIi3SiJQ.png" alt="" loading="lazy">
-  <figcaption>Files Submitted</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*mr6f5y8x5TxolnfIi3SiJQ.png"/>
+<figcaption>Files Submitted</figcaption>
 </figure>
 <p>The report took around 15 hours of focused effort before I was satisfied and ready to submit at 0.05 am.</p>
 <p><strong>Focus of Day :</strong> Detailed documentation, professional reporting, and submission.</p>
 <h2>Waiting for Results</h2>
-<p>After submitting the report at <strong>0:05 AM on 11 August 2025</strong>, the next day<br><strong>12 August 2025 </strong>was spent waiting for the official exam results.</p>
+<p>After submitting the report at <strong>0:05 AM on 11 August 2025</strong>, the next day<br/><strong>12 August 2025 </strong>was spent waiting for the official exam results.</p>
 <p>It was a mix of excitement and anxiety. I kept thinking about every step I had taken during the exam and the report I had submitted. Every little detail, screenshot, and note mattered, and I hoped it would all reflect the effort and precision I had put in.</p>
 <p>Although waiting was tough, I reminded myself that I had done everything possible to succeed, and there was nothing more I could do until the results were officially released.</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*Xp4ty7M8aLZM766c.jpg" alt="" loading="lazy">
-  <figcaption>meme of the day</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*Xp4ty7M8aLZM766c.jpg"/>
+<figcaption>meme of the day</figcaption>
 </figure>
 <h2>Exam Result</h2>
-<p>I received my <strong>OSEP exam results on 14 August 2025<br></strong>The result: <strong>PASSED</strong> ✅</p>
+<p>I received my <strong>OSEP exam results on 14 August 2025<br/></strong>The result: <strong>PASSED</strong> ✅</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*tGUYL1oYS4bnj2-i6djB4A.png" alt="" loading="lazy">
-  <figcaption>Result from offsec</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*tGUYL1oYS4bnj2-i6djB4A.png"/>
+<figcaption>Result from offsec</figcaption>
 </figure>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*fasv5jYmiJjm_Iz6.gif" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*fasv5jYmiJjm_Iz6.gif"/>
 </figure>
 <p>Getting this certification on my <strong>first attempt</strong> was an incredible feeling. All the months of preparation, late-night lab sessions, and focused practice paid off.</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*CgSpF2AQ0sG41sUST7qnPw.png" alt="" loading="lazy">
-  <figcaption>OffSec’s Experienced Penetration Tester (OSEP) certified</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*CgSpF2AQ0sG41sUST7qnPw.png"/>
+<figcaption>OffSec’s Experienced Penetration Tester (OSEP) certified</figcaption>
 </figure>
-<h2>Pro Tips & Advice from My OSEP Journey</h2>
+<h2>Pro Tips &amp; Advice from My OSEP Journey</h2>
 <ol>
 <li><strong>Revert machines if needed</strong> — If something feels off, don’t hesitate to revert the lab machines. You get <strong>50 reverts</strong>, so use them wisely.</li>
-<li><strong>Use the </strong><a href="https://discord.com/invite/offsec" target="_blank" rel="noopener"><strong>OffSec — Discord</strong></a><em> </em>The community isn’t super active, but mentors and other students can help when needed.</li>
-<li><a href="https://www.netexec.wiki/" target="_blank" rel="noopener"><strong>NetExec</strong></a><strong> is your friend </strong>Excellent for host discovery and password spraying.</li>
+<li><strong>Use the </strong><a href="https://discord.com/invite/offsec" rel="noopener" target="_blank"><strong>OffSec — Discord</strong></a><em> </em>The community isn’t super active, but mentors and other students can help when needed.</li>
+<li><a href="https://www.netexec.wiki/" rel="noopener" target="_blank"><strong>NetExec</strong></a><strong> is your friend </strong>Excellent for host discovery and password spraying.</li>
 <li><strong>Stick to what works for C2 </strong>I used Meterpreter throughout the course and exam. Others may prefer Sliver or Mythic; use what you’re most comfortable with.</li>
-<li><strong>Run </strong><a href="https://bloodhound.specterops.io/home" target="_blank" rel="noopener"><strong>BloodHound</strong></a><strong> </strong>As soon as you get domain user access, BloodHound can reveal attack paths and privilege escalation opportunities.</li>
+<li><strong>Run </strong><a href="https://bloodhound.specterops.io/home" rel="noopener" target="_blank"><strong>BloodHound</strong></a><strong> </strong>As soon as you get domain user access, BloodHound can reveal attack paths and privilege escalation opportunities.</li>
 <li><strong>Command execution ≠ reverse shell required </strong>Sometimes you can just change the administrator password and use PsExec to move forward.</li>
-<li><a href="https://github.com/61106960/adPEAS" target="_blank" rel="noopener"><strong>ADPeas</strong></a><strong> is invaluable </strong>This tool is great for Active Directory enumeration and finding misconfigurations quickly.</li>
+<li><a href="https://github.com/61106960/adPEAS" rel="noopener" target="_blank"><strong>ADPeas</strong></a><strong> is invaluable </strong>This tool is great for Active Directory enumeration and finding misconfigurations quickly.</li>
 <li>Challenge Lab 7–8 is good don’t forget kept all command on this to your note</li>
 </ol>
 <h3><strong>9. ***Enum is key</strong> ***</h3>
@@ -275,49 +290,190 @@
 <li><strong>Burp Suite Certified Practitioner (BSCP)</strong> master web security testing using Burp Suite and enhance my practical testing skills.</li>
 </ol>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*zlr0CEkx6Ugtbs0f.jpg" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*zlr0CEkx6Ugtbs0f.jpg"/>
 </figure>
 <h2>TRY HARDER</h2>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*YHcmyd6qBfm1NCJN.jpg" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*YHcmyd6qBfm1NCJN.jpg"/>
 </figure>
 <h2><strong>— — — — — — — — See you Next Blog — — — — — — —</strong></h2>
 <h2>Reference</h2>
-<blockquote><strong><em>My Profile <br></em></strong><a href="https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/" target="_blank" rel="noopener"><em>Linkedin</em></a><em><br></em><a href="https://app.hackthebox.com/users/190672" target="_blank" rel="noopener"><em>Hack The Box</em></a><em> <br></em><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide" target="_blank" rel="noopener"><em>OSEP Exam Guide</em></a><em><br></em><a href="https://help.offsec.com/hc/en-us/articles/360049781352-OSEP-Exam-FAQ" target="_blank" rel="noopener"><em>OffSec FAQs</em></a><em><br></em><a href="https://www.reddit.com/r/osep/" target="_blank" rel="noopener"><em>Reddit — OSEP</em></a><em><br></em><a href="https://forums.offensive-security.com/" target="_blank" rel="noopener"><em>OffSec — Forum</em></a></blockquote>
-<blockquote><strong><em>GITHUB<br></em></strong><a href="https://github.com/beauknowstech/OSEP-Everything" target="_blank" rel="noopener"><em>OSEP Note1</em></a><em><br></em><a href="https://github.com/S1ckB0y1337/Active-Directory-Exploitation-Cheat-Sheet" target="_blank" rel="noopener"><em>OSEP Note2</em></a><em><br></em><a href="https://github.com/Extravenger/OSEPlayground" target="_blank" rel="noopener"><em>OSEP Note3</em></a></blockquote>
-    </div>
-        <div class="share-section">
-      <span class="share-label">แชร์บทความนี้</span>
-      <div class="share-buttons">
-        <a class="share-btn share-x" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.733-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+<blockquote><strong><em>My Profile <br/></em></strong><a href="https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/" rel="noopener" target="_blank"><em>Linkedin</em></a><em><br/></em><a href="https://app.hackthebox.com/users/190672" rel="noopener" target="_blank"><em>Hack The Box</em></a><em> <br/></em><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide" rel="noopener" target="_blank"><em>OSEP Exam Guide</em></a><em><br/></em><a href="https://help.offsec.com/hc/en-us/articles/360049781352-OSEP-Exam-FAQ" rel="noopener" target="_blank"><em>OffSec FAQs</em></a><em><br/></em><a href="https://www.reddit.com/r/osep/" rel="noopener" target="_blank"><em>Reddit — OSEP</em></a><em><br/></em><a href="https://forums.offensive-security.com/" rel="noopener" target="_blank"><em>OffSec — Forum</em></a></blockquote>
+<blockquote><strong><em>GITHUB<br/></em></strong><a href="https://github.com/beauknowstech/OSEP-Everything" rel="noopener" target="_blank"><em>OSEP Note1</em></a><em><br/></em><a href="https://github.com/S1ckB0y1337/Active-Directory-Exploitation-Cheat-Sheet" rel="noopener" target="_blank"><em>OSEP Note2</em></a><em><br/></em><a href="https://github.com/Extravenger/OSEPlayground" rel="noopener" target="_blank"><em>OSEP Note3</em></a></blockquote>
+</div>
+<div class="post-body lb" lang="th">
+<p>สวัสดีทุกคน ยินดีต้อนรับกลับสู่บล็อกของผม!<br/>วันนี้ผมจะมาเล่าให้ฟังว่า <strong>ผมผ่านการสอบ Offsec Experienced Penetration Tester (OSEP) พร้อม secret.txt</strong> ในครั้งแรกได้อย่างไร</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*jGwCHoHbtc2yQss-.jpg"/><figcaption>meme of the exam</figcaption></figure>
+<h2>ก่อน OSEP — แรงบันดาลใจของผม</h2>
+<p>ก่อนที่จะตัดสินใจสอบ OSEP ผมได้ผ่าน <strong>OSCP</strong> มาในปีก่อนหน้า แม้ OSCP จะเป็นก้าวสำคัญ แต่รู้สึกว่ายังไม่เพียงพอ อยากผลักดันตัวเองให้ไปไกลกว่านี้และเผชิญกับความท้าทายที่ใหญ่กว่า</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*f1LN-whUVhYcFf_t.jpg"/></figure>
+<p>นั่นคือตอนที่ผมเริ่มมองหาขั้นต่อไป ผมเห็นใบรับรองอย่าง <strong>CAPE</strong> และ <strong>OSEP</strong> และตระหนักว่า OSEP เหมาะกับเป้าหมายของผมที่สุด และโชคดีที่บริษัทของผมสนับสนุนการเติบโตและออกงบประมาณให้สำหรับ OSEP</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*eEVtdyKj5eeCx-T1.jpg"/></figure>
+<p>การผสมผสานระหว่างแรงจูงใจส่วนตัวและการสนับสนุนจากองค์กรทำให้ผมมุ่งมั่นเต็มที่กับการเตรียมตัว 3 เดือน</p>
+<h2>OSEP คืออะไร?</h2>
+<p>OSEP คือใบรับรองระดับสูงจาก Offensive Security ต่างจาก OSCP ที่เน้นการได้ initial foothold</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*9grF0D1S-9cox0bbzV4_iQ.png"/><figcaption>New OSEP Mascot</figcaption></figure>
+<p><strong>PEN-300 ครอบคลุมเทคนิคและทักษะปัจจุบันหลายอย่าง ได้แก่:</strong></p>
+<ul>
+<li>การย้ายระหว่าง processes เพื่อหลีกเลี่ยงการตรวจจับและรักษา control</li>
+<li>การปรับ attack vectors จาก Word macros ในรูปแบบ executable เพื่อส่ง staged Meterpreter payload ตรงในหน่วยความจำ</li>
+<li>การอภิปรายข้อเสียของ PowerShell code ที่เรียก Win32 APIs ผ่าน .NET framework และการใช้เทคนิคขั้นสูงที่เรียกว่า reflection</li>
+<li>การใช้เทคนิค "living off the land" เพื่อเข้าถึงระบบและเครือข่าย back-end ได้มากขึ้นเรื่อยๆ</li>
+<li>การเพิ่มเทคนิคขั้นสูงสำหรับการรักษา access และยกระดับสิทธิ์บน Windows ที่ถูกเจาะแล้ว</li>
+</ul>
+<p><strong>เวลาสอบ OSEP คือ 47 ชั่วโมง 45 นาที</strong></p>
+<h2><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#section-2-exam-information" rel="noopener" target="_blank">ข้อมูลการสอบ</a></h2>
+<p>ตาม <a href="https://help.offsec.com/hc/en-us/articles/360049781352-OSEP-Exam-FAQ#h_01FSRPPQMECEQTW1M4TGTQQAB2" rel="noopener" target="_blank"><strong>FAQ ของ OffSec</strong></a> มี <strong>สองวิธีในการผ่านการสอบ OSEP</strong>:</p>
+<ol>
+<li><strong>บรรลุ objective ที่กำหนดในแผงควบคุม</strong> ซึ่งโดยปกติคือการจับไฟล์ <strong>secret.txt</strong></li>
+<li><strong>ได้รับอย่างน้อย 100 คะแนน</strong> จาก exam tasks ต่างๆ</li>
+</ol>
+<p>สำหรับผม วิธีแรกคือเป้าหมาย ซึ่งผมจับ <strong>secret.txt</strong> ได้ที่ <strong>05:00 น. วันที่ 10 สิงหาคม 2025</strong></p>
+<h3><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#exam-proof-filenames" rel="noopener" target="_blank">ชื่อไฟล์หลักฐาน</a></h3>
+<ul>
+<li><strong>local.txt</strong> — ไฟล์ที่เข้าถึงได้โดย unprivileged user เฉพาะบางเครื่อง</li>
+<li><strong>proof.txt</strong> — ไฟล์ที่เข้าถึงได้โดย administrative/root user เท่านั้น อยู่ใต้ /root/ หรือ Administrator Desktop</li>
+</ul>
+<h3>secret.txt คืออะไร</h3>
+<ul>
+<li><strong>secret.txt</strong> — ไฟล์หลักฐานที่พบบนเครื่องสุดท้ายใน simulated penetration test</li>
+</ul>
+<h2>เส้นทางสู่ OSEP ของผม</h2>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*iJIZJCT_sXsZo_fkWMcFpw.png"/></figure>
+<p>บริษัทของผมซื้อ <strong>คอร์ส PEN-300</strong> ให้ผมเพื่อเตรียมสอบ OSEP ประกอบด้วย:</p>
+<ul>
+<li><strong>สิทธิ์เข้าถึง 90 วัน</strong> สำหรับเนื้อหาคอร์สทั้งหมด</li>
+<li><strong>Labs ที่เกี่ยวข้อง</strong> สำหรับฝึก scenarios จริง</li>
+<li><strong>สิทธิ์สอบ 1 ครั้ง</strong></li>
+</ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*t874vvBMzowQYxiDbfF_1Q.png"/><figcaption>Course progress</figcaption></figure>
+<p>ผมให้เวลาตัวเอง <strong>3 เดือน</strong> ในการเตรียมตัว แทนที่จะทำทุก exercise ผมโฟกัสเฉพาะ <strong>Challenge Labs</strong> ที่ OffSec จัดเตรียมไว้ ซึ่งออกแบบมาเพื่อจำลองสภาพแวดล้อมสอบจริง</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*HMaPv7U1IE4EIlbtKMBTsQ.png"/><figcaption>Challenges Lab</figcaption></figure>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*fp3iuCuW86FdEEtA.gif"/></figure>
+<p><strong>เดือนที่ 1 — รากฐานและ Labs แรก</strong></p>
+<ul>
+<li>เริ่มด้วยการทำความคุ้นเคยกับสภาพแวดล้อม lab และทบทวนเนื้อหาคอร์สเพียงพอเพื่อเข้าใจเทคนิค</li>
+<li>ให้ความสำคัญกับ <strong>การฝึกปฏิบัติอย่างรวดเร็ว</strong> ดำดิ่งลงใน Challenge Labs แรกทันที</li>
+<li>ความท้าทายช่วงต้นช่วยฝึก <strong>เทคนิค initial access</strong> และ <strong>วิธี evasion เบื้องต้น</strong></li>
+</ul>
+<p><strong>จุดโฟกัสหลัก: Windows privilege escalation และ bypass techniques พื้นฐาน</strong></p>
+<p><strong>เดือนที่ 2 — Advanced Evasion และ Lateral Movement</strong></p>
+<ul>
+<li>เดือนที่สองใช้เวลาส่วนใหญ่ในตอนเย็นทำงานกับ Challenge Labs ที่ยากขึ้น</li>
+<li>เริ่มสร้างความมั่นใจใน <strong>AV/EDR bypasses</strong> เขียน <strong>custom payloads</strong> และเชื่อมโยงการโจมตีสำหรับ <strong>lateral movement</strong> ใน Active Directory</li>
+<li>บาง labs ใช้เวลาหลายวัน แต่ความล้มเหลวนั้นคือบทเรียนที่มีค่าที่สุด</li>
+</ul>
+<p><strong>เดือนที่ 3 — จำลองการสอบ</strong></p>
+<ul>
+<li>เดือนสุดท้ายคือการปฏิบัติกับ Challenge Labs ราวกับเป็นการสอบจริง</li>
+<li>ฝึก <strong>การบริหารเวลา</strong> ตั้งเวลาและบังคับตัวเองแก้ปัญหา lab ให้ได้</li>
+<li>ทุก attack path ที่ทำเสร็จ ก็บันทึกรายงานราวกับกำลังเขียนรายงานสอบ ทำให้กระบวนการเขียนรายงานในภายหลังราบรื่นขึ้นมาก</li>
+</ul>
+<p><strong>จุดโฟกัสหลัก: full domain compromise ภายใต้ time pressure + documentation</strong></p>
+<p>เมื่อสิ้นสุด 3 เดือน รู้สึกมั่นใจเพราะ Challenge Labs เตรียมให้พร้อมกับการคิดและแก้ปัญหาแบบที่ต้องการในการสอบ</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*TuRmpPrKYaAsmQKW.jpg"/></figure>
+<h2>กำหนดการ</h2>
+<p>ผมกำหนดการสอบ <strong>OSEP วันที่ 9 สิงหาคม 2025</strong> เวลา <strong>09:00 น. GMT+7</strong></p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*qMiERGbVCesKHoQiQiRlRg.png"/><figcaption>Schedule</figcaption></figure>
+<ul>
+<li><strong>Mindset ตอนเช้า</strong>: นอนหลับให้พอก่อนสอบเพื่อโฟกัสได้ตั้งแต่เริ่มต้น</li>
+<li><strong>การตั้งค่า workspace</strong>: เครือข่าย monitored, สภาพแวดล้อม lab พร้อม, เครื่องมือผ่านการทดสอบล่วงหน้า</li>
+<li><strong>แผนบริหารเวลา</strong>: แบ่ง 48 ชั่วโมงเป็น phases ได้แก่ initial foothold, lateral movement, domain compromise และการเขียนรายงาน</li>
+<li><strong>กลยุทธ์การจดบันทึก</strong>: จดรายละเอียด screenshots และคำสั่งระหว่างการสอบ</li>
+</ul>
+<h2>วันสอบ</h2>
+<h3><strong>9 สิงหาคม 2025</strong></h3>
+<p>ตื่นนอนเวลา <strong>06:00 น. GMT+7</strong> หัวใจเต้นแรงแล้ว ความตื่นเต้นและความประหม่าเหมือน <em>big bang</em> ในหัว เพื่อผ่อนคลาย ผมแวะ 7/11 ซื้อ <strong>กาแฟแก้วใหญ่</strong> กลับบ้านนั่งผ่อนคลาย จิบกาแฟ และเตรียมจิตใจสำหรับ 48 ชั่วโมงข้างหน้า ก่อนสอบเริ่ม ผมหลับตา หายใจลึกๆ และนึกถึงการเตรียมตัว 3 เดือนที่ผ่านมา เวลา <strong>09:00 น. พอดี</strong> ผม log in เข้า <strong>Proctor Portal</strong> ยืนยัน ID และรันคำสั่งที่จำเป็น จากนั้นการสอบ OSEP ก็เริ่มต้นขึ้นอย่างเป็นทางการ</p>
+<p>ไม่กี่ชั่วโมงแรกใช้กับ <strong>enumeration และ initial foothold</strong> ไม่ง่ายเลย การป้องกันแน่นหนา ความคืบหน้าช้า แต่หลังความพยายามและ trial-and-error ในที่สุดก็สามารถ establish การเข้าถึงแรกได้อย่างแน่วแน่</p>
+<p>จากนั้นเริ่มสำรวจสภาพแวดล้อมให้ลึกขึ้น เย็นวันนั้นได้สิทธิ์เข้าถึงระบบเพิ่มเติมและวางแผน pivot ต่อไป</p>
+<p><strong>จุดโฟกัสของวัน: Reconnaissance, foothold</strong></p>
+<h3><strong>10 สิงหาคม 2025</strong></h3>
+<p>ทำงานต่ออย่างหนัก วันนี้ท้าทายกว่าเดิมมาก ใช้ประสบการณ์ทุกอย่างที่มีเพื่อผ่านอุปสรรค ทุกความล้มเหลวคือบทเรียน และยังคงฝ่าฟันต่อไป</p>
+<p>ในที่สุดหลังจากคืนยาวแห่งความอดทน เวลา <strong>05:00 น.</strong> ผมจับไฟล์หลักฐานสุดท้ายได้: <strong>secret.txt</strong> นั่นคือช่วงเวลา "<strong>Gotcha!</strong>" ที่ทำให้ทุกการดิ้นรนคุ้มค่า</p>
+<p><strong>จุดโฟกัสของวัน: secret.txt</strong></p>
+<h2><strong>11 สิงหาคม 2025</strong> (เขียนรายงาน)</h2>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*VqM_SOZZCDnpV02w.gif"/></figure>
+<p>เมื่อ phase การ exploit เสร็จสิ้น วันนี้อุทิศให้กับการเขียนรายงานทั้งหมด ขอบคุณการจดบันทึกและ screenshots ที่มีวินัย การเขียนรายงานจึงราบรื่น โครงสร้างที่ใช้:</p>
+<ul>
+<li>Attack path step-by-step</li>
+<li>Screenshots สำหรับทุก milestone สำคัญ</li>
+<li>รายละเอียดทางเทคนิคสำหรับการ replicate</li>
+<li>Screenshot local.txt / proof.txt / secret.txt (<a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#screenshot-requirements" rel="noopener" target="_blank">Screenshot Requirements</a>)</li>
+<li><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide#section-3-submission-instructions" rel="noopener" target="_blank">Submission File</a></li>
+</ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*mr6f5y8x5TxolnfIi3SiJQ.png"/><figcaption>Files Submitted</figcaption></figure>
+<p>รายงานใช้เวลาประมาณ 15 ชั่วโมงก่อนพอใจและ submit เวลา 00:05 น.</p>
+<p><strong>จุดโฟกัสของวัน: documentation รายละเอียด, รายงานระดับมืออาชีพ และ submission</strong></p>
+<h2>รอผลการสอบ</h2>
+<p>หลัง submit รายงานเวลา <strong>00:05 น. วันที่ 11 สิงหาคม 2025</strong> วันต่อมา <strong>12 สิงหาคม 2025</strong> ก็รอผลอย่างเป็นทางการ</p>
+<p>เป็นการผสมผสานระหว่างความตื่นเต้นและความวิตกกังวล คิดถึงทุกขั้นตอนที่ทำระหว่างสอบและรายงานที่ส่งไป ทุกรายละเอียด screenshot และ note มีความสำคัญ</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*Xp4ty7M8aLZM766c.jpg"/><figcaption>meme of the day</figcaption></figure>
+<h2>ผลการสอบ</h2>
+<p>ผมได้รับผล <strong>OSEP เมื่อวันที่ 14 สิงหาคม 2025<br/></strong>ผลคือ: <strong>ผ่าน</strong> ✅</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*tGUYL1oYS4bnj2-i6djB4A.png"/><figcaption>Result from offsec</figcaption></figure>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*fasv5jYmiJjm_Iz6.gif"/></figure>
+<p>การได้รับใบรับรองนี้ใน <strong>ครั้งแรก</strong> เป็นความรู้สึกที่ยอดเยี่ยมมาก การเตรียมตัวหลายเดือน sessions ดึกๆ ใน lab และการฝึกอย่างมีสมาธิทั้งหมดได้ผลตอบแทน</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*CgSpF2AQ0sG41sUST7qnPw.png"/><figcaption>OffSec's Experienced Penetration Tester (OSEP) certified</figcaption></figure>
+<h2>เคล็ดลับและคำแนะนำจากเส้นทาง OSEP ของผม</h2>
+<ol>
+<li><strong>Revert เครื่องเมื่อจำเป็น</strong> หากรู้สึกว่าบางอย่างไม่ถูกต้อง อย่าลังเล มี <strong>50 reverts</strong> ใช้ได้</li>
+<li><strong>ใช้ </strong><a href="https://discord.com/invite/offsec" rel="noopener" target="_blank"><strong>OffSec Discord</strong></a> community อาจไม่ active มาก แต่ mentors และนักเรียนอื่นช่วยได้</li>
+<li><a href="https://www.netexec.wiki/" rel="noopener" target="_blank"><strong>NetExec</strong></a><strong> คือเพื่อนของคุณ</strong> ยอดเยี่ยมสำหรับ host discovery และ password spraying</li>
+<li><strong>ยึดกับสิ่งที่ได้ผลสำหรับ C2</strong> ผมใช้ Meterpreter ตลอดคอร์สและการสอบ</li>
+<li><strong>รัน </strong><a href="https://bloodhound.specterops.io/home" rel="noopener" target="_blank"><strong>BloodHound</strong></a> ทันทีที่ได้ domain user access BloodHound สามารถเปิดเผย attack paths ได้</li>
+<li><strong>Command execution ≠ ต้องการ reverse shell เสมอ</strong> บางครั้งสามารถเปลี่ยน administrator password และใช้ PsExec เพื่อก้าวต่อไป</li>
+<li><a href="https://github.com/61106960/adPEAS" rel="noopener" target="_blank"><strong>ADPeas</strong></a><strong> มีคุณค่ามาก</strong> เครื่องมือนี้ยอดเยี่ยมสำหรับ Active Directory enumeration</li>
+<li>Challenge Lab 7-8 ดีมาก อย่าลืมเก็บทุกคำสั่งไว้ใน notes</li>
+</ol>
+<h3><strong>9. ***Enum is key***</strong></h3>
+<p>— — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — — —</p>
+<h2>ก้าวต่อไป?</h2>
+<p>หลังผ่าน <strong>OSEP</strong> ผมกำลังวางแผนขั้นต่อไปในเส้นทาง cybersecurity เป้าหมายได้แก่:</p>
+<ol>
+<li><strong>Certified Active Directory Pentesting Expert (CAPE)</strong> พัฒนาทักษะ AD exploitation และ red team ให้ลึกขึ้น</li>
+<li><strong>OffSec Web Expert (OSWE)</strong> เสริมความเชี่ยวชาญด้าน web application penetration testing</li>
+<li><strong>Burp Suite Certified Practitioner (BSCP)</strong> ฝึกทักษะ web security testing ด้วย Burp Suite</li>
+</ol>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*zlr0CEkx6Ugtbs0f.jpg"/></figure>
+<h2>TRY HARDER</h2>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*YHcmyd6qBfm1NCJN.jpg"/></figure>
+<h2><strong>— — — — — — — — พบกันใหม่ใน Blog หน้า — — — — — — —</strong></h2>
+<h2>อ้างอิง</h2>
+<blockquote><strong><em>Profile ของผม<br/></em></strong><a href="https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/" rel="noopener" target="_blank"><em>Linkedin</em></a><em><br/></em><a href="https://app.hackthebox.com/users/190672" rel="noopener" target="_blank"><em>Hack The Box</em></a><em><br/></em><a href="https://help.offsec.com/hc/en-us/articles/360050293792-OSEP-Exam-Guide" rel="noopener" target="_blank"><em>OSEP Exam Guide</em></a><em><br/></em><a href="https://help.offsec.com/hc/en-us/articles/360049781352-OSEP-Exam-FAQ" rel="noopener" target="_blank"><em>OffSec FAQs</em></a><em><br/></em><a href="https://www.reddit.com/r/osep/" rel="noopener" target="_blank"><em>Reddit — OSEP</em></a></blockquote>
+<blockquote><strong><em>GITHUB<br/></em></strong><a href="https://github.com/beauknowstech/OSEP-Everything" rel="noopener" target="_blank"><em>OSEP Note1</em></a><em><br/></em><a href="https://github.com/S1ckB0y1337/Active-Directory-Exploitation-Cheat-Sheet" rel="noopener" target="_blank"><em>OSEP Note2</em></a><em><br/></em><a href="https://github.com/Extravenger/OSEPlayground" rel="noopener" target="_blank"><em>OSEP Note3</em></a></blockquote>
+</div>
+<div class="share-section">
+<span class="share-label">แชร์บทความนี้</span>
+<div class="share-buttons">
+<a class="share-btn share-x" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.733-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
           X / Twitter
         </a>
-        <a class="share-btn share-li" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+<a class="share-btn share-li" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
           LinkedIn
         </a>
-        <a class="share-btn share-fb" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+<a class="share-btn share-fb" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
           Facebook
         </a>
-        <button class="share-btn share-copy" onclick="copyLink(this)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span>Copy Link</span>
-        </button>
-      </div>
-    </div>
-    <div class="post-footer">
-      <div class="author-card">
-        <img src="../pic/Untitled design.png" alt="Sabastiaz" class="author-avatar">
-        <div>
-          <div class="author-name">Sabastiaz</div>
-          <div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
-        </div>
-      </div>
-      <a href="../writings.html" class="post-back">← Back to Tomes</a>
-    </div>
-  </div>
+<button class="share-btn share-copy" onclick="copyLink(this)">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy Link</span>
+</button>
+</div>
+</div>
+<div class="post-footer">
+<div class="author-card">
+<img alt="Sabastiaz" class="author-avatar" src="../pic/Untitled design.png"/>
+<div>
+<div class="author-name">Sabastiaz</div>
+<div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
+</div>
+</div>
+<a class="post-back" href="../writings.html">← Back to Tomes</a>
+</div>
+</div>
 </div>
 <script src="../stars.js"></script>
 <script>
@@ -350,6 +506,24 @@ function copyLink(btn){
     setTimeout(function(){span.textContent='Copy Link';btn.style.color='';btn.style.borderColor='';},2000);
   });
 }
+</script>
+<script>
+(function(){
+  var pill=document.getElementById('lang-pill');
+  if(!pill)return;
+  var m=document.documentElement.className.match(/lang-(\w+)/);
+  var lang=m?m[1]:'th';
+  function set(l){
+    document.documentElement.classList.remove('lang-th','lang-en');
+    document.documentElement.classList.add('lang-'+l);
+    localStorage.setItem('siteLang',l);
+    pill.querySelector('.lang-th').classList.toggle('active',l==='th');
+    pill.querySelector('.lang-en').classList.toggle('active',l==='en');
+  }
+  pill.querySelector('.lang-th').addEventListener('click',function(e){e.preventDefault();set('th');});
+  pill.querySelector('.lang-en').addEventListener('click',function(e){e.preventDefault();set('en');});
+  set(lang);
+})();
 </script>
 </body>
 </html>

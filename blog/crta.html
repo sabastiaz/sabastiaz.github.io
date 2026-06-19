@@ -1,21 +1,25 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CRTA Exam: One Night Miracle | Sabastiaz</title>
-  <meta name="description" content="CRTA Exam: One Night Miracle — Sabastiaz Red Team Sorcerer" />
-  <meta name="author" content="Ratthapong Sommanus (Sabastiaz)" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#1a1008" />
-  <meta property="og:title" content="CRTA Exam: One Night Miracle | Sabastiaz" />
-  <meta property="og:description" content="CRTA Exam: One Night Miracle — Sabastiaz Red Team Sorcerer" />
-  <meta property="og:image" content="https://sabastiaz.github.io/pic/Untitled design.png" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=3">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png?v=3">
-  <style>
+<script>
+(function(){var s=localStorage.getItem('siteLang');var a=(navigator.language||'').toLowerCase().startsWith('th')?'th':'en';document.documentElement.classList.add('lang-'+(s||a));})();
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRTA Exam: One Night Miracle | Sabastiaz</title>
+<meta content="CRTA Exam: One Night Miracle — Sabastiaz Red Team Sorcerer" name="description"/>
+<meta content="Ratthapong Sommanus (Sabastiaz)" name="author"/>
+<meta content="index, follow" name="robots"/>
+<meta content="#1a1008" name="theme-color"/>
+<meta content="CRTA Exam: One Night Miracle | Sabastiaz" property="og:title"/>
+<meta content="CRTA Exam: One Night Miracle — Sabastiaz Red Team Sorcerer" property="og:description"/>
+<meta content="https://sabastiaz.github.io/pic/Untitled design.png" property="og:image"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="../favicon.ico?v=3" rel="icon" type="image/x-icon"/>
+<link href="../favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/>
+<style>
   .post-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;color:var(--text-muted);text-decoration:none;margin-bottom:2rem;transition:color .2s}
   .post-back:hover{color:var(--gold)}
   .post-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,.15)}
@@ -64,47 +68,58 @@
 .share-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.45rem .9rem;border-radius:4px;font-size:.75rem;font-family:'Cinzel',serif;text-decoration:none;cursor:pointer;border:1px solid rgba(201,168,76,.25);background:rgba(201,168,76,.04);color:var(--text-muted);transition:border-color .2s,color .2s,background .2s}
 .share-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.08)}
 .share-btn svg{flex-shrink:0}
+.lb[lang="en"]{display:none}
+html.lang-en .lb[lang="th"]{display:none}
+html.lang-en .lb[lang="en"]{display:block}
+.lang-pill{display:inline-flex;border:1px solid rgba(201,168,76,.3);border-radius:20px;overflow:hidden;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.08em}
+.lang-pill a{padding:.28rem .6rem;text-decoration:none;color:var(--text-muted);transition:color .15s,background .15s;line-height:1}
+.lang-pill a.active{background:rgba(201,168,76,.18);color:var(--gold);pointer-events:none}
+.lang-pill a:not(.active):hover{background:rgba(201,168,76,.08);color:var(--text)}
 </style>
 </head>
 <body>
 <canvas id="stars-canvas"></canvas>
 <nav>
-  <a href="../index.html" class="nav-logo">Sabastiaz 🪄</a>
-  <ul class="nav-links">
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../about.html">About</a></li>
-    <li><a href="../skills.html">Spells</a></li>
-    <li><a href="../tools.html">Arsenal</a></li>
-    <li><a href="../writings.html" class="active">Tomes</a></li>
-    <li><a href="../honor.html">Honours</a></li>
-    <li><a href="../wowza.html">Wowza</a></li>
-    <li><a href="../event.html">Events</a></li>
-    <li><a href="../changelog.html">Updates</a></li>
-    <li><a href="../contact.html">Owl Post</a></li>
-    <li><a href="../cocacola.html">🥤</a></li>
-  </ul>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<a class="nav-logo" href="../index.html">Sabastiaz 🪄</a>
+<ul class="nav-links">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../skills.html">Spells</a></li>
+<li><a href="../tools.html">Arsenal</a></li>
+<li><a class="active" href="../writings.html">Tomes</a></li>
+<li><a href="../honor.html">Honours</a></li>
+<li><a href="../wowza.html">Wowza</a></li>
+<li><a href="../event.html">Events</a></li>
+<li><a href="../changelog.html">Updates</a></li>
+<li><a href="../contact.html">Owl Post</a></li>
+<li><a href="../cocacola.html">🥤</a></li>
+</ul>
+<div class="lang-pill" id="lang-pill">
+<a class="lang-th" href="#">TH</a>
+<a class="lang-en" href="#">EN</a>
+</div>
+<button aria-expanded="false" aria-label="Menu" class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
 </nav>
 <div class="page">
-  <div class="content">
-    <a href="../writings.html" class="post-back">← Back to Tomes</a>
-    <div class="post-header">
-      <div class="post-tags"><span class="post-tag tag-en">EN</span><span class="post-tag tag-cert">Certification</span></div>
-      <div class="post-meta-row">
-        <span>March 3, 2025</span><span class="dot">✦</span><span>5 min read</span>
-      </div>
-      <h1 class="post-title">CRTA Exam: One Night Miracle</h1>
-    </div>
-    <div class="post-body">
-<p>Hi everyone! My name is <strong>Ratthapong Sommanus</strong>, but you can call me <strong>“Black”</strong>.<br>I’m also known as <strong>“Sabastiaz”</strong>.</p>
-<p>Today, I will be reviewing the Certified Red Team Analyst (CRTA) certification in <a href="https://medium.com/u/f7d724ff67dc" target="_blank" rel="noopener">Cyber WarFare</a></p>
+<div class="content">
+<a class="post-back" href="../writings.html">← Back to Tomes</a>
+<div class="post-header">
+<div class="post-tags"><span class="post-tag tag-en">EN</span><span class="post-tag tag-cert">Certification</span></div>
+<div class="post-meta-row">
+<span>March 3, 2025</span><span class="dot">✦</span><span>5 min read</span>
+</div>
+<h1 class="post-title"><span class="lb" lang="en">CRTA Exam: One Night Miracle</span><span class="lb" lang="th">รีวิว CRTA: Certified Red Team Analyst โดย Cyber WarFare</span></h1>
+</div>
+<div class="post-body lb" lang="en">
+<p>Hi everyone! My name is <strong>Ratthapong Sommanus</strong>, but you can call me <strong>“Black”</strong>.<br/>I’m also known as <strong>“Sabastiaz”</strong>.</p>
+<p>Today, I will be reviewing the Certified Red Team Analyst (CRTA) certification in <a href="https://medium.com/u/f7d724ff67dc" rel="noopener" target="_blank">Cyber WarFare</a></p>
 <h2><strong>Before Exam</strong></h2>
-<p>I had never heard of this certification provider before until a friend (<a href="https://medium.com/u/36ca6b06114e" target="_blank" rel="noopener">Chicken0248</a>) introduced it to me last year. However, at that time, I wasn’t particularly interested. As expected, my friend (<a href="https://medium.com/u/36ca6b06114e" target="_blank" rel="noopener">Chicken0248</a>) brought it up again, saying, “The certification looks really cool, and it’s on sale right now!” With the added temptation of a discount — just enter the code “<strong>JOASx90”</strong> to get <strong>90% OFF</strong> — I didn’t hesitate and bought it immediately.</p>
-<p>So, after purchasing the exam voucher I have email purchase success and I have 2 accounts for access lab and portal live I access to portal lab and I take lab right now I have long time to take lab maybe 5 hour I complete this lab <br>So, after I passed the lab, I sent an email to support to <strong>reserve my exam schedule for the next day</strong>.</p>
+<p>I had never heard of this certification provider before until a friend (<a href="https://medium.com/u/36ca6b06114e" rel="noopener" target="_blank">Chicken0248</a>) introduced it to me last year. However, at that time, I wasn’t particularly interested. As expected, my friend (<a href="https://medium.com/u/36ca6b06114e" rel="noopener" target="_blank">Chicken0248</a>) brought it up again, saying, “The certification looks really cool, and it’s on sale right now!” With the added temptation of a discount — just enter the code “<strong>JOASx90”</strong> to get <strong>90% OFF</strong> — I didn’t hesitate and bought it immediately.</p>
+<p>So, after purchasing the exam voucher I have email purchase success and I have 2 accounts for access lab and portal live I access to portal lab and I take lab right now I have long time to take lab maybe 5 hour I complete this lab <br/>So, after I passed the lab, I sent an email to support to <strong>reserve my exam schedule for the next day</strong>.</p>
 <h2><strong>Certification Procedure</strong></h2>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*zGGiYoPuQS2K5FAaATGcjw.png" alt="" loading="lazy">
-  <figcaption>https://cyberwarfare.live/product/red-team-analyst-crta/</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*zGGiYoPuQS2K5FAaATGcjw.png"/>
+<figcaption>https://cyberwarfare.live/product/red-team-analyst-crta/</figcaption>
 </figure>
 <h2>Couse Syllabus</h2>
 <p>The courses contents are divided across 5 sections listed below:</p>
@@ -120,7 +135,7 @@
 </ul>
 <p><strong>2. Red Team Lab setup</strong></p>
 <ul>
-<li>Virtual Environment Setup & Configuration</li>
+<li>Virtual Environment Setup &amp; Configuration</li>
 <li>Setting up Attacker Machine</li>
 <li>External Red Team Lab Setup</li>
 <li>Network Pivoting Setup</li>
@@ -129,15 +144,15 @@
 <p><strong>3. External Offensive Operations</strong></p>
 <ul>
 <li>External Infrastructure Overview</li>
-<li>Enumerating & Mapping External exposed assets</li>
+<li>Enumerating &amp; Mapping External exposed assets</li>
 <li>Externally exposed service exploitation</li>
-<li>Exploitation (Web & Network based)</li>
-<li>Post-Exploitation (Web & Network based)</li>
+<li>Exploitation (Web &amp; Network based)</li>
+<li>Post-Exploitation (Web &amp; Network based)</li>
 </ul>
 <p><strong>4. Internal Offensive Operations</strong></p>
 <ul>
 <li>Internal Infrastructure Overview</li>
-<li>Enumerating & Mapping Internal assets</li>
+<li>Enumerating &amp; Mapping Internal assets</li>
 <li>Infrastructure Enumeration (Active Directory Environment)</li>
 <li>Bypassing Network Segmentation (Firewalls)</li>
 <li>Active Directory Phases Exploitation (Initial Recon to Domain Admin)</li>
@@ -146,16 +161,16 @@
 <ul>
 <li>Accessing the Lab</li>
 <li>Lab Architecture</li>
-<li>Mapping the Lab with MITRE ATT&CK Framework</li>
+<li>Mapping the Lab with MITRE ATT&amp;CK Framework</li>
 <li>External Red Teaming</li>
 <li>Internal Red Teaming</li>
-<li>Utilizing LOLBAS for stealth persistence & Data Exfiltration</li>
+<li>Utilizing LOLBAS for stealth persistence &amp; Data Exfiltration</li>
 <li>Preparing for Examination</li>
 </ul>
 <h3>Do you think the exam is easy?</h3>
 <blockquote>That’s not true — it’s actually really hard!</blockquote>
 <h2>Exam</h2>
-<p><strong>30 Minutes Before the Exam:</strong><br>You will receive the necessary exam details, including <strong>VPN credentials (Username & Password) and the Scope of Engagement</strong>.</p>
+<p><strong>30 Minutes Before the Exam:</strong><br/>You will receive the necessary exam details, including <strong>VPN credentials (Username &amp; Password) and the Scope of Engagement</strong>.</p>
 <p><strong>One thing I really liked was that the exam presents a realistic objective, making it feel like an actual engagement</strong></p>
 <p>The exam feels like a real penetration test, but in my opinion, it’s more like an <strong>Active Directory (AD) pentest</strong> because most of the exploitation steps involve AD. There are also many <strong>rabbit holes</strong>, making it even more challenging.</p>
 <p>That being said, this exam is <strong>beginner-friendly</strong> for those looking to earn their first <strong>red team certification</strong>, as it provides a structured approach to learning <strong>AD exploitation</strong> and real-world attack scenarios.</p>
@@ -165,46 +180,118 @@
 <p>I received my exam results in just one day — I passed! I was so excited because this certification is really cool.</p>
 <h2>The certification is really cool!</h2>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*kEaAjVStUNwcLefnb5Vzdg.png" alt="" loading="lazy">
-  <figcaption>https://www.credential.net/dc0d8bdf-d189-4d18-bb15-8579525d754a</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*kEaAjVStUNwcLefnb5Vzdg.png"/>
+<figcaption>https://www.credential.net/dc0d8bdf-d189-4d18-bb15-8579525d754a</figcaption>
 </figure>
 <h3>You can connect with me on my social accounts:</h3>
-<p><strong>[HackTheBox] : </strong><a href="https://app.hackthebox.com/users/190672" target="_blank" rel="noopener">https://app.hackthebox.com/users/190672</a><strong><br>[linkedin] : </strong><a href="https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/" target="_blank" rel="noopener">https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/</a><strong><br>[Facebook] : Ratthapong Sommanus</strong></p>
-<p>If you’re interested, you can check it out here: <a href="https://cyberwarfare.live/" target="_blank" rel="noopener">Cyber Warfare</a></p>
-<h2>I hope this blog helps those preparing for the exam <br> B<strong>est of luck, and may you all pass successfully!</strong></h2>
-    </div>
-        <div class="share-section">
-      <span class="share-label">แชร์บทความนี้</span>
-      <div class="share-buttons">
-        <a class="share-btn share-x" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.733-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+<p><strong>[HackTheBox] : </strong><a href="https://app.hackthebox.com/users/190672" rel="noopener" target="_blank">https://app.hackthebox.com/users/190672</a><strong><br/>[linkedin] : </strong><a href="https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/" rel="noopener" target="_blank">https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/</a><strong><br/>[Facebook] : Ratthapong Sommanus</strong></p>
+<p>If you’re interested, you can check it out here: <a href="https://cyberwarfare.live/" rel="noopener" target="_blank">Cyber Warfare</a></p>
+<h2>I hope this blog helps those preparing for the exam <br/> B<strong>est of luck, and may you all pass successfully!</strong></h2>
+</div>
+<div class="post-body lb" lang="th">
+<p>สวัสดีทุกคน! ผมชื่อ <strong>Ratthapong Sommanus</strong> เรียกได้ว่า <strong>"Black"</strong> ก็ได้ครับ หรือจะรู้จักผมในชื่อ <strong>"Sabastiaz"</strong></p>
+<p>วันนี้จะมารีวิว Certified Red Team Analyst (CRTA) จาก <a href="https://medium.com/u/f7d724ff67dc" rel="noopener" target="_blank">Cyber WarFare</a></p>
+<h2><strong>ก่อนสอบ</strong></h2>
+<p>ผมไม่เคยได้ยินชื่อเจ้า provider นี้มาก่อนเลย จนกระทั่งเพื่อน (<a href="https://medium.com/u/36ca6b06114e" rel="noopener" target="_blank">Chicken0248</a>) มาแนะนำให้รู้จักเมื่อปีที่แล้ว แต่ตอนนั้นก็ไม่ได้สนใจมากนัก จนเพื่อน (<a href="https://medium.com/u/36ca6b06114e" rel="noopener" target="_blank">Chicken0248</a>) กลับมาบอกอีกครั้งว่า "cert นี้ดูเท่มากและลดราคาอยู่ด้วย!" พอมีส่วนลดด้วยก็เลยไม่รีรอ ซื้อเลย — กรอกโค้ด "<strong>JOASx90"</strong> รับส่วนลด <strong>90%</strong> ทันที</p>
+<p>หลังจากซื้อ voucher แล้วก็ได้รับอีเมลยืนยันการซื้อ พร้อมกับ 2 account สำหรับเข้าถึง lab และ portal ผมเข้า portal lab ทำ lab ทันที ใช้เวลาประมาณ 5 ชั่วโมงก็ complete lab เสร็จเรียบร้อย จากนั้นก็ส่งอีเมลหา support เพื่อ <strong>นัดสอบวันถัดไป</strong></p>
+<h2><strong>ขั้นตอนการ Certification</strong></h2>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*zGGiYoPuQS2K5FAaATGcjw.png"/>
+<figcaption>https://cyberwarfare.live/product/red-team-analyst-crta/</figcaption></figure>
+<h2>หลักสูตร</h2>
+<p>เนื้อหาของหลักสูตรแบ่งออกเป็น 5 ส่วนดังนี้:</p>
+<ol><li><strong>Introduction to Red Teaming</strong></li></ol>
+<ul>
+<li>What is Red Teaming?</li>
+<li>Red Team Attack Lifecycle (Phases)</li>
+<li>Red Team Infrastructure (Nomenclature)</li>
+<li>Enterprise Environment Overview</li>
+<li>Technologies Exploitation in Red Teaming (Web, Network, Cloud)</li>
+</ul>
+<p><strong>2. Red Team Lab Setup</strong></p>
+<ul>
+<li>Virtual Environment Setup &amp; Configuration</li>
+<li>Setting up Attacker Machine</li>
+<li>External Red Team Lab Setup</li>
+<li>Network Pivoting Setup</li>
+<li>Internal Red Team Lab Setup (Active Directory Setup)</li>
+</ul>
+<p><strong>3. External Offensive Operations</strong></p>
+<ul>
+<li>External Infrastructure Overview</li>
+<li>Enumerating &amp; Mapping External exposed assets</li>
+<li>Externally exposed service exploitation</li>
+<li>Exploitation (Web &amp; Network based)</li>
+<li>Post-Exploitation (Web &amp; Network based)</li>
+</ul>
+<p><strong>4. Internal Offensive Operations</strong></p>
+<ul>
+<li>Internal Infrastructure Overview</li>
+<li>Enumerating &amp; Mapping Internal assets</li>
+<li>Infrastructure Enumeration (Active Directory Environment)</li>
+<li>Bypassing Network Segmentation (Firewalls)</li>
+<li>Active Directory Phases Exploitation (Initial Recon to Domain Admin)</li>
+</ul>
+<p><strong>5. Practical Case Study (Hands-on Lab)</strong></p>
+<ul>
+<li>Accessing the Lab</li>
+<li>Lab Architecture</li>
+<li>Mapping the Lab with MITRE ATT&amp;CK Framework</li>
+<li>External Red Teaming</li>
+<li>Internal Red Teaming</li>
+<li>Utilizing LOLBAS for stealth persistence &amp; Data Exfiltration</li>
+<li>Preparing for Examination</li>
+</ul>
+<h3>แล้วข้อสอบง่ายไหม?</h3>
+<blockquote>ไม่ใช่เลย — ยากมากทีเดียว!</blockquote>
+<h2>สอบ</h2>
+<p><strong>ก่อนสอบ 30 นาที:</strong><br/>จะได้รับข้อมูลที่จำเป็นสำหรับการสอบ ได้แก่ <strong>VPN credentials (Username &amp; Password) และ Scope of Engagement</strong></p>
+<p><strong>สิ่งที่ชอบมากคือข้อสอบนำเสนอ objective แบบ realistic ทำให้รู้สึกเหมือน engagement จริง</strong></p>
+<p>ข้อสอบรู้สึกเหมือน real penetration test แต่ในมุมมองของผมมันเหมือน <strong>Active Directory (AD) pentest</strong> มากกว่า เพราะส่วนใหญ่ของขั้นตอนการ exploit เกี่ยวข้องกับ AD และยังมี <strong>rabbit holes</strong> มากมายที่ทำให้ยากขึ้น</p>
+<p>ถึงอย่างนั้น ข้อสอบนี้ก็ <strong>beginner-friendly</strong> สำหรับคนที่ต้องการ <strong>red team certification</strong> ใบแรก เพราะมีโครงสร้างที่ชัดเจนในการเรียนรู้ <strong>AD exploitation</strong> และสถานการณ์การโจมตีในโลกจริง</p>
+<p>สิ่งสำคัญที่สุดไม่ใช่ว่าจะ exploit ได้กี่ระบบ แต่คือ <strong>อย่าลืม submit report</strong> ภายใน <strong>24 ชั่วโมงหลังสอบเสร็จ</strong></p>
+<h2><strong>สรุป</strong></h2>
+<p>ข้อสอบ <strong>CRTA</strong> เป็นประสบการณ์ที่ท้าทายแต่คุ้มค่ามาก ทำให้ต้องคิดเชิงวิเคราะห์และนำเทคนิค <strong>Active Directory pentesting</strong> จริงมาใช้ หากมองหา certification แบบ hands-on ที่จำลอง <strong>red team engagement</strong> จริง ควรลองดูอย่างยิ่ง!</p>
+<p>ผลสอบมาภายในวันเดียว — ผ่าน! ตื่นเต้นมากเพราะ cert นี้โคตรเท่</p>
+<h2>Cert ดูเท่มากจริงๆ!</h2>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*kEaAjVStUNwcLefnb5Vzdg.png"/>
+<figcaption>https://www.credential.net/dc0d8bdf-d189-4d18-bb15-8579525d754a</figcaption></figure>
+<h3>ติดตามได้ที่:</h3>
+<p><strong>[HackTheBox] : </strong><a href="https://app.hackthebox.com/users/190672" rel="noopener" target="_blank">https://app.hackthebox.com/users/190672</a><strong><br/>[LinkedIn] : </strong><a href="https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/" rel="noopener" target="_blank">https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/</a><strong><br/>[Facebook] : Ratthapong Sommanus</strong></p>
+<p>สนใจดูรายละเอียดเพิ่มเติมได้ที่: <a href="https://cyberwarfare.live/" rel="noopener" target="_blank">Cyber Warfare</a></p>
+<h2>หวังว่า Blog นี้จะเป็นประโยชน์สำหรับคนที่กำลังเตรียมสอบ <strong>โชคดีและขอให้ผ่านทุกคน!</strong></h2>
+</div>
+<div class="share-section">
+<span class="share-label">แชร์บทความนี้</span>
+<div class="share-buttons">
+<a class="share-btn share-x" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.733-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
           X / Twitter
         </a>
-        <a class="share-btn share-li" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+<a class="share-btn share-li" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
           LinkedIn
         </a>
-        <a class="share-btn share-fb" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+<a class="share-btn share-fb" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
           Facebook
         </a>
-        <button class="share-btn share-copy" onclick="copyLink(this)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span>Copy Link</span>
-        </button>
-      </div>
-    </div>
-    <div class="post-footer">
-      <div class="author-card">
-        <img src="../pic/Untitled design.png" alt="Sabastiaz" class="author-avatar">
-        <div>
-          <div class="author-name">Sabastiaz</div>
-          <div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
-        </div>
-      </div>
-      <a href="../writings.html" class="post-back">← Back to Tomes</a>
-    </div>
-  </div>
+<button class="share-btn share-copy" onclick="copyLink(this)">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy Link</span>
+</button>
+</div>
+</div>
+<div class="post-footer">
+<div class="author-card">
+<img alt="Sabastiaz" class="author-avatar" src="../pic/Untitled design.png"/>
+<div>
+<div class="author-name">Sabastiaz</div>
+<div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
+</div>
+</div>
+<a class="post-back" href="../writings.html">← Back to Tomes</a>
+</div>
+</div>
 </div>
 <script src="../stars.js"></script>
 <script>
@@ -237,6 +324,24 @@ function copyLink(btn){
     setTimeout(function(){span.textContent='Copy Link';btn.style.color='';btn.style.borderColor='';},2000);
   });
 }
+</script>
+<script>
+(function(){
+  var pill=document.getElementById('lang-pill');
+  if(!pill)return;
+  var m=document.documentElement.className.match(/lang-(\w+)/);
+  var lang=m?m[1]:'th';
+  function set(l){
+    document.documentElement.classList.remove('lang-th','lang-en');
+    document.documentElement.classList.add('lang-'+l);
+    localStorage.setItem('siteLang',l);
+    pill.querySelector('.lang-th').classList.toggle('active',l==='th');
+    pill.querySelector('.lang-en').classList.toggle('active',l==='en');
+  }
+  pill.querySelector('.lang-th').addEventListener('click',function(e){e.preventDefault();set('th');});
+  pill.querySelector('.lang-en').addEventListener('click',function(e){e.preventDefault();set('en');});
+  set(lang);
+})();
 </script>
 </body>
 </html>

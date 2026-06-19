@@ -1,21 +1,25 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[WRITE UP] Scenario 2 Part 2: Dark Web Monitoring | Sabastiaz</title>
-  <meta name="description" content="[WRITE UP] Scenario 2 Part 2: Dark Web Monitoring — Sabastiaz Red Team Sorcerer" />
-  <meta name="author" content="Ratthapong Sommanus (Sabastiaz)" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#1a1008" />
-  <meta property="og:title" content="[WRITE UP] Scenario 2 Part 2: Dark Web Monitoring | Sabastiaz" />
-  <meta property="og:description" content="[WRITE UP] Scenario 2 Part 2: Dark Web Monitoring — Sabastiaz Red Team Sorcerer" />
-  <meta property="og:image" content="https://sabastiaz.github.io/pic/Untitled design.png" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=3">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png?v=3">
-  <style>
+<script>
+(function(){var s=localStorage.getItem('siteLang');var a=(navigator.language||'').toLowerCase().startsWith('th')?'th':'en';document.documentElement.classList.add('lang-'+(s||a));})();
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>[WRITE UP] Scenario 2 Part 2: Dark Web Monitoring | Sabastiaz</title>
+<meta content="[WRITE UP] Scenario 2 Part 2: Dark Web Monitoring — Sabastiaz Red Team Sorcerer" name="description"/>
+<meta content="Ratthapong Sommanus (Sabastiaz)" name="author"/>
+<meta content="index, follow" name="robots"/>
+<meta content="#1a1008" name="theme-color"/>
+<meta content="[WRITE UP] Scenario 2 Part 2: Dark Web Monitoring | Sabastiaz" property="og:title"/>
+<meta content="[WRITE UP] Scenario 2 Part 2: Dark Web Monitoring — Sabastiaz Red Team Sorcerer" property="og:description"/>
+<meta content="https://sabastiaz.github.io/pic/Untitled design.png" property="og:image"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="../favicon.ico?v=3" rel="icon" type="image/x-icon"/>
+<link href="../favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/>
+<style>
   .post-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;color:var(--text-muted);text-decoration:none;margin-bottom:2rem;transition:color .2s}
   .post-back:hover{color:var(--gold)}
   .post-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,.15)}
@@ -64,136 +68,185 @@
 .share-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.45rem .9rem;border-radius:4px;font-size:.75rem;font-family:'Cinzel',serif;text-decoration:none;cursor:pointer;border:1px solid rgba(201,168,76,.25);background:rgba(201,168,76,.04);color:var(--text-muted);transition:border-color .2s,color .2s,background .2s}
 .share-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.08)}
 .share-btn svg{flex-shrink:0}
+.lb[lang="en"]{display:none}
+html.lang-en .lb[lang="th"]{display:none}
+html.lang-en .lb[lang="en"]{display:block}
+.lang-pill{display:inline-flex;border:1px solid rgba(201,168,76,.3);border-radius:20px;overflow:hidden;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.08em}
+.lang-pill a{padding:.28rem .6rem;text-decoration:none;color:var(--text-muted);transition:color .15s,background .15s;line-height:1}
+.lang-pill a.active{background:rgba(201,168,76,.18);color:var(--gold);pointer-events:none}
+.lang-pill a:not(.active):hover{background:rgba(201,168,76,.08);color:var(--text)}
 </style>
 </head>
 <body>
 <canvas id="stars-canvas"></canvas>
 <nav>
-  <a href="../index.html" class="nav-logo">Sabastiaz 🪄</a>
-  <ul class="nav-links">
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../about.html">About</a></li>
-    <li><a href="../skills.html">Spells</a></li>
-    <li><a href="../tools.html">Arsenal</a></li>
-    <li><a href="../writings.html" class="active">Tomes</a></li>
-    <li><a href="../honor.html">Honours</a></li>
-    <li><a href="../wowza.html">Wowza</a></li>
-    <li><a href="../event.html">Events</a></li>
-    <li><a href="../changelog.html">Updates</a></li>
-    <li><a href="../contact.html">Owl Post</a></li>
-    <li><a href="../cocacola.html">🥤</a></li>
-  </ul>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<a class="nav-logo" href="../index.html">Sabastiaz 🪄</a>
+<ul class="nav-links">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../skills.html">Spells</a></li>
+<li><a href="../tools.html">Arsenal</a></li>
+<li><a class="active" href="../writings.html">Tomes</a></li>
+<li><a href="../honor.html">Honours</a></li>
+<li><a href="../wowza.html">Wowza</a></li>
+<li><a href="../event.html">Events</a></li>
+<li><a href="../changelog.html">Updates</a></li>
+<li><a href="../contact.html">Owl Post</a></li>
+<li><a href="../cocacola.html">🥤</a></li>
+</ul>
+<div class="lang-pill" id="lang-pill">
+<a class="lang-th" href="#">TH</a>
+<a class="lang-en" href="#">EN</a>
+</div>
+<button aria-expanded="false" aria-label="Menu" class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
 </nav>
 <div class="page">
-  <div class="content">
-    <a href="../writings.html" class="post-back">← Back to Tomes</a>
-    <div class="post-header">
-      <div class="post-tags"><span class="post-tag tag-en">EN</span><span class="post-tag tag-ctf">CTF</span><span class="post-tag tag-pentest">Red Team</span></div>
-      <div class="post-meta-row">
-        <span>December 13, 2025</span><span class="dot">✦</span><span>7 min read</span>
-      </div>
-      <h1 class="post-title">[WRITE UP] Scenario 2 Part 2: Dark Web Monitoring</h1>
-    </div>
-    <div class="post-body">
+<div class="content">
+<a class="post-back" href="../writings.html">← Back to Tomes</a>
+<div class="post-header">
+<div class="post-tags"><span class="post-tag tag-en">EN</span><span class="post-tag tag-ctf">CTF</span><span class="post-tag tag-pentest">Red Team</span></div>
+<div class="post-meta-row">
+<span>December 13, 2025</span><span class="dot">✦</span><span>7 min read</span>
+</div>
+<h1 class="post-title"><span class="lb" lang="en">[WRITE UP] Scenario 2 Part 2: Dark Web Monitoring</span><span class="lb" lang="th">[Write Up] สถานการณ์ที่ 2 ตอนที่ 2: Dark Web Monitoring</span></h1>
+</div>
+<div class="post-body lb" lang="en">
+<p>Hello everyone, I'm back again! Today I competed in Thailand's latest CTF competition — <strong>Hack The Scammer CTF 2025</strong>.</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*a1PTo205jC3RxDdhtKms3Q.png"/></figure>
+<p>This round I placed 6th.</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*yn2fNBJ6sMLKbTcsShk9mg.png"/></figure>
+<p>Today I'm writing up the one challenge with the fewest solves in the OSINT category:<br/><strong>(Scenario 2 Part 2 — Dark Web Monitoring)</strong> — 48 solves. Let's go.</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*XInVt90yplBFB8wne_vPYQ.png"/></figure>
+<p>The challenge:</p>
+<p>Author: longcat<br/>An Apple ID account belonging to an STH employee (s*********<a href="mailto:w@sth.sh" rel="noopener" target="_blank">w@sth.sh</a>) was hacked and the password was leaked on the Dark Web. What is the password?</p>
+<p><strong>Flag Format: STH{&lt;MD5 of the found password, all lowercase&gt;}</strong></p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/1200/1*Iy8n1PCovtBkoSvJYBlIXQ.png"/></figure>
+<p>First I searched Google for the email from the challenge: s*********<a href="mailto:w@sth.sh" rel="noopener" target="_blank">w@sth.sh</a> — nothing.</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*7Io1d1ghcSuvNmgmsSQn2g.png"/></figure>
+<p>So I turned to a TI (threat intelligence) platform — SOC Radar (<a href="https://socradar.io/" rel="noopener" target="_blank">https://socradar.io/</a>). Clicked Free Tools.</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*9ZZXw8wYmkVOZLJuBsM-zw.png"/></figure>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*bEzP3gVOoo1nKtZfQitFgQ.png"/></figure>
+<p>Found it — there was indeed a leak.</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*nrjcE_2i3AXBs0beiJoUAA.png"/></figure>
+<p>To get the exact email I turned to <a href="https://dehashed.com/" rel="noopener" target="_blank">dehashed</a>.</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/1200/1*wIRckMXzOx4fvbMlWQHQqA.png"/>
+<figcaption>The correct email is s.phoomkaew@sth.sh</figcaption></figure>
+<p>Running the email through SOCRadar revealed a partial password.</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*4bu-u2tU7VvEomgBUSOIqg.png"/></figure>
+<p>Next I checked against dehashed directly — SOCRadar had taken me as far as it could go.</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*M1v09xb1q76DTBsWEL-NEA.png"/></figure>
+<blockquote>To view the full data you need to pay.<br/>You might expect me to switch to a different site — but no, I solved it with money. Paid, done.</blockquote>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*kHGo8E4wMh84G7PB.png"/></figure>
+<p>After paying, I had the password (D*********r).</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/1200/1*l8zWdITXtiYQdhZR1MccKw.png"/></figure>
+<p>Hash it with MD5, submit — making sure to match the exact flag format.</p>
+<p><strong>Flag Format: STH{&lt;MD5 of the found password, all lowercase&gt;}</strong></p>
+<p>Final: STH{<strong>REDACTED</strong>}</p>
+<p>That's a wrap for this write-up. Other challenges — I'll leave those to someone else. Bye! And as tradition dictates, here's a meme.</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*k3DnNSlX989uqRqV.jpg"/></figure>
+<h2>— — — — — — — — See you next time — — — — — — — —</h2>
+<blockquote><strong><em>Profile</em></strong></blockquote>
+<blockquote><strong><em>Sabastiaz<br/>Medium</em></strong><em> : </em><a href="https://medium.com/@sabastiaz" rel="noopener" target="_blank"><em>https://medium.com/@sabastiaz</em></a><em><br/></em><strong><em>LinkedIn: </em></strong><a href="https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/" rel="noopener" target="_blank"><em>https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/</em></a></blockquote>
+</div>
+<div class="post-body lb" lang="th">
 <p>สวัสดีทุกๆท่านกลับมาอีกแล้วววว และวันนี้ได้เข้าแข่งขัน CTF ล่าสุดของประเทศไทย คือ <strong>Hack The Scammer CTF 2025</strong></p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*a1PTo205jC3RxDdhtKms3Q.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*a1PTo205jC3RxDdhtKms3Q.png"/>
 </figure>
 <p>และรอบนี้ผมได้อันดับที่ 6</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*yn2fNBJ6sMLKbTcsShk9mg.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*yn2fNBJ6sMLKbTcsShk9mg.png"/>
 </figure>
-<p>วันนี้ผมมา <strong>Write up</strong> ข้อเดียวเป็นข้อที่คนทำได้น้อยสุดในหมวด OSINT <br><strong>(Scenario 2 Part 2 — Dark Web Monitoring)</strong> 48 Solve ไปดูวิธีแก้กันเลย</p>
+<p>วันนี้ผมมา <strong>Write up</strong> ข้อเดียวเป็นข้อที่คนทำได้น้อยสุดในหมวด OSINT <br/><strong>(Scenario 2 Part 2 — Dark Web Monitoring)</strong> 48 Solve ไปดูวิธีแก้กันเลย</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*XInVt90yplBFB8wne_vPYQ.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*XInVt90yplBFB8wne_vPYQ.png"/>
 </figure>
 <p>โจทย์คือ</p>
-<p>Author: longcat<br>มีบัญชี Apple ID ของพนักงาน STH (s*********<a href="mailto:w@sth.sh" target="_blank" rel="noopener">w@sth.sh</a>) ถูกแฮกและนำรหัสผ่านไปแจกใน Dark Web รหัสผ่านนั้นคือ?</p>
-<p><strong>Flag Format: STH{<ค่า MD5 ของ รหัสผ่านที่พบ ตอบเป็นตัวพิมพ์เล็กทั้งหมด >}</strong></p>
+<p>Author: longcat<br/>มีบัญชี Apple ID ของพนักงาน STH (s*********<a href="mailto:w@sth.sh" rel="noopener" target="_blank">w@sth.sh</a>) ถูกแฮกและนำรหัสผ่านไปแจกใน Dark Web รหัสผ่านนั้นคือ?</p>
+<p><strong>Flag Format: STH{&lt;ค่า MD5 ของ รหัสผ่านที่พบ ตอบเป็นตัวพิมพ์เล็กทั้งหมด &gt;}</strong></p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/1200/1*Iy8n1PCovtBkoSvJYBlIXQ.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/1200/1*Iy8n1PCovtBkoSvJYBlIXQ.png"/>
 </figure>
-<p>เบื้องต้นเราจะทำการหา email จากโจทย์ไปทำการหาใน google s*********<a href="mailto:w@sth.sh" target="_blank" rel="noopener">w@sth.sh</a> ซึ่งไม่เจออะไร</p>
+<p>เบื้องต้นเราจะทำการหา email จากโจทย์ไปทำการหาใน google s*********<a href="mailto:w@sth.sh" rel="noopener" target="_blank">w@sth.sh</a> ซึ่งไม่เจออะไร</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*7Io1d1ghcSuvNmgmsSQn2g.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*7Io1d1ghcSuvNmgmsSQn2g.png"/>
 </figure>
-<p>เลยลองหา Tools TI (threat intelligence platform) เลยนึกถึง SOC Radar (<a href="https://socradar.io/" target="_blank" rel="noopener">https://socradar.io/</a>)</p>
+<p>เลยลองหา Tools TI (threat intelligence platform) เลยนึกถึง SOC Radar (<a href="https://socradar.io/" rel="noopener" target="_blank">https://socradar.io/</a>)</p>
 <p>กดไปที่ Free Tools</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*9ZZXw8wYmkVOZLJuBsM-zw.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*9ZZXw8wYmkVOZLJuBsM-zw.png"/>
 </figure>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*bEzP3gVOoo1nKtZfQitFgQ.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*bEzP3gVOoo1nKtZfQitFgQ.png"/>
 </figure>
 <p>เจอและว่ามี leak จริง</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*nrjcE_2i3AXBs0beiJoUAA.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*nrjcE_2i3AXBs0beiJoUAA.png"/>
 </figure>
-<p>หา email ที่ถูกต้องจากอีกเว็บนั่นคือ <a href="https://dehashed.com/" target="_blank" rel="noopener">dehashed</a></p>
+<p>หา email ที่ถูกต้องจากอีกเว็บนั่นคือ <a href="https://dehashed.com/" rel="noopener" target="_blank">dehashed</a></p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/1200/1*wIRckMXzOx4fvbMlWQHQqA.png" alt="" loading="lazy">
-  <figcaption>Email ที่ถูกคือ s.phoomkaew@sth.sh</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/1200/1*wIRckMXzOx4fvbMlWQHQqA.png"/>
+<figcaption>Email ที่ถูกคือ s.phoomkaew@sth.sh</figcaption>
 </figure>
 <p>นำ email มาหากับ Soc Radar จะเจอ Pass บางส่วน</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*4bu-u2tU7VvEomgBUSOIqg.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*4bu-u2tU7VvEomgBUSOIqg.png"/>
 </figure>
 <p>ทีนี้ก็นำ email ที่ได้ไปเช็คกับ dehashed ต่อเลยเพราะ SocRadar ทำต่อไม่ได้แล้ว</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*M1v09xb1q76DTBsWEL-NEA.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*M1v09xb1q76DTBsWEL-NEA.png"/>
 </figure>
-<blockquote>ที่นี้ถ้าอยากจะดูข้อมูลต้องจ่ายเงินเพิ่อดูข้อมูล<br>เอาหละที่นี้คุณคิดว่าผมจะเปลี่ยนเว็บใช่ไหม <br>No ครับผมใช้เงินแก้ปัญหาซื้อมาก็จบเรื่อง</blockquote>
+<blockquote>ที่นี้ถ้าอยากจะดูข้อมูลต้องจ่ายเงินเพิ่อดูข้อมูล<br/>เอาหละที่นี้คุณคิดว่าผมจะเปลี่ยนเว็บใช่ไหม <br/>No ครับผมใช้เงินแก้ปัญหาซื้อมาก็จบเรื่อง</blockquote>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*kHGo8E4wMh84G7PB.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*kHGo8E4wMh84G7PB.png"/>
 </figure>
 <p>จ่ายเสร็จก็ได้ Password (D*********r)เลย</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/1200/1*l8zWdITXtiYQdhZR1MccKw.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/1200/1*l8zWdITXtiYQdhZR1MccKw.png"/>
 </figure>
 <p>ก็เอา password ไปเข้า MD5 แล้วก็ตอบได้เลย แต่ตอบให้ตรงตาม format นะ</p>
-<p><strong>Flag Format: STH{<ค่า MD5 ของ รหัสผ่านที่พบ ตอบเป็นตัวพิมพ์เล็กทั้งหมด >}</strong></p>
+<p><strong>Flag Format: STH{&lt;ค่า MD5 ของ รหัสผ่านที่พบ ตอบเป็นตัวพิมพ์เล็กทั้งหมด &gt;}</strong></p>
 <p>Final : STH{<strong>REDACTED</strong>}</p>
 <p>จบไปแล้วสำหรับ write up นะครับ ข้ออื่นๆ ก็รอคนอื่นมาต่อนะ byebye ก่อนจากกันตามธรรมเนียมเอาไป 1 meme</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*k3DnNSlX989uqRqV.jpg" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*k3DnNSlX989uqRqV.jpg"/>
 </figure>
 <h2>— — — — — — — — แล้วพบกันใหม่ — — — — — — — —</h2>
 <blockquote><strong><em>Profile</em></strong></blockquote>
-<blockquote><strong><em>Sabastiaz<br>Medium</em></strong><em> : </em><a href="https://medium.com/@sabastiaz" target="_blank" rel="noopener"><em>https://medium.com/@sabastiaz</em></a><em><br></em><strong><em>Linkedin: </em></strong><a href="https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/" target="_blank" rel="noopener"><em>https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/</em></a></blockquote>
-    </div>
-        <div class="share-section">
-      <span class="share-label">แชร์บทความนี้</span>
-      <div class="share-buttons">
-        <a class="share-btn share-x" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.733-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+<blockquote><strong><em>Sabastiaz<br/>Medium</em></strong><em> : </em><a href="https://medium.com/@sabastiaz" rel="noopener" target="_blank"><em>https://medium.com/@sabastiaz</em></a><em><br/></em><strong><em>Linkedin: </em></strong><a href="https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/" rel="noopener" target="_blank"><em>https://www.linkedin.com/in/ratthapong-sommanus-465b661b2/</em></a></blockquote>
+</div>
+<div class="share-section">
+<span class="share-label">แชร์บทความนี้</span>
+<div class="share-buttons">
+<a class="share-btn share-x" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.733-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
           X / Twitter
         </a>
-        <a class="share-btn share-li" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+<a class="share-btn share-li" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
           LinkedIn
         </a>
-        <a class="share-btn share-fb" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+<a class="share-btn share-fb" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
           Facebook
         </a>
-        <button class="share-btn share-copy" onclick="copyLink(this)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span>Copy Link</span>
-        </button>
-      </div>
-    </div>
-    <div class="post-footer">
-      <div class="author-card">
-        <img src="../pic/Untitled design.png" alt="Sabastiaz" class="author-avatar">
-        <div>
-          <div class="author-name">Sabastiaz</div>
-          <div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
-        </div>
-      </div>
-      <a href="../writings.html" class="post-back">← Back to Tomes</a>
-    </div>
-  </div>
+<button class="share-btn share-copy" onclick="copyLink(this)">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy Link</span>
+</button>
+</div>
+</div>
+<div class="post-footer">
+<div class="author-card">
+<img alt="Sabastiaz" class="author-avatar" src="../pic/Untitled design.png"/>
+<div>
+<div class="author-name">Sabastiaz</div>
+<div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
+</div>
+</div>
+<a class="post-back" href="../writings.html">← Back to Tomes</a>
+</div>
+</div>
 </div>
 <script src="../stars.js"></script>
 <script>
@@ -226,6 +279,24 @@ function copyLink(btn){
     setTimeout(function(){span.textContent='Copy Link';btn.style.color='';btn.style.borderColor='';},2000);
   });
 }
+</script>
+<script>
+(function(){
+  var pill=document.getElementById('lang-pill');
+  if(!pill)return;
+  var m=document.documentElement.className.match(/lang-(\w+)/);
+  var lang=m?m[1]:'th';
+  function set(l){
+    document.documentElement.classList.remove('lang-th','lang-en');
+    document.documentElement.classList.add('lang-'+l);
+    localStorage.setItem('siteLang',l);
+    pill.querySelector('.lang-th').classList.toggle('active',l==='th');
+    pill.querySelector('.lang-en').classList.toggle('active',l==='en');
+  }
+  pill.querySelector('.lang-th').addEventListener('click',function(e){e.preventDefault();set('th');});
+  pill.querySelector('.lang-en').addEventListener('click',function(e){e.preventDefault();set('en');});
+  set(lang);
+})();
 </script>
 </body>
 </html>

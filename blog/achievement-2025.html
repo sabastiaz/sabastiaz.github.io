@@ -1,21 +1,25 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Achievement 2025 | Sabastiaz</title>
-  <meta name="description" content="Achievement 2025 — Sabastiaz Red Team Sorcerer" />
-  <meta name="author" content="Ratthapong Sommanus (Sabastiaz)" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#1a1008" />
-  <meta property="og:title" content="Achievement 2025 | Sabastiaz" />
-  <meta property="og:description" content="Achievement 2025 — Sabastiaz Red Team Sorcerer" />
-  <meta property="og:image" content="https://sabastiaz.github.io/pic/Untitled design.png" />
-  <link rel="stylesheet" href="../style.css" />
-  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=3">
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png?v=3">
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png?v=3">
-  <style>
+<script>
+(function(){var s=localStorage.getItem('siteLang');var a=(navigator.language||'').toLowerCase().startsWith('th')?'th':'en';document.documentElement.classList.add('lang-'+(s||a));})();
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Achievement 2025 | Sabastiaz</title>
+<meta content="Achievement 2025 — Sabastiaz Red Team Sorcerer" name="description"/>
+<meta content="Ratthapong Sommanus (Sabastiaz)" name="author"/>
+<meta content="index, follow" name="robots"/>
+<meta content="#1a1008" name="theme-color"/>
+<meta content="Achievement 2025 | Sabastiaz" property="og:title"/>
+<meta content="Achievement 2025 — Sabastiaz Red Team Sorcerer" property="og:description"/>
+<meta content="https://sabastiaz.github.io/pic/Untitled design.png" property="og:image"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="../favicon.ico?v=3" rel="icon" type="image/x-icon"/>
+<link href="../favicon-32.png?v=3" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../favicon-16.png?v=3" rel="icon" sizes="16x16" type="image/png"/>
+<style>
   .post-back{display:inline-flex;align-items:center;gap:.4rem;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;color:var(--text-muted);text-decoration:none;margin-bottom:2rem;transition:color .2s}
   .post-back:hover{color:var(--gold)}
   .post-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,168,76,.15)}
@@ -64,126 +68,187 @@
 .share-btn{display:inline-flex;align-items:center;gap:.45rem;padding:.45rem .9rem;border-radius:4px;font-size:.75rem;font-family:'Cinzel',serif;text-decoration:none;cursor:pointer;border:1px solid rgba(201,168,76,.25);background:rgba(201,168,76,.04);color:var(--text-muted);transition:border-color .2s,color .2s,background .2s}
 .share-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.08)}
 .share-btn svg{flex-shrink:0}
+.lb[lang="en"]{display:none}
+html.lang-en .lb[lang="th"]{display:none}
+html.lang-en .lb[lang="en"]{display:block}
+.lang-pill{display:inline-flex;border:1px solid rgba(201,168,76,.3);border-radius:20px;overflow:hidden;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.08em}
+.lang-pill a{padding:.28rem .6rem;text-decoration:none;color:var(--text-muted);transition:color .15s,background .15s;line-height:1}
+.lang-pill a.active{background:rgba(201,168,76,.18);color:var(--gold);pointer-events:none}
+.lang-pill a:not(.active):hover{background:rgba(201,168,76,.08);color:var(--text)}
 </style>
 </head>
 <body>
 <canvas id="stars-canvas"></canvas>
 <nav>
-  <a href="../index.html" class="nav-logo">Sabastiaz 🪄</a>
-  <ul class="nav-links">
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../about.html">About</a></li>
-    <li><a href="../skills.html">Spells</a></li>
-    <li><a href="../tools.html">Arsenal</a></li>
-    <li><a href="../writings.html" class="active">Tomes</a></li>
-    <li><a href="../honor.html">Honours</a></li>
-    <li><a href="../wowza.html">Wowza</a></li>
-    <li><a href="../event.html">Events</a></li>
-    <li><a href="../changelog.html">Updates</a></li>
-    <li><a href="../contact.html">Owl Post</a></li>
-    <li><a href="../cocacola.html">🥤</a></li>
-  </ul>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<a class="nav-logo" href="../index.html">Sabastiaz 🪄</a>
+<ul class="nav-links">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../about.html">About</a></li>
+<li><a href="../skills.html">Spells</a></li>
+<li><a href="../tools.html">Arsenal</a></li>
+<li><a class="active" href="../writings.html">Tomes</a></li>
+<li><a href="../honor.html">Honours</a></li>
+<li><a href="../wowza.html">Wowza</a></li>
+<li><a href="../event.html">Events</a></li>
+<li><a href="../changelog.html">Updates</a></li>
+<li><a href="../contact.html">Owl Post</a></li>
+<li><a href="../cocacola.html">🥤</a></li>
+</ul>
+<div class="lang-pill" id="lang-pill">
+<a class="lang-th" href="#">TH</a>
+<a class="lang-en" href="#">EN</a>
+</div>
+<button aria-expanded="false" aria-label="Menu" class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
 </nav>
 <div class="page">
-  <div class="content">
-    <a href="../writings.html" class="post-back">← Back to Tomes</a>
-    <div class="post-header">
-      <div class="post-tags"><span class="post-tag tag-en">EN</span><span class="post-tag tag-life">Life</span><span class="post-tag tag-cert">Certification</span></div>
-      <div class="post-meta-row">
-        <span>February 27, 2026</span><span class="dot">✦</span><span>6 min read</span>
-      </div>
-      <h1 class="post-title">Achievement 2025</h1>
-    </div>
-    <div class="post-body">
-<p>สวัสดีทุกๆคน กลับมาพบกันอีกแล้ว <br>ในครั้งนี้จะมาสรุปของปี 2025 ว่าปีนี้ผ่านอะไรมาบ้าง</p>
+<div class="content">
+<a class="post-back" href="../writings.html">← Back to Tomes</a>
+<div class="post-header">
+<div class="post-tags"><span class="post-tag tag-en">EN</span><span class="post-tag tag-life">Life</span><span class="post-tag tag-cert">Certification</span></div>
+<div class="post-meta-row">
+<span>February 27, 2026</span><span class="dot">✦</span><span>6 min read</span>
+</div>
+<h1 class="post-title"><span class="lb" lang="en">Achievement 2025</span><span class="lb" lang="th">Achievement 2025</span></h1>
+</div>
+<div class="post-body lb" lang="en">
+<p>Hello everyone, welcome back!<br/>This time I'm summarising 2025 — what I went through this year.</p>
+<p>Another fun year. I did a lot of things, met many new friends and colleagues, tried things I'd never done before, traveled abroad, shared knowledge with others, created CTF challenges, competed. It was a great year. I earned certifications, ran labs, and most importantly — I now have my own CVE (CVE-2025–48878).</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*sS9fC2cdKpBH42Xwef4mIw.png"/>
+<figcaption>https://www.cve.org/CVERecord?id=CVE-2025-48878</figcaption></figure>
+<p>I'd give this year 8/10 because I didn't sit CAPE or CISSP.</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*7jppWDi5R3iQbzRo.gif"/></figure>
+<p>Certifications and labs completed this year:</p>
+<ul><li>Certified Red Team Analyst [CRTA] V.1 — sharp backdoor techniques</li></ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*8CCryC9mstEnCUJOiXWhJg.png"/></figure>
+<ul><li>Tenable Vulnerability Management Specialist — the written portion was harder than the practical</li></ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*bdNFnzyO2MLZA8gu5IDXUg.png"/></figure>
+<ul><li>Hack The Box Certified Penetration Testing Specialist (HTB CPTS) — does the hash include a trailing full stop?</li></ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*1LpnwflbZdClzdp7sI4wIA.png"/></figure>
+<ul><li>The Penetration Tester 1 (PT1) — AD/Network was so easy I had to pivot to web wizardry, and the web portion nearly finished me</li></ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*kxYbVnW9wUWcr0KtZ3ZvBw.png"/></figure>
+<ul><li>Red Team Infrastructure Developer (CRT-ID) — EZ</li></ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*cxq1sIwowM9VdGcZo0rVlg.png"/></figure>
+<ul><li>OffSec Experienced Penetration Tester (OSEP) — went straight to hospital after the exam, purely for the secret flag</li></ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*BBEVvxFTYeMEYUY4HSQaXA.png"/></figure>
+<ul><li>HTB Prolab Zephyr and Cybernetics — seriously intense AD labs</li></ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*ucqUalbtoZzfW8j43XGQZQ.png"/></figure>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*1pFPucE8G3_FHpizwcNs5w.png"/></figure>
+<ul><li>Certified Red Team Operations (CRTO) — that red sword badge is stunning</li></ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*po-S1Ni7vQWidnj5FtIE7w.png"/></figure>
+<ul><li>Certified Red Team Analyst [CRTA] V.2 — what even is this challenge</li></ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*wIlfdTcA1B5iY9vYKVpA0A.png"/></figure>
+<ul>
+<li>Certified Active Directory Pentesting eXpert (C-ADPenX) — failed on the first attempt</li>
+<li>Certified Active Directory Red Team Specialist (AD-RTS) — gorgeous cert design</li>
+</ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*TQtLTZi6pRLZWkW1l9bhmQ.png"/></figure>
+<ul>
+<li>Certified Network Security Practitioner (CNSP)</li>
+<li>Burp Suite Certified Practitioner — cracked both as expected; ridiculously hard</li>
+</ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*gVFRUkLewdeLo1KFzVb20w.png"/></figure>
+<p>Year highlights:</p>
+<ul><li>Invited to deliver a Cybersecurity session at PIM</li></ul>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*IUZbBnhIhaOdWQIwTx6_-g.jpeg"/></figure>
+<ul>
+<li>Sec Playground Hackloween — 1st place out of 88 teams</li>
+<li>Thailand Cyber Top Talent 2025 — 14th in qualifiers; got wrecked in the Mobile category</li>
+<li>Holmes CTF (Blue Team CTF) — 28th out of 6,136 teams</li>
+<li>Hack Scammer CTF — 6th in qualifiers, absolutely crushed in finals (Mobile again)</li>
+</ul>
+<p>Also published several blog posts on Medium: <a href="https://sabastiaz.medium.com/" rel="noopener" target="_blank">https://sabastiaz.medium.com/</a></p>
+<p>That's about it for this year. See you in the next one!</p>
+<figure><img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*Vuk8PIa2OdwuIbW4"/></figure>
+</div>
+<div class="post-body lb" lang="th">
+<p>สวัสดีทุกๆคน กลับมาพบกันอีกแล้ว <br/>ในครั้งนี้จะมาสรุปของปี 2025 ว่าปีนี้ผ่านอะไรมาบ้าง</p>
 <p>ปีนี้เป็นปีที่สนุกอีกปีนึงได้ทำอะไรหลายอย่างได้รู้จักเพื่อนๆ พี่ๆ น้องๆ ใหม่ๆ หลายคน ได้ลองทำอะไรที่ไม่เคยทำได้ไปต่างประเทศ ได้ออกไปให้ความรู้คนอื่น ถึงแม้จะน้อยนิด ได้ออกโจทย์การแข่งขันแ เป็นปีที่สนุกมาก ปีนี้สอบ Certified เล่นแลป และที่สำคัญปีนี้ได้มี CVE เป็นของตัวเองแล้ว (CVE-2025–48878)</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*sS9fC2cdKpBH42Xwef4mIw.png" alt="" loading="lazy">
-  <figcaption>https://www.cve.org/CVERecord?id=CVE-2025-48878</figcaption>
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*sS9fC2cdKpBH42Xwef4mIw.png"/>
+<figcaption>https://www.cve.org/CVERecord?id=CVE-2025-48878</figcaption>
 </figure>
 <p>สำหรับปีนี้ให้คะแนน 8/10 เนื่องจาก ไม่ได้สอบ CAPE และ CISSP</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*7jppWDi5R3iQbzRo.gif" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*7jppWDi5R3iQbzRo.gif"/>
 </figure>
 <p>Certified ที่สอบและ lab ในปีนี้</p>
 <ul>
 <li>Certified Red Team Analyst [CRTA] V.1 back door คมๆ</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*8CCryC9mstEnCUJOiXWhJg.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*8CCryC9mstEnCUJOiXWhJg.png"/>
 </figure>
 <ul>
 <li>Tenable Vulnerability Management Specialist Certification ข้อเขียนยากกว่าข้อปฏิบัติ</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*bdNFnzyO2MLZA8gu5IDXUg.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*bdNFnzyO2MLZA8gu5IDXUg.png"/>
 </figure>
 <ul>
 <li>Hack The Box Certified Penetration Testing Specialist (HTB CPTS) hash มีจุด full stop ไหม</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*1LpnwflbZdClzdp7sI4wIA.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*1LpnwflbZdClzdp7sI4wIA.png"/>
 </figure>
 <ul>
 <li>The Penetration Tester 1 (PT1) AD/Network ง่ายจนต้องไปเป็นพ่อมด Web นี่ยากขอชีวิต</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*kxYbVnW9wUWcr0KtZ3ZvBw.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*kxYbVnW9wUWcr0KtZ3ZvBw.png"/>
 </figure>
 <ul>
 <li>Red Team Infrastructure Developer (CRT-ID) EZ</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*cxq1sIwowM9VdGcZo0rVlg.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*cxq1sIwowM9VdGcZo0rVlg.png"/>
 </figure>
 <ul>
 <li>OffSec Experienced Penetration Tester (OSEP) สอบจบไปโรงพยาบาล เพียงเพราะอยากได้ secret flag</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*BBEVvxFTYeMEYUY4HSQaXA.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*BBEVvxFTYeMEYUY4HSQaXA.png"/>
 </figure>
 <ul>
 <li>HTB Prolab Zephyr and Cybernetics AD ตึงๆ</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*ucqUalbtoZzfW8j43XGQZQ.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*ucqUalbtoZzfW8j43XGQZQ.png"/>
 </figure>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*1pFPucE8G3_FHpizwcNs5w.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*1pFPucE8G3_FHpizwcNs5w.png"/>
 </figure>
 <ul>
 <li>Certified Red Team Operations (CRTO) ดาบแดงมันสวยไหมพี่</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*po-S1Ni7vQWidnj5FtIE7w.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*po-S1Ni7vQWidnj5FtIE7w.png"/>
 </figure>
 <ul>
 <li>Certified Red Team Analyst [CRTA] V.2 โจทย์แบบอิหยังวะ</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*wIlfdTcA1B5iY9vYKVpA0A.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*wIlfdTcA1B5iY9vYKVpA0A.png"/>
 </figure>
 <ul>
 <li>Certified Active Directory Pentesting eXpert (C-ADPenX) สอบรอบแรกไม่ผ่าน</li>
 <li>Certified Active Directory Red Team Specialist (AD-RTS) เซอร์สวยมาก</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*TQtLTZi6pRLZWkW1l9bhmQ.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*TQtLTZi6pRLZWkW1l9bhmQ.png"/>
 </figure>
 <ul>
 <li>Certified Network Security Practitioner (CNSP)</li>
 <li>Burp Suite Certified Practitioner แตก 2 ตามระเบียบ ยากเกินนน</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*gVFRUkLewdeLo1KFzVb20w.png" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*gVFRUkLewdeLo1KFzVb20w.png"/>
 </figure>
 <p>Highlight ของ ปีนี้</p>
 <ul>
 <li>ได้รับเชิญให้ไปให้ความรู้เกี่ยว Cybersecurity ที่ PIM</li>
 </ul>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/1*IUZbBnhIhaOdWQIwTx6_-g.jpeg" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/1*IUZbBnhIhaOdWQIwTx6_-g.jpeg"/>
 </figure>
 <ul>
 <li>Sec Playground Hackloween ได้ที่ 1 จาก 88 ทีม</li>
@@ -191,44 +256,44 @@
 <li>Holmes CTF (BlueTeam CTF ) ได้ที่ 28 จาก 6136 ทีม</li>
 <li>Hack Scammer CTF ได้ที่ 6 รอบคัดเลือก และรอบชิงยับ แตก Mobile อีกเช่นกัน</li>
 </ul>
-<p>และเขียน Blog ต่างลงใน Medium <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fsabastiaz.medium.com%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExSm9tQWJGMFhrVVhaM3hmUHNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR6UU7HgjV1NkyUzqATIxVu6gkbYzaK69LvKaXzhBXrbXFyNNANOcnT3c8bodw_aem_5Qp7zjQ9hwuS4qGtllP35A&h=AT1gzDZZmhS_X1nJ1mHXL0D0PCrHcRCXCCmxxjj1bZqiJHmbw9_z4M_7c6YbX1CMgLp_4t_ctjY7OLBsF8ZTKpxlBArEnePy46uLLy-69aqlbMGuweGDtOthRH79qJ0RdhUOySAz-jSVWhBSOHQscA&__tn__=-UK-R&c[0]=AT2HKQ0l8vxf7V4IPVhlHoi8Utzjdd0ngYkvTw94jCmQEjyvXGNBFJq35OIbFdF6BrKMlZ3n1PnCotiYdg0OEqj2x9z-Pn7rkSqVxYFdsYRk8eL3q3GNTaYKJwozYkvmXB42QZzCmcZCKi6QL_IsNmjIaNCq4UBtR6WOp4Z624VPmMUudAk" target="_blank" rel="noopener">https://sabastiaz.medium.com/</a></p>
+<p>และเขียน Blog ต่างลงใน Medium <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fsabastiaz.medium.com%2F%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExSm9tQWJGMFhrVVhaM3hmUHNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR6UU7HgjV1NkyUzqATIxVu6gkbYzaK69LvKaXzhBXrbXFyNNANOcnT3c8bodw_aem_5Qp7zjQ9hwuS4qGtllP35A&amp;h=AT1gzDZZmhS_X1nJ1mHXL0D0PCrHcRCXCCmxxjj1bZqiJHmbw9_z4M_7c6YbX1CMgLp_4t_ctjY7OLBsF8ZTKpxlBArEnePy46uLLy-69aqlbMGuweGDtOthRH79qJ0RdhUOySAz-jSVWhBSOHQscA&amp;__tn__=-UK-R&amp;c[0]=AT2HKQ0l8vxf7V4IPVhlHoi8Utzjdd0ngYkvTw94jCmQEjyvXGNBFJq35OIbFdF6BrKMlZ3n1PnCotiYdg0OEqj2x9z-Pn7rkSqVxYFdsYRk8eL3q3GNTaYKJwozYkvmXB42QZzCmcZCKi6QL_IsNmjIaNCq4UBtR6WOp4Z624VPmMUudAk" rel="noopener" target="_blank">https://sabastiaz.medium.com/</a></p>
 <p>ปีนี้ก็มีประมาณนี้แหละ ปีหน้าว่ากันใหม่ See ya</p>
 <figure>
-  <img src="https://cdn-images-1.medium.com/max/800/0*Vuk8PIa2OdwuIbW4" alt="" loading="lazy">
+<img alt="" loading="lazy" src="https://cdn-images-1.medium.com/max/800/0*Vuk8PIa2OdwuIbW4"/>
 </figure>
-    </div>
-        <div class="share-section">
-      <span class="share-label">แชร์บทความนี้</span>
-      <div class="share-buttons">
-        <a class="share-btn share-x" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.733-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+</div>
+<div class="share-section">
+<span class="share-label">แชร์บทความนี้</span>
+<div class="share-buttons">
+<a class="share-btn share-x" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.733-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
           X / Twitter
         </a>
-        <a class="share-btn share-li" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+<a class="share-btn share-li" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
           LinkedIn
         </a>
-        <a class="share-btn share-fb" href="#" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+<a class="share-btn share-fb" href="#" rel="noopener noreferrer" target="_blank">
+<svg fill="currentColor" height="14" viewbox="0 0 24 24" width="14"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
           Facebook
         </a>
-        <button class="share-btn share-copy" onclick="copyLink(this)">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span>Copy Link</span>
-        </button>
-      </div>
-    </div>
-    <div class="post-footer">
-      <div class="author-card">
-        <img src="../pic/Untitled design.png" alt="Sabastiaz" class="author-avatar">
-        <div>
-          <div class="author-name">Sabastiaz</div>
-          <div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
-        </div>
-      </div>
-      <a href="../writings.html" class="post-back">← Back to Tomes</a>
-    </div>
-  </div>
+<button class="share-btn share-copy" onclick="copyLink(this)">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy Link</span>
+</button>
+</div>
+</div>
+<div class="post-footer">
+<div class="author-card">
+<img alt="Sabastiaz" class="author-avatar" src="../pic/Untitled design.png"/>
+<div>
+<div class="author-name">Sabastiaz</div>
+<div class="author-creds">Red Team Sorcerer | OSEP | OSCP | CAPE | CPTS | CRTO | C-ADPenX | Tenable.VM Specialist | Tenable Guardian Thailand</div>
+</div>
+</div>
+<a class="post-back" href="../writings.html">← Back to Tomes</a>
+</div>
+</div>
 </div>
 <script src="../stars.js"></script>
 <script>
@@ -261,6 +326,24 @@ function copyLink(btn){
     setTimeout(function(){span.textContent='Copy Link';btn.style.color='';btn.style.borderColor='';},2000);
   });
 }
+</script>
+<script>
+(function(){
+  var pill=document.getElementById('lang-pill');
+  if(!pill)return;
+  var m=document.documentElement.className.match(/lang-(\w+)/);
+  var lang=m?m[1]:'th';
+  function set(l){
+    document.documentElement.classList.remove('lang-th','lang-en');
+    document.documentElement.classList.add('lang-'+l);
+    localStorage.setItem('siteLang',l);
+    pill.querySelector('.lang-th').classList.toggle('active',l==='th');
+    pill.querySelector('.lang-en').classList.toggle('active',l==='en');
+  }
+  pill.querySelector('.lang-th').addEventListener('click',function(e){e.preventDefault();set('th');});
+  pill.querySelector('.lang-en').addEventListener('click',function(e){e.preventDefault();set('en');});
+  set(lang);
+})();
 </script>
 </body>
 </html>
